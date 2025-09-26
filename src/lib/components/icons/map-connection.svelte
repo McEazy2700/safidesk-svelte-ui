@@ -1,0 +1,23 @@
+<script lang="ts">
+	import type { SvgProps } from '$lib/types/svg';
+
+	let props: SvgProps = $props();
+</script>
+
+<svg
+	xmlns="http://www.w3.org/2000/svg"
+	width={props.size ?? '24'}
+	height={props.size ?? '24'}
+	viewBox="0 0 24 24"
+	class={props.class}
+>
+	<g fill="none">
+		<path d="M9 6a3 3 0 1 1-6 0a3 3 0 0 1 6 0" />
+		<path
+			stroke="currentColor"
+			stroke-linecap="square"
+			stroke-width="2"
+			d="M9 6h9a3 3 0 1 1 0 6H6a3 3 0 1 0 0 6h12M9 6a3 3 0 1 1-6 0a3 3 0 0 1 6 0Zm11 12l-2 1.5v-3z"
+		/>
+	</g>
+</svg>

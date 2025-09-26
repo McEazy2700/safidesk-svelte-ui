@@ -1,0 +1,83 @@
+/* Base container */
+.tiptap-renderer {
+	line-height: 1.6;
+	color: #1a1a1a;
+	font-family: system-ui, sans-serif;
+	font-size: 1rem;
+}
+
+/* Headings */
+.tiptap-renderer h1 {
+	font-size: 2rem;
+	margin: 1.5rem 0 1rem;
+	font-weight: bold;
+}
+
+.tiptap-renderer h2 {
+	font-size: 1.5rem;
+	margin: 1.25rem 0 0.75rem;
+	font-weight: bold;
+}
+
+.tiptap-renderer h3 {
+	font-size: 1.25rem;
+	margin: 1rem 0 0.5rem;
+	font-weight: bold;
+}
+
+/* Paragraphs */
+.tiptap-renderer p {
+	margin: 0.75rem 0;
+}
+
+/* Lists */
+.tiptap-renderer ul {
+	list-style-type: disc;
+	margin: 0.75rem 0 0.75rem 1.5rem;
+}
+
+.tiptap-renderer ol {
+	list-style-type: decimal;
+	margin: 0.75rem 0 0.75rem 1.5rem;
+}
+
+.tiptap-renderer li {
+	margin: 0.25rem 0;
+}
+
+/* Blockquotes */
+.tiptap-renderer blockquote {
+	border-left: 3px solid #ccc;
+	margin: 1rem 0;
+	padding-left: 1rem;
+	color: #555;
+	font-style: italic;
+}
+
+/* Code blocks */
+.tiptap-renderer pre {
+	background: #f5f5f5;
+	padding: 0.75rem;
+	border-radius: 0.25rem;
+	overflow-x: auto;
+}
+
+.tiptap-renderer code {
+	font-family: monospace;
+	background: #f0f0f0;
+	padding: 0.2em 0.4em;
+	border-radius: 0.2em;
+}
+
+/* Links */
+.tiptap-renderer a {
+	color: #2563eb;
+	text-decoration: underline;
+}
+
+/* Images */
+.tiptap-renderer img {
+	max-width: 100%;
+	border-radius: 0.25rem;
+	margin: 0.5rem 0;
+}
