@@ -12,7 +12,7 @@
 		status: number;
 		priority: number;
 		queue_id: number;
-		due_date?: string;
+		due_date?: string | null;
 	};
 
 	type Props = {
@@ -23,7 +23,7 @@
 		priority?: number;
 		queue_id?: number;
 		loading?: boolean;
-		due_date?: string;
+		due_date?: string | null;
 		onsave?: (value: TicketFormArgs) => void;
 	};
 
@@ -50,8 +50,8 @@
 	<div class="grid grid-cols-2 items-center gap-x-4">
 		<ATicketStatusDropdown bind:status />
 		<ATicketPriorityDropdown disabled={edit} bind:priority />
-		<AQueueDropdown bind:queue_id />
-		<AClendarInput bind:due_date />
+		<AQueueDropdown disabled={edit} bind:queue_id />
+		<AClendarInput disabled={edit} bind:due_date />
 	</div>
 	<input
 		bind:value={title}

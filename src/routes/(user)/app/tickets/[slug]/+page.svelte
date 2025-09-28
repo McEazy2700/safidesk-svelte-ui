@@ -108,6 +108,7 @@
 				edit
 				bind:priority
 				bind:status
+				due_date={TicketDetails.data?.due_date}
 				onsave={handleSendFollowup}
 				loading={TicketMutations.loading}
 			/>
