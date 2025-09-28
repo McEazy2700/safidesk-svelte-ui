@@ -7,13 +7,12 @@
 	import ATicketPriorityPill from '$lib/components/atoms/a-ticket-priority-pill.svelte';
 	import { TicketMutations } from '$lib/services/utils/mutations/tickets.svelte';
 	import { getFollowUpState } from '$lib/stores/queries/ticket-follow-ups.svelte';
-	import ATiptap from '$lib/components/atoms/a-tiptap.svelte';
 	import MTicketFollowUpItem from '$lib/components/molecules/m-ticket-follow-up-item.svelte';
 	import { invalidateAll } from '$app/navigation';
 	import { TicketsStore } from '$lib/stores/queries/tickets.svelte';
-	import { STATUS_NAMES } from '$lib/constants/tickets';
-	import UisAngleDown from '$lib/components/icons/uis-angle-down.svelte';
 	import { cast } from '$lib/utils/typing';
+	import MTicketForm, { type TicketFormArgs } from '$lib/components/molecules/m-ticket-form.svelte';
+	import ARichTextContent from '$lib/components/atoms/a-rich-text-content.svelte';
 
 	const TicketDetails = getTicketDetailsState();
 	const FollowUps = getFollowUpState();
@@ -26,17 +25,16 @@
 		FollowUps.loadInitial();
 	});
 
-	let title = $state('');
-	let content = $state('');
 	let status = $derived(TicketDetails.data?.status ?? 1);
+	let priority = $derived(TicketDetails.data?.priority ?? 3);
 
-	function handleSendFollowup(message: string) {
+	function handleSendFollowup(value: TicketFormArgs) {
 		if (TicketDetails.data?.id) {
 			TicketMutations.sendFollowUp({
-				title,
+				title: value.title,
 				ticket: TicketDetails.data.id,
-				new_status: status,
-				comment: message
+				new_status: cast(value.status),
+				comment: value.content
 			}).then(async () => {
 				await TicketsStore.refresh();
 				await invalidateAll();
@@ -51,36 +49,7 @@
 		{#if TicketDetails.loading}
 			<div class="h-6 max-w-[500px] skeleton"></div>
 		{:else}
-			<div class="flex items-center justify-between">
-				<h3 class="text-lg font-semibold text-primary capitalize">{TicketDetails.data?.title}</h3>
-				<div class="dropdown dropdown-end">
-					<div
-						tabindex="0"
-						role="button"
-						class="btn p-1 px-3 text-info-content capitalize btn-sm btn-info"
-					>
-						<div class="flex items-center">
-							<span class="border-r border-black/10 pr-2">{STATUS_NAMES[status]}</span>
-							<UisAngleDown />
-						</div>
-					</div>
-					<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-					<ul
-						tabindex="0"
-						class="dropdown-content menu z-1 w-52 rounded-box bg-base-100 p-2 shadow-sm"
-					>
-						{#each Object.keys(STATUS_NAMES).filter((v) => Number(v) !== (TicketDetails.data?.status ?? 1)) as key (key)}
-							<li>
-								<button
-									type="button"
-									onclick={() => (status = cast<typeof status>(Number(key)))}
-									class="capitalize">{STATUS_NAMES[Number(key)]}</button
-								>
-							</li>
-						{/each}
-					</ul>
-				</div>
-			</div>
+			<h3 class="text-lg font-semibold text-primary capitalize">{TicketDetails.data?.title}</h3>
 		{/if}
 		<div class="flex items-center justify-between">
 			{#if TicketDetails.loading}
@@ -121,10 +90,12 @@
 			<div class="min-h-40 skeleton"></div>
 		{:else}
 			<div
-				class="flex min-h-40 flex-col gap-1 rounded-xl border border-black/10 p-2 px-4 shadow-lg shadow-black/5"
+				class="flex min-h-40 flex-col gap-1 overflow-hidden rounded-xl border border-black/10 bg-base-200 shadow-lg shadow-black/5"
 			>
-				<h5 class="text-xl font-semibold">Description</h5>
-				<p class="text-base-content/60">{TicketDetails.data?.description}</p>
+				<h5 class="px-2 py-1 text-xl font-semibold">Description</h5>
+				<div class="h-full rounded-t-xl bg-white px-2 text-base-content/60">
+					<ARichTextContent content={TicketDetails.data?.description} />
+				</div>
 			</div>
 		{/if}
 		{#if TicketDetails.loading}
@@ -133,20 +104,13 @@
 				<div class="min-h-[360px] skeleton"></div>
 			</div>
 		{:else}
-			<div class="flex flex-col gap-2">
-				<input
-					bind:value={title}
-					type="text"
-					class="input input-lg w-full border input-ghost border-black/5 text-xl font-extrabold"
-					placeholder="Title..."
-				/>
-				<ATiptap
-					exportDisabled={content.length < 10}
-					onupdate={({ html }) => (content = html)}
-					loading={TicketMutations.loading}
-					onexport={({ html }) => handleSendFollowup(html)}
-				/>
-			</div>
+			<MTicketForm
+				edit
+				bind:priority
+				bind:status
+				onsave={handleSendFollowup}
+				loading={TicketMutations.loading}
+			/>
 		{/if}
 		<div class="mt-4 flex flex-col gap-4">
 			{#each TicketDetails.data?.followup_set ?? [] as followUp (followUp.id)}

@@ -2,7 +2,7 @@
 
 import type { Client, Options as Options2, TDataShape } from './client';
 import { client } from './client.gen';
-import type { AiAgentAgentChatCreateData, AiAgentAgentChatCreateResponses, AiAgentAgentResetCreateData, AiAgentAgentResetCreateResponses, AiAgentQueuesListData, AiAgentQueuesListResponses, AiAgentQueueStaffListData, AiAgentQueueStaffListResponses, AiAgentTicketsCreateCreateData, AiAgentTicketsCreateCreateResponses, CustomizedHelpdeskticketsCreateData, CustomizedHelpdeskticketsCreateResponses, CustomizedHelpdeskticketsDeleteData, CustomizedHelpdeskticketsDeleteResponses, CustomizedHelpdeskticketsListData, CustomizedHelpdeskticketsListResponses, CustomizedHelpdeskticketsPartialUpdateData, CustomizedHelpdeskticketsPartialUpdateResponses, CustomizedHelpdeskticketsReadData, CustomizedHelpdeskticketsReadResponses, CustomizedHelpdeskticketsUpdateData, CustomizedHelpdeskticketsUpdateResponses, GroupsAddUserCreateData, GroupsAddUserCreateResponses, GroupsCreateData, GroupsCreateResponses, GroupsDeleteData, GroupsDeleteResponses, GroupsListData, GroupsListResponses, GroupsPartialUpdateData, GroupsPartialUpdateResponses, GroupsReadData, GroupsReadResponses, GroupsRemoveUserCreateData, GroupsRemoveUserCreateResponses, GroupsUpdateData, GroupsUpdateResponses, HelpdeskApiFollowupsAttachmentsCreateData, HelpdeskApiFollowupsAttachmentsCreateResponses, HelpdeskApiFollowupsAttachmentsDeleteData, HelpdeskApiFollowupsAttachmentsDeleteResponses, HelpdeskApiFollowupsAttachmentsListData, HelpdeskApiFollowupsAttachmentsListResponses, HelpdeskApiFollowupsAttachmentsPartialUpdateData, HelpdeskApiFollowupsAttachmentsPartialUpdateResponses, HelpdeskApiFollowupsAttachmentsReadData, HelpdeskApiFollowupsAttachmentsReadResponses, HelpdeskApiFollowupsAttachmentsUpdateData, HelpdeskApiFollowupsAttachmentsUpdateResponses, HelpdeskApiFollowupsCreateData, HelpdeskApiFollowupsCreateResponses, HelpdeskApiFollowupsDeleteData, HelpdeskApiFollowupsDeleteResponses, HelpdeskApiFollowupsListData, HelpdeskApiFollowupsListResponses, HelpdeskApiFollowupsPartialUpdateData, HelpdeskApiFollowupsPartialUpdateResponses, HelpdeskApiFollowupsReadData, HelpdeskApiFollowupsReadResponses, HelpdeskApiFollowupsUpdateData, HelpdeskApiFollowupsUpdateResponses, HelpdeskApiTicketsCreateData, HelpdeskApiTicketsCreateResponses, HelpdeskApiTicketsDeleteData, HelpdeskApiTicketsDeleteResponses, HelpdeskApiTicketsListData, HelpdeskApiTicketsListResponses, HelpdeskApiTicketsPartialUpdateData, HelpdeskApiTicketsPartialUpdateResponses, HelpdeskApiTicketsReadData, HelpdeskApiTicketsReadResponses, HelpdeskApiTicketsUpdateData, HelpdeskApiTicketsUpdateResponses, HelpdeskApiUsersCreateData, HelpdeskApiUsersCreateResponses, HelpdeskApiUserTicketsListData, HelpdeskApiUserTicketsListResponses, HelpdeskApiUserTicketsReadData, HelpdeskApiUserTicketsReadResponses, HelpdeskDatatablesTicketListReadData, HelpdeskDatatablesTicketListReadResponses, HelpdeskTimelineTicketListReadData, HelpdeskTimelineTicketListReadResponses, LoginCreateData, LoginCreateResponses, QueueCreateData, QueueCreateResponses, QueueDeleteData, QueueDeleteResponses, QueueGroupLinksCreateData, QueueGroupLinksCreateResponses, QueueGroupLinksDeleteData, QueueGroupLinksDeleteResponses, QueueGroupLinksListData, QueueGroupLinksListResponses, QueueGroupLinksPartialUpdateData, QueueGroupLinksPartialUpdateResponses, QueueGroupLinksReadData, QueueGroupLinksReadResponses, QueueGroupLinksUpdateData, QueueGroupLinksUpdateResponses, QueueListData, QueueListResponses, QueuePartialUpdateData, QueuePartialUpdateResponses, QueueReadData, QueueReadResponses, QueueUpdateData, QueueUpdateResponses, RefreshCreateData, RefreshCreateResponses, UsersCreateData, UsersCreateResponses, UsersDeleteData, UsersDeleteResponses, UsersListData, UsersListResponses, UsersPartialUpdateData, UsersPartialUpdateResponses, UsersReadData, UsersReadResponses, UsersUpdateData, UsersUpdateResponses } from './types.gen';
+import type { AiAgentAgentChatCreateData, AiAgentAgentChatCreateResponses, AiAgentAgentResetCreateData, AiAgentAgentResetCreateResponses, AiAgentQueuesListData, AiAgentQueuesListResponses, AiAgentQueueStaffListData, AiAgentQueueStaffListResponses, AiAgentTicketsCreateCreateData, AiAgentTicketsCreateCreateResponses, CustomizedHelpdeskticketsCreateData, CustomizedHelpdeskticketsCreateResponses, CustomizedHelpdeskticketsDeleteData, CustomizedHelpdeskticketsDeleteResponses, CustomizedHelpdeskticketsListData, CustomizedHelpdeskticketsListResponses, CustomizedHelpdeskticketsPartialUpdateData, CustomizedHelpdeskticketsPartialUpdateResponses, CustomizedHelpdeskticketsReadData, CustomizedHelpdeskticketsReadResponses, CustomizedHelpdeskticketsUpdateData, CustomizedHelpdeskticketsUpdateResponses, GroupsAddUserCreateData, GroupsAddUserCreateResponses, GroupsCreateData, GroupsCreateResponses, GroupsDeleteData, GroupsDeleteResponses, GroupsListData, GroupsListResponses, GroupsPartialUpdateData, GroupsPartialUpdateResponses, GroupsReadData, GroupsReadResponses, GroupsRemoveUserCreateData, GroupsRemoveUserCreateResponses, GroupsUpdateData, GroupsUpdateResponses, HelpdeskApiFollowupsAttachmentsCreateData, HelpdeskApiFollowupsAttachmentsCreateResponses, HelpdeskApiFollowupsAttachmentsDeleteData, HelpdeskApiFollowupsAttachmentsDeleteResponses, HelpdeskApiFollowupsAttachmentsListData, HelpdeskApiFollowupsAttachmentsListResponses, HelpdeskApiFollowupsAttachmentsPartialUpdateData, HelpdeskApiFollowupsAttachmentsPartialUpdateResponses, HelpdeskApiFollowupsAttachmentsReadData, HelpdeskApiFollowupsAttachmentsReadResponses, HelpdeskApiFollowupsAttachmentsUpdateData, HelpdeskApiFollowupsAttachmentsUpdateResponses, HelpdeskApiFollowupsCreateData, HelpdeskApiFollowupsCreateResponses, HelpdeskApiFollowupsDeleteData, HelpdeskApiFollowupsDeleteResponses, HelpdeskApiFollowupsListData, HelpdeskApiFollowupsListResponses, HelpdeskApiFollowupsPartialUpdateData, HelpdeskApiFollowupsPartialUpdateResponses, HelpdeskApiFollowupsReadData, HelpdeskApiFollowupsReadResponses, HelpdeskApiFollowupsUpdateData, HelpdeskApiFollowupsUpdateResponses, HelpdeskApiTicketsCreateData, HelpdeskApiTicketsCreateResponses, HelpdeskApiTicketsDeleteData, HelpdeskApiTicketsDeleteResponses, HelpdeskApiTicketsListData, HelpdeskApiTicketsListResponses, HelpdeskApiTicketsPartialUpdateData, HelpdeskApiTicketsPartialUpdateResponses, HelpdeskApiTicketsReadData, HelpdeskApiTicketsReadResponses, HelpdeskApiTicketsUpdateData, HelpdeskApiTicketsUpdateResponses, HelpdeskApiUsersCreateData, HelpdeskApiUsersCreateResponses, HelpdeskApiUserTicketsListData, HelpdeskApiUserTicketsListResponses, HelpdeskApiUserTicketsReadData, HelpdeskApiUserTicketsReadResponses, HelpdeskDatatablesTicketListReadData, HelpdeskDatatablesTicketListReadResponses, HelpdeskTimelineTicketListReadData, HelpdeskTimelineTicketListReadResponses, LoginCreateData, LoginCreateResponses, QueueCreateData, QueueCreateResponses, QueueDeleteData, QueueDeleteResponses, QueueGroupLinksCreateData, QueueGroupLinksCreateResponses, QueueGroupLinksDeleteData, QueueGroupLinksDeleteResponses, QueueGroupLinksListData, QueueGroupLinksListResponses, QueueGroupLinksPartialUpdateData, QueueGroupLinksPartialUpdateResponses, QueueGroupLinksReadData, QueueGroupLinksReadResponses, QueueGroupLinksUpdateData, QueueGroupLinksUpdateResponses, QueueListData, QueueListResponses, QueuePartialUpdateData, QueuePartialUpdateResponses, QueueReadData, QueueReadResponses, QueueUpdateData, QueueUpdateResponses, RefreshCreateData, RefreshCreateResponses, UserGetListData, UserGetListResponses, UsersCreateData, UsersCreateResponses, UsersDeleteData, UsersDeleteResponses, UsersListData, UsersListResponses, UsersPartialUpdateData, UsersPartialUpdateResponses, UsersReadData, UsersReadResponses, UsersUpdateData, UsersUpdateResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = Options2<TData, ThrowOnError> & {
     /**
@@ -83,6 +83,9 @@ export const aiAgentTicketsCreateCreate = <ThrowOnError extends boolean = false>
     });
 };
 
+/**
+ * Override list only to add Swagger docs, keep parent logic.
+ */
 export const customizedHelpdeskticketsList = <ThrowOnError extends boolean = false>(options?: Options<CustomizedHelpdeskticketsListData, ThrowOnError>) => {
     return (options?.client ?? client).get<CustomizedHelpdeskticketsListResponses, unknown, ThrowOnError>({
         security: [
@@ -96,6 +99,9 @@ export const customizedHelpdeskticketsList = <ThrowOnError extends boolean = fal
     });
 };
 
+/**
+ * Customized TicketViewSet with filtering by status, priority, and queue.
+ */
 export const customizedHelpdeskticketsCreate = <ThrowOnError extends boolean = false>(options: Options<CustomizedHelpdeskticketsCreateData, ThrowOnError>) => {
     return (options.client ?? client).post<CustomizedHelpdeskticketsCreateResponses, unknown, ThrowOnError>({
         security: [
@@ -113,6 +119,9 @@ export const customizedHelpdeskticketsCreate = <ThrowOnError extends boolean = f
     });
 };
 
+/**
+ * Customized TicketViewSet with filtering by status, priority, and queue.
+ */
 export const customizedHelpdeskticketsDelete = <ThrowOnError extends boolean = false>(options: Options<CustomizedHelpdeskticketsDeleteData, ThrowOnError>) => {
     return (options.client ?? client).delete<CustomizedHelpdeskticketsDeleteResponses, unknown, ThrowOnError>({
         security: [
@@ -126,6 +135,9 @@ export const customizedHelpdeskticketsDelete = <ThrowOnError extends boolean = f
     });
 };
 
+/**
+ * Customized TicketViewSet with filtering by status, priority, and queue.
+ */
 export const customizedHelpdeskticketsRead = <ThrowOnError extends boolean = false>(options: Options<CustomizedHelpdeskticketsReadData, ThrowOnError>) => {
     return (options.client ?? client).get<CustomizedHelpdeskticketsReadResponses, unknown, ThrowOnError>({
         security: [
@@ -139,6 +151,9 @@ export const customizedHelpdeskticketsRead = <ThrowOnError extends boolean = fal
     });
 };
 
+/**
+ * Customized TicketViewSet with filtering by status, priority, and queue.
+ */
 export const customizedHelpdeskticketsPartialUpdate = <ThrowOnError extends boolean = false>(options: Options<CustomizedHelpdeskticketsPartialUpdateData, ThrowOnError>) => {
     return (options.client ?? client).patch<CustomizedHelpdeskticketsPartialUpdateResponses, unknown, ThrowOnError>({
         security: [
@@ -156,6 +171,9 @@ export const customizedHelpdeskticketsPartialUpdate = <ThrowOnError extends bool
     });
 };
 
+/**
+ * Customized TicketViewSet with filtering by status, priority, and queue.
+ */
 export const customizedHelpdeskticketsUpdate = <ThrowOnError extends boolean = false>(options: Options<CustomizedHelpdeskticketsUpdateData, ThrowOnError>) => {
     return (options.client ?? client).put<CustomizedHelpdeskticketsUpdateResponses, unknown, ThrowOnError>({
         security: [
@@ -962,6 +980,22 @@ export const refreshCreate = <ThrowOnError extends boolean = false>(options: Opt
             'Content-Type': 'application/json',
             ...options.headers
         }
+    });
+};
+
+/**
+ * Retrieve the currently authenticated user.
+ */
+export const userGetList = <ThrowOnError extends boolean = false>(options?: Options<UserGetListData, ThrowOnError>) => {
+    return (options?.client ?? client).get<UserGetListResponses, unknown, ThrowOnError>({
+        security: [
+            {
+                name: 'Authorization',
+                type: 'apiKey'
+            }
+        ],
+        url: '/user/get/',
+        ...options
     });
 };
 

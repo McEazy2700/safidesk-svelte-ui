@@ -46,7 +46,12 @@
 	</div>
 	<div class="flex items-center justify-between text-sm">
 		<div class="flex items-center gap-2">
-			<input type="checkbox" class="checkbox checkbox-sm" />
+			<input
+				disabled
+				checked={[3, 4].includes(Number(ticket.status))}
+				type="checkbox"
+				class="checkbox checkbox-sm disabled:opacity-80"
+			/>
 			<span class="text-xs font-semibold text-primary/60">SAT-{ticket.id}</span>
 		</div>
 		<div class="flex items-center gap-1">

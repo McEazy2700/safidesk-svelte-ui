@@ -6,8 +6,9 @@ import { cast } from '$lib/utils/typing';
 import { resolve } from '$app/paths';
 import { Toast } from '../toast.svelte';
 
-type QueryArgs<A extends TDataShape, ThrowOnError extends boolean = false> = {
+type QueryArgs<T, A extends TDataShape, ThrowOnError extends boolean = false> = {
   fetchFn: (options?: Options<A, ThrowOnError>) => Promise<any>;
+  loadFn?: (data: any) => Array<T>;
 };
 
 type PagedData<T> = {
@@ -24,9 +25,14 @@ export class BaseListQueryStore<T, A extends TDataShape> {
   loading = $state(true);
   args = $state<Options<A, any>>();
 
-  constructor(args: QueryArgs<A>) {
+  constructor(args: QueryArgs<T, A>) {
     this.fetchFn = args.fetchFn;
+    if (args.loadFn) this.loadFn = args.loadFn;
   }
+
+  loadFn = (res: any) => {
+    return cast<any>(res).data.results ?? ([] as T[]);
+  };
 
   private fetch = async (options?: Options<A, any>) => {
     const tokens = getClientAccessToken();
@@ -34,21 +40,27 @@ export class BaseListQueryStore<T, A extends TDataShape> {
       headers: { Authorization: `Bearer ${tokens?.access}` },
       ...options
     } as any);
-    const data = cast<typeof res>(cast<any>(res).data);
-    this.list = [...this.list, ...(data.results ?? [])];
+    const data = this.loadFn(res);
+    this.list = [...this.list, ...data];
     this.hasMore = !!res.next;
   };
 
   loadInitial = async (options?: Options<A, any>) => {
+    this.list = [];
     this.args = options;
     this.loading = true;
-    this.fetch();
-    this.loading = false;
+    this.fetch(options)
+      .then(() => {
+        this.loading = false;
+      })
+      .catch(() => {
+        this.loading = false;
+      });
   };
 
   refresh = async () => {
     this.list = [];
-    this.fetch();
+    this.fetch(this.args);
   };
 }
 
@@ -103,8 +115,13 @@ export class BaseItemQueryStore<T, A extends TDataShape> {
   load = async (options: Options<A, any>) => {
     this.args = options;
     this.loading = true;
-    this.fetch(options);
-    this.loading = false;
+    this.fetch(options)
+      .then(() => {
+        this.loading = false;
+      })
+      .catch(() => {
+        this.loading = false;
+      });
   };
 
   refresh = async () => {

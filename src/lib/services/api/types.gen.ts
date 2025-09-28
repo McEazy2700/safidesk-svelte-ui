@@ -749,6 +749,18 @@ export type CustomizedHelpdeskticketsListData = {
          * Number of results to return per page.
          */
         page_size?: number;
+        /**
+         * Filter by status (1=open, 2=reopened, 3=resolved, 4=closed, 5=duplicate) or by name (open, reopened, resolved, closed, duplicate).
+         */
+        status?: '1' | '2' | '3' | '4' | '5' | 'open' | 'reopened' | 'resolved' | 'closed' | 'duplicate';
+        /**
+         * Filter by priority (1=critical, 2=high, 3=normal, 4=low, 5=very_low) or by name (critical, high, normal, low, very_low).
+         */
+        priority?: '1' | '2' | '3' | '4' | '5' | 'critical' | 'high' | 'normal' | 'low' | 'very_low';
+        /**
+         * Filter by queue ID
+         */
+        queue?: number;
     };
     url: '/customized_helpdesktickets/';
 };
@@ -1622,6 +1634,17 @@ export type RefreshCreateResponses = {
     /**
      * New access token
      */
+    200: unknown;
+};
+
+export type UserGetListData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/user/get/';
+};
+
+export type UserGetListResponses = {
     200: unknown;
 };
 
