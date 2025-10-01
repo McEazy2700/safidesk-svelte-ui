@@ -14,3 +14,17 @@ export type LoginResponse = {
     user: AuthUser;
   };
 };
+
+export type GetCurrentAuthUser = {
+  success: boolean;
+  message: string;
+  data: {
+    id: number;
+    username: string;
+    email: string;
+    first_name: string;
+    last_name: string;
+    is_active: boolean;
+    date_joined: string;
+  };
+};

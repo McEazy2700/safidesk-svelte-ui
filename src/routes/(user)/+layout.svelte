@@ -5,7 +5,7 @@
 	import { getAppNavState } from '$lib/stores/navigation.svelte';
 	import { twMerge } from 'tailwind-merge';
 
-	let { children } = $props();
+	let { children, data } = $props();
 	let navState = getAppNavState();
 </script>
 
@@ -16,10 +16,14 @@
 			<span class="-translate-x-3 text-2xl font-bold text-white">SafiDesk</span>
 		</div>
 		<ASearchInput />
-		<div class="px-4">
+		<div class="flex items-center gap-4 px-4 text-primary-content">
+			<div class="flex flex-col items-end">
+				<span class="text-xl font-semibold">{data.user.username}</span>
+				<address class="not-italic">{data.user.email}</address>
+			</div>
 			<img
 				src="https://avatar.iran.liara.run/public/boy"
-				class="h-12 w-12 rounded-full"
+				class="h-10 w-10 rounded-full"
 				alt="profile"
 			/>
 		</div>

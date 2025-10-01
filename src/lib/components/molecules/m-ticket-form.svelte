@@ -48,10 +48,12 @@
 
 <div class="flex flex-col gap-2">
 	<div class="grid grid-cols-2 items-center gap-x-4">
-		<ATicketStatusDropdown bind:status />
-		<ATicketPriorityDropdown disabled={edit} bind:priority />
 		<AQueueDropdown disabled={edit} bind:queue_id />
-		<AClendarInput disabled={edit} bind:due_date />
+		<ATicketPriorityDropdown disabled={edit} bind:priority />
+		{#if edit}
+			<ATicketStatusDropdown bind:status />
+			<AClendarInput bind:due_date />
+		{/if}
 	</div>
 	<input
 		bind:value={title}

@@ -7,17 +7,12 @@
 	import { page } from '$app/state';
 	import ASearchInput from '$lib/components/atoms/a-search-input.svelte';
 	import OTicketList from '$lib/components/organisms/o-ticket-list.svelte';
-	import { QueuesStore } from '$lib/stores/queries/queues.svelte';
 	import { resolve } from '$app/paths';
 	import CharmPlus from '$lib/components/icons/charm-plus.svelte';
 	import MTicketsFilter from '$lib/components/molecules/m-tickets-filter.svelte';
 
 	let sideopen = $state(true);
-	let { children } = $props();
-
-	$effect(() => {
-		QueuesStore.loadInitial();
-	});
+	let { children, data } = $props();
 </script>
 
 <div class="flex h-full">
@@ -30,13 +25,7 @@
 		<h3 class="mb-3 rounded-lg bg-black/10 p-2 px-3 text-xl font-bold text-primary">Tickets</h3>
 		<div class="flex flex-col gap-1">
 			<ASubNavItem pathname="/app/tickets" aside="2,192">All Tickets</ASubNavItem>
-			{#if QueuesStore.loading}
-				<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
-				{#each Array.from({ length: 4 }) as _, index (index)}
-					<span class="h-[40px] skeleton rounded-md"></span>
-				{/each}
-			{/if}
-			{#each QueuesStore.list as queue, index (index)}
+			{#each data.queues as queue, index (index)}
 				<ASubNavItem
 					pathname="/app/tickets"
 					query={{
@@ -49,20 +38,18 @@
 					</span>
 				</ASubNavItem>
 			{/each}
-			{#if !QueuesStore.loading}
-				<ASubNavItem pathname="/app/tickets/chat" query={{ title: 'Live Chat' }}>
-					<div class="flex items-center gap-2">
-						<HeadsetStroke16 />
-						<span>Live Chat</span>
-					</div>
-				</ASubNavItem>
-				<ASubNavItem pathname="/app/tickets/boards" query={{ title: 'Boards' }}>
-					<div class="flex items-center gap-2">
-						<BoardSplit28Regular />
-						<span>Boards</span>
-					</div>
-				</ASubNavItem>
-			{/if}
+			<ASubNavItem pathname="/app/tickets/chat" query={{ title: 'Live Chat' }}>
+				<div class="flex items-center gap-2">
+					<HeadsetStroke16 />
+					<span>Live Chat</span>
+				</div>
+			</ASubNavItem>
+			<ASubNavItem pathname="/app/tickets/boards" query={{ title: 'Boards' }}>
+				<div class="flex items-center gap-2">
+					<BoardSplit28Regular />
+					<span>Boards</span>
+				</div>
+			</ASubNavItem>
 		</div>
 	</aside>
 	<div class="flex h-full flex-1 overflow-hidden rounded-2xl bg-white">
@@ -93,10 +80,12 @@
 		{#if !page.url.pathname.endsWith('/new')}
 			<a
 				href={resolve('/app/tickets/new')}
-				class="btn fixed right-6 bottom-6 flex items-center rounded-full btn-lg btn-info"
+				class="btn fixed right-6 bottom-6 h-[60px] w-[60px] justify-end overflow-hidden rounded-full p-0 pr-4 transition-all duration-300 btn-lg btn-info hover:w-[180px]"
 			>
-				<CharmPlus />
-				<span>New Ticket</span>
+				<div class="relative flex items-center justify-center">
+					<span class="absolute right-11 whitespace-nowrap">New Ticket</span>
+					<CharmPlus />
+				</div>
 			</a>
 		{/if}
 	</div>
