@@ -30,7 +30,7 @@
 <label
 	for="date-picker"
 	class={twMerge(
-		'btn ml-1 w-full justify-start border-black/10 btn-outline',
+		'btn ml-1 w-full justify-start border-black/10 bg-white btn-outline',
 		disabled && 'pointer-events-none cursor-not-allowed opacity-60'
 	)}
 >

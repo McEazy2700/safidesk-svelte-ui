@@ -8,7 +8,11 @@
 </script>
 
 <div class="dropdown w-full">
-	<div tabindex="0" role="button" class="btn m-1 w-full justify-start border-black/10 btn-outline">
+	<div
+		tabindex="0"
+		role="button"
+		class="btn m-1 w-full justify-start border-black/10 bg-white btn-outline"
+	>
 		<span class="border-r border-black/10 pr-4">Status</span>
 		<span class="pl-4 capitalize">{status ? STATUS_NAMES[status] : 'All'}</span>
 	</div>

@@ -11,7 +11,7 @@
 	let { followUp }: Props = $props();
 </script>
 
-<div class="rounded-xl border border-black/10 p-4 shadow-lg shadow-black/5">
+<div class="rounded-xl border border-black/10 bg-white p-4 shadow-lg shadow-black/5">
 	<div class="flex items-center justify-between">
 		<div class="flex items-center gap-2">
 			<AAvatarGroup

@@ -58,7 +58,7 @@
 	<input
 		bind:value={title}
 		type="text"
-		class="input input-lg w-full border input-ghost border-black/5 text-xl font-extrabold"
+		class="input input-lg w-full border input-ghost border-black/10 bg-white text-xl font-extrabold shadow-lg shadow-black/5"
 		placeholder="Title..."
 	/>
 	<ATiptap

@@ -16,10 +16,14 @@
 <div
 	class={twMerge(
 		'dropdown w-full',
-		disabled && 'pointer-events-none cursor-not-allowed opacity-60'
+		disabled && 'pointer-events-none cursor-not-allowed text-base-content/60'
 	)}
 >
-	<div tabindex="0" role="button" class="btn m-1 w-full justify-start border-black/10 btn-outline">
+	<div
+		tabindex="0"
+		role="button"
+		class="btn m-1 w-full justify-start border-black/10 bg-white btn-outline"
+	>
 		<span class="border-r border-black/10 pr-4">Queue</span>
 		<span class="pl-4 capitalize"
 			>{QueuesStore.list.find((i) => i.id === queue_id)?.title.replaceAll('_', ' ')}</span

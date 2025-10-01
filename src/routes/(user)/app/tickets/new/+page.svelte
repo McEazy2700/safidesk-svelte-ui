@@ -8,6 +8,7 @@
 	import { cast } from '$lib/utils/typing';
 	import { resolve } from '$app/paths';
 	import { slugify } from '$lib/utils/urls';
+	import ATicketScreen from '$lib/components/atoms/a-ticket-screen.svelte';
 
 	function handleCreate(value: TicketFormArgs) {
 		const user = getClientAccessToken()?.user;
@@ -38,11 +39,9 @@
 	}
 </script>
 
-<div class="h-full overflow-hidden">
-	<div class="flex h-[80px] items-center border-b border-black/10 p-2 px-4">
+<ATicketScreen>
+	{#snippet header()}
 		<h3 class="text-xl font-semibold text-primary capitalize">New Ticket</h3>
-	</div>
-	<div class="flex h-[calc(100%-70px)] flex-col gap-4 overflow-y-auto p-4">
-		<MTicketForm onsave={handleCreate} loading={TicketMutations.loading} />
-	</div>
-</div>
+	{/snippet}
+	<MTicketForm onsave={handleCreate} loading={TicketMutations.loading} />
+</ATicketScreen>
