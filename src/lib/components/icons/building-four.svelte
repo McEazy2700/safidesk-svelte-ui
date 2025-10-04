@@ -1,0 +1,24 @@
+<script lang="ts">
+	import type { SvgProps } from '$lib/types/svg';
+
+	let props: SvgProps = $props();
+</script>
+
+<svg
+	xmlns="http://www.w3.org/2000/svg"
+	width={props.size ?? '24'}
+	height={props.size ?? '24'}
+	viewBox="0 0 48 48"
+	class={props.class}
+>
+	<g
+		fill="none"
+		stroke="currentColor"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+		stroke-width="4"
+	>
+		<path d="m17 14l27 10v20H17z" clip-rule="evenodd" />
+		<path d="M17 14L4 24v20h13m18 0V32l-9-3v15m18 0H17" />
+	</g>
+</svg>

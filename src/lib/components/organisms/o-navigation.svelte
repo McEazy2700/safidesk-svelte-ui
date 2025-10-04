@@ -6,7 +6,7 @@
 	let open = $state<string>();
 </script>
 
-<div class="flex flex-col gap-3">
+<div class="flex h-[calc(100vh-75px)] flex-col gap-4 overflow-y-auto">
 	{#each props.navigation as group, index (index)}
 		<MNavGroup
 			{...group}

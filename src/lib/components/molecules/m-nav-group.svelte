@@ -32,7 +32,7 @@
 		{#if active}
 			<div class="absolute -left-6 h-full w-1 rounded-r bg-secondary"></div>
 		{/if}
-		<Icon size={30} />
+		<Icon size={25} />
 		{#if props.navOpen}
 			<span transition:slide>{props.label}</span>
 		{/if}

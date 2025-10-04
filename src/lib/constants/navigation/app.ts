@@ -22,6 +22,22 @@ import TaskListSquare24Regular from '$lib/components/icons/task-list-square-24-r
 import CRMService from '$lib/components/icons/crm-service.svelte';
 import Calendar from '$lib/components/icons/calendar.svelte';
 import ChartPie from '$lib/components/icons/chart-pie.svelte';
+import LucideWallet from '$lib/components/icons/lucide-wallet.svelte';
+import CodiconKey from '$lib/components/icons/codicon-key.svelte';
+import SolarCalculatorOutline from '$lib/components/icons/solar-calculator-outline.svelte';
+import WheelBarrowEmpty from '$lib/components/icons/wheel-barrow-empty.svelte';
+import ContactCardRegular from '$lib/components/icons/contact-card-regular.svelte';
+import ContractOutlineRounded from '$lib/components/icons/contract-outline-rounded.svelte';
+import SolarDocumentsOutline from '$lib/components/icons/solar-documents-outline.svelte';
+import UilPhone from '$lib/components/icons/uil-phone.svelte';
+import FluentCertificateRegular from '$lib/components/icons/fluent-certificate-regular.svelte';
+import BuildingFour from '$lib/components/icons/building-four.svelte';
+import CarbonAssemblyCluster from '$lib/components/icons/carbon-assembly-cluster.svelte';
+import StreamlinePlumpWeb from '$lib/components/icons/streamline-plump-web.svelte';
+import PhDevices from '$lib/components/icons/ph-devices.svelte';
+import StreamlinePlumpDatabase from '$lib/components/icons/streamline-plump-database.svelte';
+import IconoirTools from '$lib/components/icons/iconoir-tools.svelte';
+import BiDiagram2 from '$lib/components/icons/bi-diagram-2.svelte';
 
 export const APP_NAVIGATION: NavGroup[] = [
   {
@@ -31,109 +47,109 @@ export const APP_NAVIGATION: NavGroup[] = [
     navs: [
       {
         label: 'Dashboard',
-        href: '/app',
+        href: '/app/assets',
         disabled: true,
         icon: BxsDashboard
       },
       {
         label: 'Computer',
-        href: '/app',
+        href: '/app/assets',
         disabled: true,
         icon: ComputerOutline
       },
       {
         label: 'Monitor',
-        href: '/app',
+        href: '/app/assets',
         disabled: true,
         icon: Monitor
       },
       {
         label: 'Software',
-        href: '/app',
+        href: '/app/assets',
         disabled: true,
         icon: Software
       },
       {
         label: 'Network Devices',
-        href: '/app',
+        href: '/app/assets',
         disabled: true,
         icon: NetworkLeft
       },
       {
         label: 'Peripherals',
-        href: '/app',
+        href: '/app/assets',
         disabled: true,
         icon: USB
       },
       {
         label: 'Printers',
-        href: '/app',
+        href: '/app/assets',
         disabled: true,
         icon: Printer
       },
       {
         label: 'Cartridges',
-        href: '/app',
+        href: '/app/assets',
         disabled: true,
         icon: InkOutline
       },
       {
         label: 'Consumables',
-        href: '/app',
+        href: '/app/assets',
         disabled: true,
         icon: Package2Outline
       },
       {
         label: 'Phones',
-        href: '/app',
+        href: '/app/assets',
         disabled: true,
         icon: Phone
       },
       {
         label: 'Racks',
-        href: '/app',
+        href: '/app/assets',
         disabled: true,
         icon: HDDRack
       },
       {
         label: 'Enclosures',
-        href: '/app',
+        href: '/app/assets',
         disabled: true,
         icon: ServerPathLinear
       },
       {
         label: 'PUCs',
-        href: '/app',
+        href: '/app/assets',
         disabled: true,
         icon: MapConnection
       },
       {
         label: 'Passive Devices',
-        href: '/app',
+        href: '/app/assets',
         disabled: true,
         icon: DeviceIpad
       },
       {
         label: 'Unmanaged Devices',
-        href: '/app',
+        href: '/app/assets',
         disabled: true,
         icon: Question24Filled
       },
       {
         label: 'Cables',
-        href: '/app',
+        href: '/app/assets',
         disabled: true,
         icon: Cable
       },
       {
         label: 'Simcard Items',
-        href: '/app',
+        href: '/app/assets',
         disabled: true,
         icon: Sim24Regular
       },
       {
         label: 'Global',
-        href: '/app',
+        href: '/app/assets',
         disabled: true,
         icon: GlobalStorageArchitecture
       }
@@ -173,6 +189,104 @@ export const APP_NAVIGATION: NavGroup[] = [
         href: '/app/assistance/statistics',
         disabled: true,
         icon: ChartPie
+      }
+    ]
+  },
+  {
+    icon: LucideWallet,
+    label: 'Management',
+    baseRoute: '/app/management',
+    navs: [
+      {
+        label: 'Licences',
+        href: '/app/management',
+        disabled: true,
+        icon: CodiconKey
+      },
+      {
+        label: 'Budgets',
+        href: '/app/management',
+        disabled: true,
+        icon: SolarCalculatorOutline
+      },
+      {
+        label: 'Suppliers',
+        href: '/app/management',
+        disabled: true,
+        icon: WheelBarrowEmpty
+      },
+      {
+        label: 'Contacts',
+        href: '/app/management',
+        disabled: true,
+        icon: ContactCardRegular
+      },
+      {
+        label: 'Contracts',
+        href: '/app/management',
+        disabled: true,
+        icon: ContractOutlineRounded
+      },
+      {
+        label: 'Documents',
+        href: '/app/management',
+        disabled: true,
+        icon: SolarDocumentsOutline
+      },
+      {
+        label: 'Lines',
+        href: '/app/management',
+        disabled: true,
+        icon: UilPhone
+      },
+      {
+        label: 'Certificates',
+        href: '/app/management',
+        disabled: true,
+        icon: FluentCertificateRegular
+      },
+      {
+        label: 'Datacenters',
+        href: '/app/management',
+        disabled: true,
+        icon: BuildingFour
+      },
+      {
+        label: 'Clusters',
+        href: '/app/management',
+        disabled: true,
+        icon: CarbonAssemblyCluster
+      },
+      {
+        label: 'Domains',
+        href: '/app/management',
+        disabled: true,
+        icon: StreamlinePlumpWeb
+      },
+      {
+        label: 'Appliances',
+        href: '/app/management',
+        disabled: true,
+        icon: PhDevices
+      },
+      {
+        label: 'Databases',
+        href: '/app/management',
+        disabled: true,
+        icon: StreamlinePlumpDatabase
+      }
+    ]
+  },
+  {
+    icon: IconoirTools,
+    label: 'Tools',
+    baseRoute: '/app/management',
+    navs: [
+      {
+        label: 'Databases',
+        href: '/app/tools',
+        disabled: true,
+        icon: BiDiagram2
       }
     ]
   }
