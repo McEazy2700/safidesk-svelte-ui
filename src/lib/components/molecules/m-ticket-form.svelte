@@ -50,10 +50,8 @@
 	<div class="grid grid-cols-2 items-center gap-x-4">
 		<AQueueDropdown disabled={edit} bind:queue_id />
 		<ATicketPriorityDropdown disabled={edit} bind:priority />
-		{#if edit}
-			<ATicketStatusDropdown bind:status />
-			<AClendarInput bind:due_date />
-		{/if}
+		<ATicketStatusDropdown disabled={!edit} bind:status />
+		<AClendarInput disabled={!edit} bind:due_date />
 	</div>
 	<input
 		bind:value={title}

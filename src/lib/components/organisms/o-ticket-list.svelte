@@ -1,12 +1,18 @@
-<script>
+<script lang="ts">
 	import { TicketsStore } from '$lib/stores/queries/tickets.svelte';
 	import MTicketListItem from '../molecules/m-ticket-list-item.svelte';
 	import { page } from '$app/state';
 	import { cast } from '$lib/utils/typing';
 
+	type Props = {
+		fullWidth?: boolean;
+	};
+
 	let queue = $derived(page.url.searchParams.get('queue'));
 	let status = $derived(page.url.searchParams.get('status'));
 	let priority = $derived(page.url.searchParams.get('priority'));
+
+	let { fullWidth }: Props = $props();
 
 	$effect(() => {
 		TicketsStore.loadInitial({
@@ -20,8 +26,17 @@
 </script>
 
 <div>
+	{#if !TicketsStore.loading && TicketsStore.list.length === 0}
+		<div class="w-full p-4">
+			<div
+				class="flex w-full items-center justify-center rounded-xl border border-black/10 p-4 py-8 text-base-content/70"
+			>
+				<span>No tickets found</span>
+			</div>
+		</div>
+	{/if}
 	{#each TicketsStore.list as ticket, index (index)}
-		<MTicketListItem {ticket} />
+		<MTicketListItem {fullWidth} {ticket} />
 	{/each}
 	{#if TicketsStore.loading}
 		<!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->

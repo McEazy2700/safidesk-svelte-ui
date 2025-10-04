@@ -9,6 +9,13 @@
 	import { resolve } from '$app/paths';
 	import { slugify } from '$lib/utils/urls';
 	import ATicketScreen from '$lib/components/atoms/a-ticket-screen.svelte';
+	import { getFutureDate } from '$lib/utils/time';
+	import { TICKET_RESPONSE_DURATIONS } from '$lib/constants/tickets';
+
+	let queueId = $state<number>();
+	let dueDate = $derived(
+		queueId ? getFutureDate(TICKET_RESPONSE_DURATIONS[queueId]) : getFutureDate(7)
+	);
 
 	function handleCreate(value: TicketFormArgs) {
 		const user = getClientAccessToken()?.user;
@@ -29,7 +36,7 @@
 			await invalidateAll();
 			if (data) {
 				goto(
-					resolve('/(user)/app/tickets/[slug]', {
+					resolve('/(user)/app/assistance/tickets/lists/[slug]', {
 						slug: slugify(data.title) + `__${data.id}`
 					}),
 					{ replaceState: true }
@@ -43,5 +50,10 @@
 	{#snippet header()}
 		<h3 class="text-xl font-semibold text-primary capitalize">New Ticket</h3>
 	{/snippet}
-	<MTicketForm onsave={handleCreate} loading={TicketMutations.loading} />
+	<MTicketForm
+		due_date={dueDate.toISOString()}
+		bind:queue_id={queueId}
+		onsave={handleCreate}
+		loading={TicketMutations.loading}
+	/>
 </ATicketScreen>

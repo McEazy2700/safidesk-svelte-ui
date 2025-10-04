@@ -1,13 +1,20 @@
 <script lang="ts">
 	import { STATUS_NAMES } from '$lib/constants/tickets';
+	import { twMerge } from 'tailwind-merge';
 
 	type Props = {
+		disabled?: boolean;
 		status?: number;
 	};
-	let { status = $bindable() }: Props = $props();
+	let { status = $bindable(), disabled }: Props = $props();
 </script>
 
-<div class="dropdown w-full">
+<div
+	class={twMerge(
+		'dropdown !dropdown-center !dropdown-bottom w-full',
+		disabled && 'pointer-events-none opacity-80'
+	)}
+>
 	<div
 		tabindex="0"
 		role="button"

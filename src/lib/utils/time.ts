@@ -79,3 +79,13 @@ export function formatToFriendlyDateTime(
 
   return new Intl.DateTimeFormat("en-US", options).format(date);
 }
+
+export function getFutureDate(days?: number): Date {
+  const today = new Date();
+
+  if (days && days > 0) {
+    today.setDate(today.getDate() + days);
+  }
+
+  return today;
+}

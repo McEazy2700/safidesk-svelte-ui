@@ -8,16 +8,19 @@
 	import type { Pathname } from '$app/types';
 	import { twMerge } from 'tailwind-merge';
 	import type { CustomTicket } from '$lib/services/api';
-	import MaterialSymbolsPendingOutline from '../icons/material-symbols-pending-outline.svelte';
-	import CodexWarning from '../icons/codex-warning.svelte';
+	import ATicketPriorityIcon from '../atoms/a-ticket-priority-icon.svelte';
+	import ATicketStatusIcon from '../atoms/a-ticket-status-icon.svelte';
+	import ATicketStatusPill from '../atoms/a-ticket-status-pill.svelte';
+	import ATicketPriorityPill from '../atoms/a-ticket-priority-pill.svelte';
 
 	type Props = {
+		fullWidth?: boolean;
 		ticket: CustomTicket;
 	};
 
-	let { ticket }: Props = $props();
+	let { ticket, fullWidth }: Props = $props();
 	let href = $derived(() => {
-		const path = resolve('/(user)/app/tickets/[slug]', {
+		const path = resolve('/(user)/app/assistance/tickets/lists/[slug]', {
 			slug: slugify(`${ticket.title}__${ticket.id}`)
 		});
 		return path;
@@ -46,28 +49,25 @@
 	</div>
 	<div class="flex items-center justify-between text-sm">
 		<div class="flex items-center gap-2">
-			<input
-				checked={[3, 4].includes(Number(ticket.status))}
-				type="checkbox"
-				class="pointer-events-none checkbox checkbox-sm text-success checked:border-success disabled:opacity-80"
-			/>
+			{#if fullWidth}
+				<ATicketStatusPill status={ticket.status ?? 1} />
+			{:else}
+				<ATicketStatusIcon status={ticket.status ?? 1} />
+			{/if}
 			<span class="text-xs font-semibold text-primary/60">SAT-{ticket.id}</span>
 		</div>
 		<div class="flex items-center gap-1">
-			{#if ticket.priority == 3}
-				<span class="text-purple-400">
-					<CodexWarning size={26} />
-				</span>
-			{/if}
-			{#if ticket.status == 1}
-				<span class="text-yellow-500">
-					<MaterialSymbolsPendingOutline />
-				</span>
+			{#if fullWidth}
+				<ATicketPriorityPill priority={ticket.priority ?? 3} />
+			{:else}
+				<ATicketPriorityIcon priority={ticket.priority ?? 3} />
 			{/if}
 			<span
-				title={ticket.queue?.title.replace('_', ' ')}
-				class="max-w-28 overflow-hidden rounded-full bg-info/15 p-1 px-2 text-xs font-semibold text-ellipsis whitespace-nowrap capitalize"
-				>{ticket.queue?.title.replace('_', ' ')}</span
+				title={ticket.queue?.title.replaceAll('_', ' ')}
+				class={twMerge(
+					'overflow-hidden rounded-full bg-info/15 p-1 px-2 text-xs font-semibold text-ellipsis whitespace-nowrap capitalize',
+					!fullWidth && 'max-w-28'
+				)}>{ticket.queue?.title.replaceAll('_', ' ')}</span
 			>
 			<AAvatarGroup
 				avatars={[

@@ -13,6 +13,7 @@
 
 	let sideopen = $state(true);
 	let { children, data } = $props();
+	let isListScreen = $derived(page.url.pathname.endsWith('/app/assistance/tickets/lists'));
 </script>
 
 <div class="flex h-full">
@@ -22,12 +23,16 @@
 			sideopen && 'w-xs p-4'
 		)}
 	>
-		<h3 class="mb-3 rounded-lg bg-black/10 p-2 px-3 text-xl font-bold text-primary">Tickets</h3>
+		<a
+			href={resolve('/app/assistance/tickets')}
+			class="btn mb-4 w-full justify-start bg-base-300 text-xl font-bold text-primary btn-ghost"
+			>Tickets</a
+		>
 		<div class="flex flex-col gap-1">
-			<ASubNavItem pathname="/app/tickets" aside="2,192">All Tickets</ASubNavItem>
+			<ASubNavItem pathname="/app/assistance/tickets/lists" aside="2,192">All Tickets</ASubNavItem>
 			{#each data.queues as queue, index (index)}
 				<ASubNavItem
-					pathname="/app/tickets"
+					pathname="/app/assistance/tickets/lists"
 					query={{
 						queue: queue.id?.toString() ?? '',
 						title: queue.title.replaceAll('_', ' ')
@@ -38,13 +43,13 @@
 					</span>
 				</ASubNavItem>
 			{/each}
-			<ASubNavItem pathname="/app/tickets/chat" query={{ title: 'Live Chat' }}>
+			<ASubNavItem pathname="/app/assistance/tickets/lists/chat" query={{ title: 'Live Chat' }}>
 				<div class="flex items-center gap-2">
 					<HeadsetStroke16 />
 					<span>Live Chat</span>
 				</div>
 			</ASubNavItem>
-			<ASubNavItem pathname="/app/tickets/boards" query={{ title: 'Boards' }}>
+			<ASubNavItem pathname="/app/assistance/tickets/lists/boards" query={{ title: 'Boards' }}>
 				<div class="flex items-center gap-2">
 					<BoardSplit28Regular />
 					<span>Boards</span>
@@ -53,7 +58,7 @@
 		</div>
 	</aside>
 	<div class="flex h-full flex-1 overflow-hidden rounded-2xl bg-white">
-		<div class="flex w-xs flex-col">
+		<div class={twMerge('flex w-xs flex-col', isListScreen && 'w-full')}>
 			<div class="flex h-[83px] w-full items-center justify-between border-b border-black/10 py-2">
 				<div class="flex items-center gap-2">
 					<button
@@ -67,19 +72,21 @@
 						{page.url.searchParams.get('title') ?? 'All'}
 					</h4>
 				</div>
-				<MTicketsFilter />
+				<MTicketsFilter position={isListScreen ? 'left' : 'right'} />
 			</div>
 			<div class="border-b border-black/10 p-2">
 				<ASearchInput placeholder="Search..." class="text-base-content" />
 			</div>
 			<div class="h-[calc(100vh-175px)] overflow-y-auto">
-				<OTicketList />
+				<OTicketList fullWidth={isListScreen} />
 			</div>
 		</div>
-		<div class="flex-1 rounded-2xl border-l border-black/10">{@render children?.()}</div>
+		{#if !isListScreen}
+			<div class="flex-1 rounded-2xl border-l border-black/10">{@render children?.()}</div>
+		{/if}
 		{#if !page.url.pathname.endsWith('/new')}
 			<a
-				href={resolve('/app/tickets/new')}
+				href={resolve('/app/assistance/tickets/lists/list/new')}
 				class="btn fixed right-6 bottom-6 z-[1000] h-[60px] w-[60px] justify-end overflow-hidden rounded-full p-0 pr-4 transition-all duration-300 btn-lg btn-info hover:w-[180px]"
 			>
 				<div class="relative flex items-center justify-center">

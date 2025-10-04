@@ -10,10 +10,11 @@
 		pathname: Pathname;
 		query?: Record<string, string>;
 		aside?: string;
+		class?: string;
 		children?: Snippet;
 	};
 
-	let { pathname, query, aside, children }: Props = $props();
+	let { pathname, query, aside, class: klass, children }: Props = $props();
 	let querystring = $derived(() => {
 		if (!query || Object.keys(query).length === 0) return '';
 		const params = new URLSearchParams(query);
@@ -32,7 +33,8 @@
 	href={resolve(pathstring)}
 	class={twMerge(
 		'flex items-center justify-between p-2 px-3 whitespace-nowrap',
-		active && 'rounded-lg bg-secondary text-secondary-content'
+		active && 'rounded-lg bg-secondary text-secondary-content',
+		klass
 	)}
 >
 	<div>

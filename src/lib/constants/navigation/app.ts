@@ -1,177 +1,179 @@
-import type { NavGroup } from "$lib/types/navigation";
-import BxsDashboard from "$lib/components/icons/bxs-dashboard.svelte";
-import Package2Outline from "$lib/components/icons/package-2-outline.svelte";
-import ComputerOutline from "$lib/components/icons/computer-outline.svelte";
-import Monitor from "$lib/components/icons/monitor.svelte";
-import Software from "$lib/components/icons/software.svelte";
-import NetworkLeft from "$lib/components/icons/network-left.svelte";
-import USB from "$lib/components/icons/usb.svelte";
-import Printer from "$lib/components/icons/printer-solid.svelte";
-import InkOutline from "$lib/components/icons/ink-outline.svelte";
-import Phone from "$lib/components/icons/phone.svelte";
-import HDDRack from "$lib/components/icons/hdd-rack.svelte";
-import ServerPathLinear from "$lib/components/icons/server-path-linear.svelte";
-import MapConnection from "$lib/components/icons/map-connection.svelte";
-import DeviceIpad from "$lib/components/icons/device-ipad.svelte";
-import Question24Filled from "$lib/components/icons/question-24-filled.svelte";
-import Cable from "$lib/components/icons/cable.svelte";
-import Sim24Regular from "$lib/components/icons/sim-24-regular.svelte";
-import GlobalStorageArchitecture from "$lib/components/icons/global-storage-architecture.svelte";
-import HeadsetSolid from "$lib/components/icons/headset-solid.svelte";
-import TaskListSquare24Regular from "$lib/components/icons/task-list-square-24-regular.svelte";
-import CRMService from "$lib/components/icons/crm-service.svelte";
-import Calendar from "$lib/components/icons/calendar.svelte";
-import ChartPie from "$lib/components/icons/chart-pie.svelte";
+import type { NavGroup } from '$lib/types/navigation';
+import BxsDashboard from '$lib/components/icons/bxs-dashboard.svelte';
+import Package2Outline from '$lib/components/icons/package-2-outline.svelte';
+import ComputerOutline from '$lib/components/icons/computer-outline.svelte';
+import Monitor from '$lib/components/icons/monitor.svelte';
+import Software from '$lib/components/icons/software.svelte';
+import NetworkLeft from '$lib/components/icons/network-left.svelte';
+import USB from '$lib/components/icons/usb.svelte';
+import Printer from '$lib/components/icons/printer-solid.svelte';
+import InkOutline from '$lib/components/icons/ink-outline.svelte';
+import Phone from '$lib/components/icons/phone.svelte';
+import HDDRack from '$lib/components/icons/hdd-rack.svelte';
+import ServerPathLinear from '$lib/components/icons/server-path-linear.svelte';
+import MapConnection from '$lib/components/icons/map-connection.svelte';
+import DeviceIpad from '$lib/components/icons/device-ipad.svelte';
+import Question24Filled from '$lib/components/icons/question-24-filled.svelte';
+import Cable from '$lib/components/icons/cable.svelte';
+import Sim24Regular from '$lib/components/icons/sim-24-regular.svelte';
+import GlobalStorageArchitecture from '$lib/components/icons/global-storage-architecture.svelte';
+import HeadsetSolid from '$lib/components/icons/headset-solid.svelte';
+import TaskListSquare24Regular from '$lib/components/icons/task-list-square-24-regular.svelte';
+import CRMService from '$lib/components/icons/crm-service.svelte';
+import Calendar from '$lib/components/icons/calendar.svelte';
+import ChartPie from '$lib/components/icons/chart-pie.svelte';
 
 export const APP_NAVIGATION: NavGroup[] = [
   {
     icon: Package2Outline,
-    label: "Assets",
+    label: 'Assets',
+    baseRoute: '/app/assets',
     navs: [
       {
-        label: "Dashboard",
-        href: "/app",
+        label: 'Dashboard',
+        href: '/app',
         disabled: true,
-        icon: BxsDashboard,
+        icon: BxsDashboard
       },
       {
-        label: "Computer",
-        href: "/app",
+        label: 'Computer',
+        href: '/app',
         disabled: true,
-        icon: ComputerOutline,
+        icon: ComputerOutline
       },
       {
-        label: "Monitor",
-        href: "/app",
+        label: 'Monitor',
+        href: '/app',
         disabled: true,
-        icon: Monitor,
+        icon: Monitor
       },
       {
-        label: "Software",
-        href: "/app",
+        label: 'Software',
+        href: '/app',
         disabled: true,
-        icon: Software,
+        icon: Software
       },
       {
-        label: "Network Devices",
-        href: "/app",
+        label: 'Network Devices',
+        href: '/app',
         disabled: true,
-        icon: NetworkLeft,
+        icon: NetworkLeft
       },
       {
-        label: "Peripherals",
-        href: "/app",
+        label: 'Peripherals',
+        href: '/app',
         disabled: true,
-        icon: USB,
+        icon: USB
       },
       {
-        label: "Printers",
-        href: "/app",
+        label: 'Printers',
+        href: '/app',
         disabled: true,
-        icon: Printer,
+        icon: Printer
       },
       {
-        label: "Cartridges",
-        href: "/app",
+        label: 'Cartridges',
+        href: '/app',
         disabled: true,
-        icon: InkOutline,
+        icon: InkOutline
       },
       {
-        label: "Consumables",
-        href: "/app",
+        label: 'Consumables',
+        href: '/app',
         disabled: true,
-        icon: Package2Outline,
+        icon: Package2Outline
       },
       {
-        label: "Phones",
-        href: "/app",
+        label: 'Phones',
+        href: '/app',
         disabled: true,
-        icon: Phone,
+        icon: Phone
       },
       {
-        label: "Racks",
-        href: "/app",
+        label: 'Racks',
+        href: '/app',
         disabled: true,
-        icon: HDDRack,
+        icon: HDDRack
       },
       {
-        label: "Enclosures",
-        href: "/app",
+        label: 'Enclosures',
+        href: '/app',
         disabled: true,
-        icon: ServerPathLinear,
+        icon: ServerPathLinear
       },
       {
-        label: "PUCs",
-        href: "/app",
+        label: 'PUCs',
+        href: '/app',
         disabled: true,
-        icon: MapConnection,
+        icon: MapConnection
       },
       {
-        label: "Passive Devices",
-        href: "/app",
+        label: 'Passive Devices',
+        href: '/app',
         disabled: true,
-        icon: DeviceIpad,
+        icon: DeviceIpad
       },
       {
-        label: "Unmanaged Devices",
-        href: "/app",
+        label: 'Unmanaged Devices',
+        href: '/app',
         disabled: true,
-        icon: Question24Filled,
+        icon: Question24Filled
       },
       {
-        label: "Cables",
-        href: "/app",
+        label: 'Cables',
+        href: '/app',
         disabled: true,
-        icon: Cable,
+        icon: Cable
       },
       {
-        label: "Simcard Items",
-        href: "/app",
+        label: 'Simcard Items',
+        href: '/app',
         disabled: true,
-        icon: Sim24Regular,
+        icon: Sim24Regular
       },
       {
-        label: "Global",
-        href: "/app",
+        label: 'Global',
+        href: '/app',
         disabled: true,
-        icon: GlobalStorageArchitecture,
-      },
-    ],
+        icon: GlobalStorageArchitecture
+      }
+    ]
   },
   {
     icon: HeadsetSolid,
-    label: "Assistance",
+    label: 'Assistance',
+    baseRoute: '/app/assistance',
     navs: [
       {
-        label: "Dashboard",
-        href: "/app",
+        label: 'Dashboard',
+        href: '/app/assistance/dashboard',
         disabled: true,
-        icon: BxsDashboard,
+        icon: BxsDashboard
       },
       {
-        label: "Tickets",
-        href: "/app/tickets",
+        label: 'Tickets',
+        href: '/app/assistance/tickets',
         disabled: false,
-        icon: TaskListSquare24Regular,
+        icon: TaskListSquare24Regular
       },
       {
-        label: "Services",
-        href: "/app",
+        label: 'Services',
+        href: '/app/assistance/services',
         disabled: true,
-        icon: CRMService,
+        icon: CRMService
       },
       {
-        label: "Planning",
-        href: "/app",
+        label: 'Planning',
+        href: '/app/assistance/planning',
         disabled: true,
-        icon: Calendar,
+        icon: Calendar
       },
       {
-        label: "Statistics",
-        href: "/app",
+        label: 'Statistics',
+        href: '/app/assistance/statistics',
         disabled: true,
-        icon: ChartPie,
-      },
-    ],
-  },
+        icon: ChartPie
+      }
+    ]
+  }
 ];

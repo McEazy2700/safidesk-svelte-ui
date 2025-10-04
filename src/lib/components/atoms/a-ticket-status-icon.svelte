@@ -10,24 +10,17 @@
 
 	type Props = {
 		status: number;
-		size?: 'sm' | 'md';
-		showIcon?: boolean;
 		extraClass?: string;
 	};
 
-	let { status, size = 'md', showIcon = true, extraClass = '' }: Props = $props();
+	let { status, extraClass = '' }: Props = $props();
 
 	const STYLES: Record<number, { color: string; icon: typeof MaterialSymbolFolderOpenRounded }> = {
-		1: { color: 'bg-blue-50 text-blue-700', icon: MaterialSymbolFolderOpenRounded },
-		2: { color: 'bg-orange-50 text-orange-700', icon: MingcuteRefresh4Fill },
-		3: { color: 'bg-green-50 text-green-700', icon: ChatboxCheckedFilled },
-		4: { color: 'bg-gray-100 text-gray-700', icon: IcRoundNotSelected },
-		5: { color: 'bg-purple-50 text-purple-700', icon: FamiconsCopy }
-	};
-
-	const SIZE_CLASSES = {
-		sm: 'px-2 py-0.5 text-xs rounded-full inline-flex items-center gap-1',
-		md: 'px-3 py-1 text-sm rounded-full inline-flex items-center gap-2'
+		1: { color: 'text-blue-700', icon: MaterialSymbolFolderOpenRounded },
+		2: { color: 'text-orange-700', icon: MingcuteRefresh4Fill },
+		3: { color: 'text-green-700', icon: ChatboxCheckedFilled },
+		4: { color: 'text-gray-700', icon: IcRoundNotSelected },
+		5: { color: 'text-purple-700', icon: FamiconsCopy }
 	};
 
 	const config = STYLES[status] ?? STYLES[1];
@@ -38,15 +31,7 @@
 	role="status"
 	aria-label={`Status ${STATUS_NAMES[status]}`}
 	title={STATUS_NAMES[status]}
-	class={twMerge(
-		'font-medium capitalize select-none',
-		SIZE_CLASSES[size],
-		config.color,
-		extraClass
-	)}
+	class={twMerge('select-none', config.color, extraClass)}
 >
-	{#if showIcon}
-		<Icon class="h-3.5 w-3.5" />
-	{/if}
-	{STATUS_NAMES[status]}
+	<Icon size={20} />
 </span>

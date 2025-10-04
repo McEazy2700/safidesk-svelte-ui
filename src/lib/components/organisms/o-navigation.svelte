@@ -6,7 +6,7 @@
 	let open = $state<string>();
 </script>
 
-<div class="flex flex-col gap-2">
+<div class="flex flex-col gap-3">
 	{#each props.navigation as group, index (index)}
 		<MNavGroup
 			{...group}

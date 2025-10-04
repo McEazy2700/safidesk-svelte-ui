@@ -11,7 +11,7 @@
 
 <div
 	class={twMerge(
-		'dropdown w-full',
+		'dropdown !dropdown-center !dropdown-bottom w-full',
 		disabled && 'pointer-events-none cursor-not-allowed text-base-content/60'
 	)}
 >

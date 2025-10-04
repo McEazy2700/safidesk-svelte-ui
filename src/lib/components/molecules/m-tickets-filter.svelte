@@ -9,9 +9,16 @@
 	import type { Pathname } from '$app/types';
 	import ATicketStatusDropdown from '../atoms/a-ticket-status-dropdown.svelte';
 	import ATicketPriorityDropdown from '../atoms/a-ticket-priority-dropdown.svelte';
+	import { twMerge } from 'tailwind-merge';
+
+	type Props = {
+		position?: 'left' | 'right';
+	};
 
 	let status = $state<number>();
 	let priority = $state<number>();
+
+	let { position = 'right' }: Props = $props();
 
 	function apply() {
 		const newPath = page.url.pathname;
@@ -30,7 +37,7 @@
 	}
 </script>
 
-<div class="dropdown">
+<div class={twMerge('dropdown', position === 'left' ? 'dropdown-left' : 'dropdown-right')}>
 	<div tabindex="0" role="button" class="btn m-1 px-1 text-base-content/60 btn-ghost btn-sm">
 		<MageFilter />
 		<span class="sr-only">Filter Tickets</span>
