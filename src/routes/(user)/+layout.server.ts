@@ -29,5 +29,14 @@ export const load: LayoutServerLoad = async (event) => {
   const userData = cast<GetCurrentAuthUser>(userRes.data);
   const queueData = cast<Array<Queue>>(queueRes.data);
 
-  return { user: userData.data, queues: queueData };
+  return {
+    user: userData.data,
+    queues: userData.data.user.is_staff
+      ? queueData
+      : userData.data.queues.map((v) => ({
+        title: v.queue_title,
+        slug: v.queue_title,
+        id: v.queue_id
+      }))
+  };
 };

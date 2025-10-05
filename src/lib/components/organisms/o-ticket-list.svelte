@@ -3,23 +3,26 @@
 	import MTicketListItem from '../molecules/m-ticket-list-item.svelte';
 	import { page } from '$app/state';
 	import { cast } from '$lib/utils/typing';
+	import type { GetCurrentAuthUser } from '$lib/types/api/auth';
 
 	type Props = {
 		fullWidth?: boolean;
+		user: GetCurrentAuthUser['data'];
 	};
 
 	let queue = $derived(page.url.searchParams.get('queue'));
 	let status = $derived(page.url.searchParams.get('status'));
 	let priority = $derived(page.url.searchParams.get('priority'));
 
-	let { fullWidth }: Props = $props();
+	let { fullWidth, user }: Props = $props();
 
 	$effect(() => {
 		TicketsStore.loadInitial({
 			query: {
 				queue: queue ? Number(queue) : undefined,
 				priority: cast(priority),
-				status: cast(status)
+				status: cast(status),
+				user_id: !user.user.is_staff ? user.user.id : undefined
 			}
 		});
 	});

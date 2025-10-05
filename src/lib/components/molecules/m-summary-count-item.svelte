@@ -8,10 +8,11 @@
 		label: string;
 		count: number;
 		primary?: boolean;
+		showTrend?: boolean;
 		lastMonthCount?: number;
 	};
 
-	let { label, count, primary, lastMonthCount = 0 }: Props = $props();
+	let { label, count, primary, lastMonthCount = 0, showTrend = true }: Props = $props();
 	let percentage = $derived((count * (100 / (count - lastMonthCount))).toFixed(0).replace('-', ''));
 </script>
 
@@ -26,30 +27,32 @@
 		<ACountUp target={count} />
 	</span>
 
-	<div>
-		{#if lastMonthCount < count}
-			<div
-				class={twMerge(
-					'flex items-center gap-1 rounded-lg text-sm text-green-300',
-					!primary && 'text-green-500'
-				)}
-			>
-				<IconamoonTrendUpLight size={18} />
-				<span>{percentage}%</span>
-				<span>from last month</span>
-			</div>
-		{:else}
-			<div
-				class={twMerge(
-					'flex items-center gap-1 rounded-lg text-sm text-red-300',
-					!primary && 'text-red-500'
-				)}
-			>
-				<IconamoonTrendDownLight />
-				<span>{percentage}%</span>
-				<span>Down</span>
-				<span>from last month</span>
-			</div>
-		{/if}
-	</div>
+	{#if showTrend}
+		<div>
+			{#if lastMonthCount < count}
+				<div
+					class={twMerge(
+						'flex items-center gap-1 rounded-lg text-sm text-green-300',
+						!primary && 'text-green-500'
+					)}
+				>
+					<IconamoonTrendUpLight size={18} />
+					<span>{percentage}%</span>
+					<span>from last month</span>
+				</div>
+			{:else}
+				<div
+					class={twMerge(
+						'flex items-center gap-1 rounded-lg text-sm text-red-300',
+						!primary && 'text-red-500'
+					)}
+				>
+					<IconamoonTrendDownLight />
+					<span>{percentage}%</span>
+					<span>Down</span>
+					<span>from last month</span>
+				</div>
+			{/if}
+		</div>
+	{/if}
 </div>

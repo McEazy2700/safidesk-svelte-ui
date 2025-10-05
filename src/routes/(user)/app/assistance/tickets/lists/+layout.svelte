@@ -78,7 +78,7 @@
 				<ASearchInput placeholder="Search..." class="text-base-content" />
 			</div>
 			<div class="h-[calc(100vh-175px)] overflow-y-auto">
-				<OTicketList fullWidth={isListScreen} />
+				<OTicketList user={data.user} fullWidth={isListScreen} />
 			</div>
 		</div>
 		{#if !isListScreen}
@@ -86,7 +86,7 @@
 		{/if}
 		{#if !page.url.pathname.endsWith('/new')}
 			<a
-				href={resolve('/app/assistance/tickets/lists/list/new')}
+				href={resolve('/app/assistance/tickets/lists/new')}
 				class="btn fixed right-6 bottom-6 z-[1000] h-[60px] w-[60px] justify-end overflow-hidden rounded-full p-0 pr-4 transition-all duration-300 btn-lg btn-info hover:w-[180px]"
 			>
 				<div class="relative flex items-center justify-center">

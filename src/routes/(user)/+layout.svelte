@@ -3,10 +3,15 @@
 	import ONavigation from '$lib/components/organisms/o-navigation.svelte';
 	import { APP_NAVIGATION } from '$lib/constants/navigation/app';
 	import { getAppNavState } from '$lib/stores/navigation.svelte';
+	import { UsersStore } from '$lib/stores/queries/users.svelte.js';
 	import { twMerge } from 'tailwind-merge';
 
 	let { children, data } = $props();
 	let navState = getAppNavState();
+
+	$effect(() => {
+		UsersStore.loadInitial();
+	});
 </script>
 
 <div class="h-screen w-screen overflow-hidden bg-primary px-2">
@@ -18,8 +23,8 @@
 		<ASearchInput />
 		<div class="flex items-center gap-4 px-4 text-primary-content">
 			<div class="flex flex-col items-end">
-				<span class="text-xl font-semibold">{data.user.username}</span>
-				<address class="not-italic">{data.user.email}</address>
+				<span class="text-xl font-semibold">{data.user.user.username}</span>
+				<address class="not-italic">{data.user.user.email}</address>
 			</div>
 			<img
 				src="https://avatar.iran.liara.run/public/boy"

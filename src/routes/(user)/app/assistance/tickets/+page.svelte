@@ -27,11 +27,21 @@
 	{/snippet}
 	<div class="flex w-full flex-col gap-8">
 		<div class="grid grid-cols-5 gap-4">
-			<MSummaryCountItem label="Total Tickets" count={200} primary />
-			<MSummaryCountItem label="Pending Tickets" lastMonthCount={200} count={90} />
-			<MSummaryCountItem label="Assigned Tickets" count={10} />
-			<MSummaryCountItem label="Solved Tickets" count={34} />
-			<MSummaryCountItem label="Closed Tickets" count={29} />
+			<MSummaryCountItem
+				showTrend={data.user.user.is_staff}
+				label="Total Tickets"
+				count={200}
+				primary
+			/>
+			<MSummaryCountItem
+				showTrend={data.user.user.is_staff}
+				label="Pending Tickets"
+				lastMonthCount={200}
+				count={90}
+			/>
+			<MSummaryCountItem showTrend={data.user.user.is_staff} label="Assigned Tickets" count={10} />
+			<MSummaryCountItem showTrend={data.user.user.is_staff} label="Solved Tickets" count={34} />
+			<MSummaryCountItem showTrend={data.user.user.is_staff} label="Closed Tickets" count={29} />
 		</div>
 		<div class="flex w-full items-start gap-4">
 			<div class="flex-1 rounded-xl bg-white p-4">
@@ -41,14 +51,16 @@
 				</div>
 
 				<div class="max-h-[50vh] overflow-y-auto">
-					<OTicketList />
+					<OTicketList user={data.user} />
 				</div>
 			</div>
 
 			<div class="flex-1 rounded-xl bg-white p-4">
 				<div class="flex items-center justify-between">
 					<span class="text-xl font-bold">Queues</span>
-					<AQueueForm />
+					{#if data.user.user.is_staff}
+						<AQueueForm />
+					{/if}
 				</div>
 				<ul class="mt-2 flex flex-col gap-1">
 					{#each data.queues as queue, index (index)}

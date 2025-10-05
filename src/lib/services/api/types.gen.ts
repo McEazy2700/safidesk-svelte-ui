@@ -171,15 +171,10 @@ export type CustomTicket = {
      */
     readonly attachment?: string;
     readonly followup_set?: Array<FollowUp>;
-    created_by?: HelpdeskUser;
     /**
      * Queue id
      */
     queue_id: number;
-    /**
-     * Created by id
-     */
-    created_by_id?: number;
     /**
      * Assigned to id
      */
@@ -403,6 +398,11 @@ export type AppUser = {
      */
     is_active?: boolean;
     /**
+     * Staff status
+     * Designates whether the user can log into this admin site.
+     */
+    is_staff?: boolean;
+    /**
      * Date joined
      */
     readonly date_joined?: string;
@@ -540,15 +540,10 @@ export type CustomTicketWritable = {
      * Merged to
      */
     merged_to?: number | null;
-    created_by?: HelpdeskUserWritable;
     /**
      * Queue id
      */
     queue_id: number;
-    /**
-     * Created by id
-     */
-    created_by_id?: number;
     /**
      * Assigned to id
      */
@@ -675,6 +670,11 @@ export type AppUserWritable = {
      */
     is_active?: boolean;
     /**
+     * Staff status
+     * Designates whether the user can log into this admin site.
+     */
+    is_staff?: boolean;
+    /**
      * Password
      */
     password?: string;
@@ -750,17 +750,21 @@ export type CustomizedHelpdeskticketsListData = {
          */
         page_size?: number;
         /**
-         * Filter by status (1=open, 2=reopened, 3=resolved, 4=closed, 5=duplicate) or by name (open, reopened, resolved, closed, duplicate).
+         * Filter by status (name or id).
          */
-        status?: '1' | '2' | '3' | '4' | '5' | 'open' | 'reopened' | 'resolved' | 'closed' | 'duplicate';
+        status?: string;
         /**
-         * Filter by priority (1=critical, 2=high, 3=normal, 4=low, 5=very_low) or by name (critical, high, normal, low, very_low).
+         * Filter by priority (name or id).
          */
-        priority?: '1' | '2' | '3' | '4' | '5' | 'critical' | 'high' | 'normal' | 'low' | 'very_low';
+        priority?: string;
         /**
-         * Filter by queue ID
+         * Filter by queue ID.
          */
         queue?: number;
+        /**
+         * Filter tickets by creator's user ID. Only staff or the same user may use this parameter.
+         */
+        user_id?: number;
     };
     url: '/customized_helpdesktickets/';
 };
@@ -788,6 +792,31 @@ export type CustomizedHelpdeskticketsCreateResponses = {
 };
 
 export type CustomizedHelpdeskticketsCreateResponse = CustomizedHelpdeskticketsCreateResponses[keyof CustomizedHelpdeskticketsCreateResponses];
+
+export type CustomizedHelpdeskticketsAssignmentStatsListData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/customized_helpdesktickets/assignment-stats/';
+};
+
+export type CustomizedHelpdeskticketsAssignmentStatsListErrors = {
+    /**
+     * Unauthorized – authentication credentials were not provided or invalid.
+     */
+    401: unknown;
+    /**
+     * Internal Server Error – unexpected issue occurred.
+     */
+    500: unknown;
+};
+
+export type CustomizedHelpdeskticketsAssignmentStatsListResponses = {
+    /**
+     * Successful response with ticket counts.
+     */
+    200: unknown;
+};
 
 export type CustomizedHelpdeskticketsDeleteData = {
     body?: never;

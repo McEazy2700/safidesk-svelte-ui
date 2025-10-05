@@ -19,12 +19,23 @@ export type GetCurrentAuthUser = {
   success: boolean;
   message: string;
   data: {
-    id: number;
-    username: string;
-    email: string;
-    first_name: string;
-    last_name: string;
-    is_active: boolean;
-    date_joined: string;
-  };
+    user: {
+      id: number,
+      username: string,
+      email: string,
+      first_name: string,
+      last_name: string,
+      is_active: boolean,
+      is_staff: boolean,
+      date_joined: string
+    },
+    groups: { id: number, name: string }[],
+    queues: {
+      queue_id: number,
+      queue_title: string,
+      group_id: number,
+      group_name: string
+    }[]
+  }
+  ;
 };
