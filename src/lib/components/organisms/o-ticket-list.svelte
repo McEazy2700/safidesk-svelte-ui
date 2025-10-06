@@ -16,10 +16,23 @@
 
 	let { fullWidth, user }: Props = $props();
 
+	let queueIds = $derived(
+		(() => {
+			if (queue) {
+				return [Number(queue)];
+			} else if (user.user.username === 'admin') {
+				return undefined;
+			} else if (user.user.is_staff) {
+				return user.queues.map((v) => v.queue_id);
+			}
+			return undefined;
+		})()
+	);
+
 	$effect(() => {
 		TicketsStore.loadInitial({
 			query: {
-				queue: queue ? Number(queue) : undefined,
+				queue: queueIds,
 				priority: cast(priority),
 				status: cast(status),
 				user_id: !user.user.is_staff ? user.user.id : undefined

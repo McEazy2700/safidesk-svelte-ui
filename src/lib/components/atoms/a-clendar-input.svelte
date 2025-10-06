@@ -7,7 +7,6 @@
 
 	$effect(() => {
 		if (myDatepicker) {
-			// Use dynamic import instead of require
 			import('pikaday').then((module) => {
 				const Pikaday = module.default;
 				picker = new Pikaday({
@@ -23,8 +22,6 @@
 		due_date?: string | null;
 	};
 	let { disabled, due_date = $bindable() }: Props = $props();
-
-	$effect(() => console.log(due_date));
 </script>
 
 <label

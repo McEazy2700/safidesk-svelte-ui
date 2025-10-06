@@ -758,9 +758,9 @@ export type CustomizedHelpdeskticketsListData = {
          */
         priority?: string;
         /**
-         * Filter by queue ID.
+         * Filter by one or more queue IDs (comma-separated or array).
          */
-        queue?: number;
+        queue?: Array<number>;
         /**
          * Filter tickets by creator's user ID. Only staff or the same user may use this parameter.
          */
