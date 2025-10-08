@@ -13,7 +13,7 @@
 	}));
 </script>
 
-<div class="flex w-full flex-col items-center pt-8">
+<div class="flex h-[calc(100vh-70px)] w-full flex-col items-center overflow-y-auto pt-8">
 	<div class="flex flex-col items-center">
 		<ALogo />
 		<h1 class="font-comfortaa text-4xl font-bold tracking-wider">Help Center</h1>

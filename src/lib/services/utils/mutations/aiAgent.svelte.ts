@@ -1,12 +1,17 @@
-import { aiAgentAgentChatCreate } from "$lib/services/api";
+import { agentChatCreate } from "$lib/services/api";
+import type { ChatResponse } from "$lib/types/api/chat";
 import { getClientAccessToken } from "$lib/utils/cookies";
+import { cast } from "$lib/utils/typing";
 
 export class AIAgentMutationBase {
   loading = $state(false);
 
   sendMessage = async (message: string) => {
     const token = getClientAccessToken();
-    const res = await aiAgentAgentChatCreate({
+
+    this.loading = true;
+
+    const res = await agentChatCreate({
       headers: {
         Authorization: `Bearer ${token?.access}`,
       },
@@ -15,7 +20,9 @@ export class AIAgentMutationBase {
       },
     });
 
-    console.log(res.data);
+    this.loading = false;
+
+    return cast<ChatResponse>(res.data);
   };
 }
 

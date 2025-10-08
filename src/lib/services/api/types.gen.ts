@@ -680,60 +680,14 @@ export type AppUserWritable = {
     password?: string;
 };
 
-export type AiAgentAgentChatCreateData = {
+export type AgentChatCreateData = {
     body?: never;
     path?: never;
     query?: never;
-    url: '/ai-agent/agent/chat/';
+    url: '/agent/chat/';
 };
 
-export type AiAgentAgentChatCreateResponses = {
-    201: unknown;
-};
-
-export type AiAgentAgentResetCreateData = {
-    body?: never;
-    path?: never;
-    query?: never;
-    url: '/ai-agent/agent/reset/';
-};
-
-export type AiAgentAgentResetCreateResponses = {
-    201: unknown;
-};
-
-export type AiAgentQueueStaffListData = {
-    body?: never;
-    path: {
-        queue_id: string;
-    };
-    query?: never;
-    url: '/ai-agent/queue/{queue_id}/staff/';
-};
-
-export type AiAgentQueueStaffListResponses = {
-    200: unknown;
-};
-
-export type AiAgentQueuesListData = {
-    body?: never;
-    path?: never;
-    query?: never;
-    url: '/ai-agent/queues/';
-};
-
-export type AiAgentQueuesListResponses = {
-    200: unknown;
-};
-
-export type AiAgentTicketsCreateCreateData = {
-    body?: never;
-    path?: never;
-    query?: never;
-    url: '/ai-agent/tickets/create/';
-};
-
-export type AiAgentTicketsCreateCreateResponses = {
+export type AgentChatCreateResponses = {
     201: unknown;
 };
 
