@@ -2,6 +2,8 @@
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import '@fontsource-variable/nunito-sans';
+	import '@fontsource-variable/montserrat';
+	import '@fontsource-variable/comfortaa';
 	import MToastManager from '$lib/components/molecules/m-toast-manager.svelte';
 
 	let { children } = $props();

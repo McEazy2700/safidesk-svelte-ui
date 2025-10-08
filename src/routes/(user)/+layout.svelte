@@ -26,10 +26,12 @@
 
 <div class="h-screen w-screen overflow-hidden bg-primary px-2">
 	<nav class="flex items-center justify-between">
-		<div class="flex items-center">
-			<img src="/images/logo.png" class="h-16 w-16" alt="" />
-			<span class="-translate-x-3 text-2xl font-bold text-white">SafiDesk</span>
-		</div>
+		<a href={resolve('/app')}>
+			<div class="flex items-center">
+				<img src="/images/logo.png" class="h-16 w-16" alt="" />
+				<span class="-translate-x-3 text-2xl font-bold text-white">SafiDesk</span>
+			</div>
+		</a>
 		<ASearchInput />
 		<div class="dropdown dropdown-end">
 			<div tabindex="0" role="button" class="flex items-center gap-4 px-4 text-primary-content">

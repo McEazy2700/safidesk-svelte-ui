@@ -1,10 +1,10 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @plugin "daisyui/theme" {
-	name: 'safidesk';
+	name: "safidesk";
 	default: false;
 	prefersdark: false;
-	color-scheme: 'light';
+	color-scheme: "light";
 	--color-base-100: oklch(98% 0.003 247.858);
 	--color-base-200: oklch(96% 0.007 247.896);
 	--color-base-300: oklch(92% 0.013 255.508);
@@ -41,7 +41,9 @@
 }
 
 @theme {
-	--font-nunito: 'Nunito Sans Variable', sans-serif;
+	--font-nunito: "Nunito Sans Variable", sans-serif;
+	--font-monsterat: "Montserrat Variable", sans-serif;
+	--font-comfortaa: "Comfortaa Variable", system-ui;
 	--color-base-100: oklch(98% 0.003 247.858);
 	--color-base-200: oklch(96% 0.007 247.896);
 	--color-base-300: oklch(92% 0.013 255.508);
