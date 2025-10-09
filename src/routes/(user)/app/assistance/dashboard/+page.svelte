@@ -9,73 +9,73 @@
 	import { formatToFriendlyDateTime } from '$lib/utils/time';
 </script>
 
-<div
-	class="flex h-[calc(100vh-70px)] flex-col items-center justify-center gap-4 overflow-y-auto pb-10"
->
-	<div class="mt-96 flex flex-col items-center gap-1">
-		<ALogo />
-		<h1 class="text-2xl font-bold">How can we help you?</h1>
-	</div>
-	<div class="flex flex-col items-center justify-center gap-8 pt-2">
-		<ASearchInput class="w-full max-w-2xl rounded-full p-6 text-xl text-base-content" />
-		<div class="grid grid-cols-3 items-center justify-center gap-4 pt-8">
-			<AAssistanceDashboardItem
-				color="red"
-				prompt="Report an Issue"
-				description="Get help with a bug, error, or malfunction. Technician resolution within 7 business days."
-				href="/app/assistance/tickets/lists/new"
-				icon={MynauiQuestionCircle}
-			/>
-			<AAssistanceDashboardItem
-				color="green"
-				prompt="Request a Service"
-				description="Ask for a new setup, access, or functional change. Technician fulfillment within 14 business days."
-				href="/app/assistance/tickets/lists/new"
-				icon={CrmService}
-			/>
-			<AAssistanceDashboardItem
-				color="blue"
-				prompt="View Solutions"
-				description="Find self-help articles and answers to common questions immediately. No ticket needed."
-				href="/app/assistance/tickets/lists/chat?title=SafiDesk+AI"
-				icon={HugeiconsAiIdea}
-			/>
+<div class="h-[calc(100vh-70px)] overflow-y-auto">
+	<div class="flex flex-col items-center justify-center gap-4 pb-10">
+		<div class="mt-40 flex flex-col items-center gap-1">
+			<ALogo />
+			<h1 class="text-2xl font-bold">How can we help you?</h1>
 		</div>
-		<div class="mt-10 flex w-full max-w-6xl items-start gap-4">
-			<div class="flex-1">
-				<div class="flex w-full flex-col gap-3">
-					<div class="flex w-full flex-col border-b border-black/5 pb-2">
-						<h4 class="self-center">Popular Solutions</h4>
-					</div>
-					<ASearchInput class="w-full text-black" />
-					{#each POPULAR_SOLUTIONS as solution, index (index)}
-						<div class="border-b border-black/5 p-2">
-							<span class="text-lg font-bold">{solution.title}</span>
-							<p>{solution.summary}</p>
-						</div>
-					{/each}
-				</div>
+		<div class="flex flex-col items-center justify-center gap-8 pt-2">
+			<ASearchInput class="w-full max-w-2xl rounded-full p-6 text-xl text-base-content" />
+			<div class="grid grid-cols-3 items-center justify-center gap-4 pt-8">
+				<AAssistanceDashboardItem
+					color="red"
+					prompt="Report an Issue"
+					description="Get help with a bug, error, or malfunction. Technician resolution within 7 business days."
+					href="/app/assistance/tickets/lists/new"
+					icon={MynauiQuestionCircle}
+				/>
+				<AAssistanceDashboardItem
+					color="green"
+					prompt="Request a Service"
+					description="Ask for a new setup, access, or functional change. Technician fulfillment within 14 business days."
+					href="/app/assistance/tickets/lists/new"
+					icon={CrmService}
+				/>
+				<AAssistanceDashboardItem
+					color="blue"
+					prompt="View Solutions"
+					description="Find self-help articles and answers to common questions immediately. No ticket needed."
+					href="/app/assistance/tickets/lists/chat?title=SafiDesk+AI"
+					icon={HugeiconsAiIdea}
+				/>
 			</div>
-			<div class="mx-8 h-[300px] w-px self-center bg-black/5"></div>
-			<div class="flex-1">
-				<div class="flex w-full flex-col gap-3">
-					<div class="flex w-full flex-col border-b border-black/5 pb-2">
-						<h4 class="self-center">Notifications</h4>
-					</div>
-					{#each NOTIFICATIONS as notification, index (index)}
-						<div class="border-b border-black/5 p-2">
-							<span class="text-lg font-bold">{notification.title}</span>
-							<div class="flex items-end justify-between">
-								<p>{notification.summary}</p>
-								<time
-									class="text-xs whitespace-nowrap"
-									datetime={new Date(notification.date).toISOString()}
-								>
-									{formatToFriendlyDateTime(notification.date)}
-								</time>
-							</div>
+			<div class="mt-10 flex w-full max-w-6xl items-start gap-4">
+				<div class="flex-1">
+					<div class="flex w-full flex-col gap-3">
+						<div class="flex w-full flex-col border-b border-black/5 pb-2">
+							<h4 class="self-center">Popular Solutions</h4>
 						</div>
-					{/each}
+						<ASearchInput class="w-full text-black" />
+						{#each POPULAR_SOLUTIONS as solution, index (index)}
+							<div class="border-b border-black/5 p-2">
+								<span class="text-lg font-bold">{solution.title}</span>
+								<p>{solution.summary}</p>
+							</div>
+						{/each}
+					</div>
+				</div>
+				<div class="mx-8 h-[300px] w-px self-center bg-black/5"></div>
+				<div class="flex-1">
+					<div class="flex w-full flex-col gap-3">
+						<div class="flex w-full flex-col border-b border-black/5 pb-2">
+							<h4 class="self-center">Notifications</h4>
+						</div>
+						{#each NOTIFICATIONS as notification, index (index)}
+							<div class="border-b border-black/5 p-2">
+								<span class="text-lg font-bold">{notification.title}</span>
+								<div class="flex items-end justify-between">
+									<p>{notification.summary}</p>
+									<time
+										class="text-xs whitespace-nowrap"
+										datetime={new Date(notification.date).toISOString()}
+									>
+										{formatToFriendlyDateTime(notification.date)}
+									</time>
+								</div>
+							</div>
+						{/each}
+					</div>
 				</div>
 			</div>
 		</div>
