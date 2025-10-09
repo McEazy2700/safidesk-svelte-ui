@@ -35,7 +35,7 @@
 		</div>
 	{/snippet}
 	<div class="flex w-full flex-col gap-8">
-		<div class="grid grid-cols-5 gap-4">
+		<div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-4">
 			<MSummaryCountItem
 				showTrend={data.user.user.is_staff}
 				label="Total Tickets"
@@ -49,13 +49,14 @@
 				lastMonthCount={0}
 				count={TicketStatsStore.data?.data.unassigned_tickets ?? 0}
 			/>
-			<MSummaryCountItem
-				showTrend={data.user.user.is_staff}
-				label="Assigned Tickets"
-				lastMonthCount={0}
-				count={TicketStatsStore.data?.data.assigned_tickets ?? 0}
-			/>
-			<MSummaryCountItem showTrend={data.user.user.is_staff} label="Solved Tickets" count={0} />
+			{#if data.user.user.is_staff}
+				<MSummaryCountItem
+					showTrend={data.user.user.is_staff}
+					label="Assigned Tickets"
+					lastMonthCount={0}
+					count={TicketStatsStore.data?.data.assigned_tickets ?? 0}
+				/>
+			{/if}
 			<MSummaryCountItem showTrend={data.user.user.is_staff} label="Closed Tickets" count={0} />
 		</div>
 		<div class="flex w-full items-start gap-4">
