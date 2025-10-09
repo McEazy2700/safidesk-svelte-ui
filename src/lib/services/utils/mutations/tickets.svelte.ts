@@ -18,7 +18,7 @@ class TicketMutationsBase {
       headers: {
         Authorization: `Bearer ${tokens?.access}`
       },
-      body: { ...body, user: tokens?.user?.id }
+      body: { ...body, user: tokens?.user?.user.id }
     });
     if (res.error || !res.data) {
       Toast.append({ type: 'error', message: 'Failed to send follow up' });

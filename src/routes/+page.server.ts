@@ -50,7 +50,7 @@ export const actions: Actions = {
       const tokens: AuthTokens = {
         refresh: data.data.refresh,
         access: data.data.access,
-        user: userData.data.user
+        user: userData.data
       };
 
       const isHttps = url.protocol === 'https:';
@@ -63,7 +63,7 @@ export const actions: Actions = {
         maxAge: 60 * 60 * 24 * 7
       });
 
-      if (!tokens.user?.is_staff) {
+      if (!tokens.user?.user?.is_staff && !tokens.user?.groups && !tokens?.user?.queues) {
         throw redirect(301, '/app/assistance/dashboard');
       }
       throw redirect(301, '/app');
