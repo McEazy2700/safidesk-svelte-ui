@@ -37,18 +37,18 @@
 					)}
 				>
 					<IconamoonTrendUpLight size={18} />
-					<span>{percentage}%</span>
+					<span>{percentage === 'NaN' ? 0 : percentage}%</span>
 					<span>from last month</span>
 				</div>
 			{:else}
 				<div
 					class={twMerge(
-						'flex items-center gap-1 rounded-lg text-sm text-red-300',
+						'flex items-center gap-1 rounded-lg text-sm text-red-100',
 						!primary && 'text-red-500'
 					)}
 				>
 					<IconamoonTrendDownLight />
-					<span>{percentage}%</span>
+					<span>{percentage === 'NaN' ? 0 : percentage}%</span>
 					<span>Down</span>
 					<span>from last month</span>
 				</div>
