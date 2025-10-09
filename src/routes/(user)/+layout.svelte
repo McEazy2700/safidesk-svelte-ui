@@ -65,7 +65,7 @@
 				navState.open && 'w-60'
 			)}
 		>
-			<ONavigation navigation={getUserNaviation(data.user.user)} navOpen={navState.open} />
+			<ONavigation navigation={getUserNaviation(data.user)} navOpen={navState.open} />
 		</aside>
 		<div class="h-[calc(100vh-70px)] flex-1 rounded-xl bg-base-200 transition-all">
 			{@render children?.()}

@@ -6,37 +6,37 @@ import { cast } from '$lib/utils/typing';
 import type { GetCurrentAuthUser } from '$lib/types/api/auth';
 
 export const load: LayoutServerLoad = async (event) => {
-  const tokens = getServerAccessTokens(event.cookies);
+	const tokens = getServerAccessTokens(event.cookies);
 
-  const headers = {
-    Authorization: `Bearer ${tokens.access}`
-  };
+	const headers = {
+		Authorization: `Bearer ${tokens.access}`
+	};
 
-  const userResPromise = userGetList({
-    headers
-  });
+	const userResPromise = userGetList({
+		headers
+	});
 
-  const queueResPromise = queueList({
-    headers
-  });
+	const queueResPromise = queueList({
+		headers
+	});
 
-  const [userRes, queueRes] = await Promise.all([userResPromise, queueResPromise]);
+	const [userRes, queueRes] = await Promise.all([userResPromise, queueResPromise]);
 
-  if (userRes.error || !userRes.data) {
-    throw redirect(301, '/');
-  }
+	if (userRes.error || !userRes.data) {
+		throw redirect(301, '/');
+	}
 
-  const userData = cast<GetCurrentAuthUser>(userRes.data);
-  const queueData = cast<Array<Queue>>(queueRes.data);
+	const userData = cast<GetCurrentAuthUser>(userRes.data);
+	const queueData = cast<Array<Queue>>(queueRes.data);
 
-  return {
-    user: userData.data,
-    queues: userData.data.user.is_staff
-      ? queueData
-      : userData.data.queues.map((v) => ({
-        title: v.queue_title,
-        slug: v.queue_title,
-        id: v.queue_id
-      }))
-  };
+	return {
+		user: userData.data,
+		queues: userData.data.user.is_staff
+			? queueData
+			: (userData.data.queues?.map((v) => ({
+					title: v.queue_title,
+					slug: v.queue_title,
+					id: v.queue_id
+				})) ?? [])
+	};
 };

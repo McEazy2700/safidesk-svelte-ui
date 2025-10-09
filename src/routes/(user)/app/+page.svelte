@@ -8,7 +8,7 @@
 
 	let { data } = $props();
 
-	const DashboardNavs = getUserNaviation(data.user.user).map((n) => ({
+	const DashboardNavs = getUserNaviation(data.user).map((n) => ({
 		name: n.label,
 		href: n.baseRoute,
 		icon: n.icon

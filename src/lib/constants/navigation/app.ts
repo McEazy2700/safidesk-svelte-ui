@@ -46,313 +46,313 @@ import TablerReport from '$lib/components/icons/tabler-report.svelte';
 import FamiconsBookmarksOutline from '$lib/components/icons/famicons-bookmarks-outline.svelte';
 import TablerShieldCheck from '$lib/components/icons/tabler-shield-check.svelte';
 import TablerUser from '$lib/components/icons/tabler-user.svelte';
-import type { UserDetails } from '$lib/types/api/auth';
+import type { UserDetails, UserResponseData } from '$lib/types/api/auth';
 
 export const APP_NAVIGATION: NavGroup[] = [
-  {
-    icon: Package2Outline,
-    label: 'Assets',
-    baseRoute: '/app/assets',
-    navs: [
-      {
-        label: 'Dashboard',
-        href: '/app/assets',
-        disabled: true,
-        icon: BxsDashboard
-      },
-      {
-        label: 'Computer',
-        href: '/app/assets',
-        disabled: true,
-        icon: ComputerOutline
-      },
-      {
-        label: 'Monitor',
-        href: '/app/assets',
-        disabled: true,
-        icon: Monitor
-      },
-      {
-        label: 'Software',
-        href: '/app/assets',
-        disabled: true,
-        icon: Software
-      },
-      {
-        label: 'Network Devices',
-        href: '/app/assets',
-        disabled: true,
-        icon: NetworkLeft
-      },
-      {
-        label: 'Peripherals',
-        href: '/app/assets',
-        disabled: true,
-        icon: USB
-      },
-      {
-        label: 'Printers',
-        href: '/app/assets',
-        disabled: true,
-        icon: Printer
-      },
-      {
-        label: 'Cartridges',
-        href: '/app/assets',
-        disabled: true,
-        icon: InkOutline
-      },
-      {
-        label: 'Consumables',
-        href: '/app/assets',
-        disabled: true,
-        icon: Package2Outline
-      },
-      {
-        label: 'Phones',
-        href: '/app/assets',
-        disabled: true,
-        icon: Phone
-      },
-      {
-        label: 'Racks',
-        href: '/app/assets',
-        disabled: true,
-        icon: HDDRack
-      },
-      {
-        label: 'Enclosures',
-        href: '/app/assets',
-        disabled: true,
-        icon: ServerPathLinear
-      },
-      {
-        label: 'PUCs',
-        href: '/app/assets',
-        disabled: true,
-        icon: MapConnection
-      },
-      {
-        label: 'Passive Devices',
-        href: '/app/assets',
-        disabled: true,
-        icon: DeviceIpad
-      },
-      {
-        label: 'Unmanaged Devices',
-        href: '/app/assets',
-        disabled: true,
-        icon: Question24Filled
-      },
-      {
-        label: 'Cables',
-        href: '/app/assets',
-        disabled: true,
-        icon: Cable
-      },
-      {
-        label: 'Simcard Items',
-        href: '/app/assets',
-        disabled: true,
-        icon: Sim24Regular
-      },
-      {
-        label: 'Global',
-        href: '/app/assets',
-        disabled: true,
-        icon: GlobalStorageArchitecture
-      }
-    ]
-  },
-  {
-    icon: HeadsetSolid,
-    label: 'Assistance',
-    baseRoute: '/app/assistance',
-    navs: [
-      {
-        label: 'Dashboard',
-        href: '/app/assistance/dashboard',
-        disabled: false,
-        icon: BxsDashboard
-      },
-      {
-        label: 'Tickets',
-        href: '/app/assistance/tickets',
-        disabled: false,
-        icon: TaskListSquare24Regular
-      },
-      {
-        label: 'Services',
-        href: '/app/assistance/services',
-        disabled: true,
-        icon: CRMService
-      },
-      {
-        label: 'Planning',
-        href: '/app/assistance/planning',
-        disabled: true,
-        icon: Calendar
-      },
-      {
-        label: 'Statistics',
-        href: '/app/assistance/statistics',
-        disabled: true,
-        icon: ChartPie
-      }
-    ]
-  },
-  {
-    icon: LucideWallet,
-    label: 'Management',
-    baseRoute: '/app/management',
-    navs: [
-      {
-        label: 'Licences',
-        href: '/app/management',
-        disabled: true,
-        icon: CodiconKey
-      },
-      {
-        label: 'Budgets',
-        href: '/app/management',
-        disabled: true,
-        icon: SolarCalculatorOutline
-      },
-      {
-        label: 'Suppliers',
-        href: '/app/management',
-        disabled: true,
-        icon: WheelBarrowEmpty
-      },
-      {
-        label: 'Contacts',
-        href: '/app/management',
-        disabled: true,
-        icon: ContactCardRegular
-      },
-      {
-        label: 'Contracts',
-        href: '/app/management',
-        disabled: true,
-        icon: ContractOutlineRounded
-      },
-      {
-        label: 'Documents',
-        href: '/app/management',
-        disabled: true,
-        icon: SolarDocumentsOutline
-      },
-      {
-        label: 'Lines',
-        href: '/app/management',
-        disabled: true,
-        icon: UilPhone
-      },
-      {
-        label: 'Certificates',
-        href: '/app/management',
-        disabled: true,
-        icon: FluentCertificateRegular
-      },
-      {
-        label: 'Datacenters',
-        href: '/app/management',
-        disabled: true,
-        icon: BuildingFour
-      },
-      {
-        label: 'Clusters',
-        href: '/app/management',
-        disabled: true,
-        icon: CarbonAssemblyCluster
-      },
-      {
-        label: 'Domains',
-        href: '/app/management',
-        disabled: true,
-        icon: StreamlinePlumpWeb
-      },
-      {
-        label: 'Appliances',
-        href: '/app/management',
-        disabled: true,
-        icon: PhDevices
-      },
-      {
-        label: 'Databases',
-        href: '/app/management',
-        disabled: true,
-        icon: StreamlinePlumpDatabase
-      }
-    ]
-  },
-  {
-    icon: IconoirTools,
-    label: 'Tools',
-    baseRoute: '/app/management',
-    navs: [
-      {
-        label: 'Project',
-        href: '/app/tools',
-        disabled: true,
-        icon: TablerTemplate
-      },
-      {
-        label: 'Reminders',
-        href: '/app/tools',
-        disabled: true,
-        icon: PhNotification
-      },
-      {
-        label: 'RSS Feed',
-        href: '/app/tools',
-        disabled: true,
-        icon: MeteorIconsRss
-      },
-      {
-        label: 'Knowledge Base',
-        href: '/app/tools',
-        disabled: true,
-        icon: HugeiconsKnowledge
-      },
-      {
-        label: 'Reservations',
-        href: '/app/tools',
-        disabled: true,
-        icon: AkarIconsSchedule
-      },
-      {
-        label: 'Reports',
-        href: '/app/tools',
-        disabled: true,
-        icon: TablerReport
-      },
-      {
-        label: 'Saved Searches',
-        href: '/app/tools',
-        disabled: true,
-        icon: FamiconsBookmarksOutline
-      }
-    ]
-  },
-  {
-    icon: TablerShieldCheck,
-    label: 'Administration',
-    baseRoute: '/app/administration',
-    navs: [
-      {
-        label: 'Users',
-        href: '/app/administration',
-        disabled: true,
-        icon: TablerUser
-      }
-    ]
-  }
+	{
+		icon: Package2Outline,
+		label: 'Assets',
+		baseRoute: '/app/assets',
+		navs: [
+			{
+				label: 'Dashboard',
+				href: '/app/assets',
+				disabled: true,
+				icon: BxsDashboard
+			},
+			{
+				label: 'Computer',
+				href: '/app/assets',
+				disabled: true,
+				icon: ComputerOutline
+			},
+			{
+				label: 'Monitor',
+				href: '/app/assets',
+				disabled: true,
+				icon: Monitor
+			},
+			{
+				label: 'Software',
+				href: '/app/assets',
+				disabled: true,
+				icon: Software
+			},
+			{
+				label: 'Network Devices',
+				href: '/app/assets',
+				disabled: true,
+				icon: NetworkLeft
+			},
+			{
+				label: 'Peripherals',
+				href: '/app/assets',
+				disabled: true,
+				icon: USB
+			},
+			{
+				label: 'Printers',
+				href: '/app/assets',
+				disabled: true,
+				icon: Printer
+			},
+			{
+				label: 'Cartridges',
+				href: '/app/assets',
+				disabled: true,
+				icon: InkOutline
+			},
+			{
+				label: 'Consumables',
+				href: '/app/assets',
+				disabled: true,
+				icon: Package2Outline
+			},
+			{
+				label: 'Phones',
+				href: '/app/assets',
+				disabled: true,
+				icon: Phone
+			},
+			{
+				label: 'Racks',
+				href: '/app/assets',
+				disabled: true,
+				icon: HDDRack
+			},
+			{
+				label: 'Enclosures',
+				href: '/app/assets',
+				disabled: true,
+				icon: ServerPathLinear
+			},
+			{
+				label: 'PUCs',
+				href: '/app/assets',
+				disabled: true,
+				icon: MapConnection
+			},
+			{
+				label: 'Passive Devices',
+				href: '/app/assets',
+				disabled: true,
+				icon: DeviceIpad
+			},
+			{
+				label: 'Unmanaged Devices',
+				href: '/app/assets',
+				disabled: true,
+				icon: Question24Filled
+			},
+			{
+				label: 'Cables',
+				href: '/app/assets',
+				disabled: true,
+				icon: Cable
+			},
+			{
+				label: 'Simcard Items',
+				href: '/app/assets',
+				disabled: true,
+				icon: Sim24Regular
+			},
+			{
+				label: 'Global',
+				href: '/app/assets',
+				disabled: true,
+				icon: GlobalStorageArchitecture
+			}
+		]
+	},
+	{
+		icon: HeadsetSolid,
+		label: 'Assistance',
+		baseRoute: '/app/assistance',
+		navs: [
+			{
+				label: 'Dashboard',
+				href: '/app/assistance/dashboard',
+				disabled: false,
+				icon: BxsDashboard
+			},
+			{
+				label: 'Tickets',
+				href: '/app/assistance/tickets',
+				disabled: false,
+				icon: TaskListSquare24Regular
+			},
+			{
+				label: 'Services',
+				href: '/app/assistance/services',
+				disabled: true,
+				icon: CRMService
+			},
+			{
+				label: 'Planning',
+				href: '/app/assistance/planning',
+				disabled: true,
+				icon: Calendar
+			},
+			{
+				label: 'Statistics',
+				href: '/app/assistance/statistics',
+				disabled: true,
+				icon: ChartPie
+			}
+		]
+	},
+	{
+		icon: LucideWallet,
+		label: 'Management',
+		baseRoute: '/app/management',
+		navs: [
+			{
+				label: 'Licences',
+				href: '/app/management',
+				disabled: true,
+				icon: CodiconKey
+			},
+			{
+				label: 'Budgets',
+				href: '/app/management',
+				disabled: true,
+				icon: SolarCalculatorOutline
+			},
+			{
+				label: 'Suppliers',
+				href: '/app/management',
+				disabled: true,
+				icon: WheelBarrowEmpty
+			},
+			{
+				label: 'Contacts',
+				href: '/app/management',
+				disabled: true,
+				icon: ContactCardRegular
+			},
+			{
+				label: 'Contracts',
+				href: '/app/management',
+				disabled: true,
+				icon: ContractOutlineRounded
+			},
+			{
+				label: 'Documents',
+				href: '/app/management',
+				disabled: true,
+				icon: SolarDocumentsOutline
+			},
+			{
+				label: 'Lines',
+				href: '/app/management',
+				disabled: true,
+				icon: UilPhone
+			},
+			{
+				label: 'Certificates',
+				href: '/app/management',
+				disabled: true,
+				icon: FluentCertificateRegular
+			},
+			{
+				label: 'Datacenters',
+				href: '/app/management',
+				disabled: true,
+				icon: BuildingFour
+			},
+			{
+				label: 'Clusters',
+				href: '/app/management',
+				disabled: true,
+				icon: CarbonAssemblyCluster
+			},
+			{
+				label: 'Domains',
+				href: '/app/management',
+				disabled: true,
+				icon: StreamlinePlumpWeb
+			},
+			{
+				label: 'Appliances',
+				href: '/app/management',
+				disabled: true,
+				icon: PhDevices
+			},
+			{
+				label: 'Databases',
+				href: '/app/management',
+				disabled: true,
+				icon: StreamlinePlumpDatabase
+			}
+		]
+	},
+	{
+		icon: IconoirTools,
+		label: 'Tools',
+		baseRoute: '/app/management',
+		navs: [
+			{
+				label: 'Project',
+				href: '/app/tools',
+				disabled: true,
+				icon: TablerTemplate
+			},
+			{
+				label: 'Reminders',
+				href: '/app/tools',
+				disabled: true,
+				icon: PhNotification
+			},
+			{
+				label: 'RSS Feed',
+				href: '/app/tools',
+				disabled: true,
+				icon: MeteorIconsRss
+			},
+			{
+				label: 'Knowledge Base',
+				href: '/app/tools',
+				disabled: true,
+				icon: HugeiconsKnowledge
+			},
+			{
+				label: 'Reservations',
+				href: '/app/tools',
+				disabled: true,
+				icon: AkarIconsSchedule
+			},
+			{
+				label: 'Reports',
+				href: '/app/tools',
+				disabled: true,
+				icon: TablerReport
+			},
+			{
+				label: 'Saved Searches',
+				href: '/app/tools',
+				disabled: true,
+				icon: FamiconsBookmarksOutline
+			}
+		]
+	},
+	{
+		icon: TablerShieldCheck,
+		label: 'Administration',
+		baseRoute: '/app/administration',
+		navs: [
+			{
+				label: 'Users',
+				href: '/app/administration',
+				disabled: true,
+				icon: TablerUser
+			}
+		]
+	}
 ];
 
-export function getUserNaviation(user: UserDetails) {
-  if (!user.is_staff) {
-    return APP_NAVIGATION.filter((nav) => ['Assistance'].includes(nav.label));
-  }
-  return APP_NAVIGATION;
+export function getUserNaviation(user: UserResponseData) {
+	if (!user.user.is_staff && !user.groups && !user.queues) {
+		return APP_NAVIGATION.filter((nav) => ['Assistance'].includes(nav.label));
+	}
+	return APP_NAVIGATION;
 }
