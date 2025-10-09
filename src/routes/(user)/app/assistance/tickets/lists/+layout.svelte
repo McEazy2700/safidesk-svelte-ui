@@ -1,7 +1,6 @@
 <script>
 	import ASubNavItem from '$lib/components/atoms/a-sub-nav-item.svelte';
 	import BoardSplit28Regular from '$lib/components/icons/board-split-28-regular.svelte';
-	import HeadsetStroke16 from '$lib/components/icons/headset-stroke-16.svelte';
 	import MenuAlt2 from '$lib/components/icons/menu-alt-2.svelte';
 	import { twMerge } from 'tailwind-merge';
 	import { page } from '$app/state';
@@ -10,6 +9,7 @@
 	import { resolve } from '$app/paths';
 	import CharmPlus from '$lib/components/icons/charm-plus.svelte';
 	import MTicketsFilter from '$lib/components/molecules/m-tickets-filter.svelte';
+	import HugeiconsAiLine from '$lib/components/icons/hugeicons-ai-line.svelte';
 
 	let sideopen = $state(true);
 	let { children, data } = $props();
@@ -43,10 +43,10 @@
 					</span>
 				</ASubNavItem>
 			{/each}
-			<ASubNavItem pathname="/app/assistance/tickets/lists/chat" query={{ title: 'Live Chat' }}>
+			<ASubNavItem pathname="/app/assistance/tickets/lists/chat" query={{ title: 'SafiDesk AI' }}>
 				<div class="flex items-center gap-2">
-					<HeadsetStroke16 />
-					<span>Live Chat</span>
+					<HugeiconsAiLine />
+					<span>SafiDesk AI</span>
 				</div>
 			</ASubNavItem>
 			<ASubNavItem pathname="/app/assistance/tickets/lists/boards" query={{ title: 'Boards' }}>

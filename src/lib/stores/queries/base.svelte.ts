@@ -40,6 +40,7 @@ export class BaseListQueryStore<T, A extends TDataShape> {
       headers: { Authorization: `Bearer ${tokens?.access}` },
       ...options
     } as any);
+    console.log(res);
     const data = this.loadFn(res);
     this.list = [...this.list, ...data];
     this.hasMore = !!res.next;
@@ -93,7 +94,6 @@ export class BaseItemQueryStore<T, A extends TDataShape> {
 
     if (res.error || !res.data) {
       const response = cast<any>(res);
-      console.log(response);
       if (response.response.status === 500) {
         this.loading = false;
         Toast.append({

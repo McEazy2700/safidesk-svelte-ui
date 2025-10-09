@@ -4,7 +4,7 @@
 	import HumbleiconsLogout from '$lib/components/icons/humbleicons-logout.svelte';
 	import ONavigation from '$lib/components/organisms/o-navigation.svelte';
 	import COOKIES from '$lib/constants/cookies.js';
-	import { APP_NAVIGATION } from '$lib/constants/navigation/app';
+	import { getUserNaviation } from '$lib/constants/navigation/app';
 	import { getAppNavState } from '$lib/stores/navigation.svelte';
 	import { UsersStore } from '$lib/stores/queries/users.svelte.js';
 	import { clearCookie } from '$lib/utils/cookies.js';
@@ -65,7 +65,7 @@
 				navState.open && 'w-60'
 			)}
 		>
-			<ONavigation navigation={APP_NAVIGATION} navOpen={navState.open} />
+			<ONavigation navigation={getUserNaviation(data.user.user)} navOpen={navState.open} />
 		</aside>
 		<div class="h-[calc(100vh-70px)] flex-1 rounded-xl bg-base-200 transition-all">
 			{@render children?.()}

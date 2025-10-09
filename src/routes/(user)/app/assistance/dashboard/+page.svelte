@@ -12,9 +12,9 @@
 <div
 	class="flex h-[calc(100vh-70px)] flex-col items-center justify-center gap-4 overflow-y-auto pb-10"
 >
-	<div class="mt-96 flex items-center gap-1">
+	<div class="mt-96 flex flex-col items-center gap-1">
 		<ALogo />
-		<h1 class="text-2xl font-bold">Assistance</h1>
+		<h1 class="text-2xl font-bold">How can we help you?</h1>
 	</div>
 	<div class="flex flex-col items-center justify-center gap-8 pt-2">
 		<ASearchInput class="w-full max-w-2xl rounded-full p-6 text-xl text-base-content" />
@@ -37,11 +37,11 @@
 				color="blue"
 				prompt="View Solutions"
 				description="Find self-help articles and answers to common questions immediately. No ticket needed."
-				href="/app/assistance/tickets/lists/chat?title=Live+Chat"
+				href="/app/assistance/tickets/lists/chat?title=SafiDesk+AI"
 				icon={HugeiconsAiIdea}
 			/>
 		</div>
-		<div class="mt-10 flex w-full items-start gap-4">
+		<div class="mt-10 flex w-full max-w-6xl items-start gap-4">
 			<div class="flex-1">
 				<div class="flex w-full flex-col gap-3">
 					<div class="flex w-full flex-col border-b border-black/5 pb-2">

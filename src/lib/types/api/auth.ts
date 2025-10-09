@@ -15,27 +15,28 @@ export type LoginResponse = {
   };
 };
 
+export type UserDetails = {
+  id: number;
+  username: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+  is_active: boolean;
+  is_staff: boolean;
+  date_joined: string;
+};
+
 export type GetCurrentAuthUser = {
   success: boolean;
   message: string;
   data: {
-    user: {
-      id: number,
-      username: string,
-      email: string,
-      first_name: string,
-      last_name: string,
-      is_active: boolean,
-      is_staff: boolean,
-      date_joined: string
-    },
-    groups: { id: number, name: string }[],
+    user: UserDetails;
+    groups: { id: number; name: string }[];
     queues: {
-      queue_id: number,
-      queue_title: string,
-      group_id: number,
-      group_name: string
-    }[]
-  }
-  ;
+      queue_id: number;
+      queue_title: string;
+      group_id: number;
+      group_name: string;
+    }[];
+  };
 };

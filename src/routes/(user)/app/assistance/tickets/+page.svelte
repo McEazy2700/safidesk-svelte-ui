@@ -6,8 +6,17 @@
 	import CharmPlus from '$lib/components/icons/charm-plus.svelte';
 	import MSummaryCountItem from '$lib/components/molecules/m-summary-count-item.svelte';
 	import OTicketList from '$lib/components/organisms/o-ticket-list.svelte';
+	import { TicketStatsStore } from '$lib/stores/queries/ticket-stats-svelte.js';
 
 	let { data } = $props();
+
+	$effect(() => {
+		TicketStatsStore.load({});
+	});
+
+	$effect(() => {
+		console.log(TicketStatsStore.data);
+	});
 </script>
 
 <ATicketScreen>
@@ -30,18 +39,24 @@
 			<MSummaryCountItem
 				showTrend={data.user.user.is_staff}
 				label="Total Tickets"
-				count={200}
+				count={TicketStatsStore.data?.data.total_tickets ?? 0}
+				lastMonthCount={0}
 				primary
 			/>
 			<MSummaryCountItem
 				showTrend={data.user.user.is_staff}
 				label="Pending Tickets"
-				lastMonthCount={200}
-				count={90}
+				lastMonthCount={0}
+				count={TicketStatsStore.data?.data.unassigned_tickets ?? 0}
 			/>
-			<MSummaryCountItem showTrend={data.user.user.is_staff} label="Assigned Tickets" count={10} />
-			<MSummaryCountItem showTrend={data.user.user.is_staff} label="Solved Tickets" count={34} />
-			<MSummaryCountItem showTrend={data.user.user.is_staff} label="Closed Tickets" count={29} />
+			<MSummaryCountItem
+				showTrend={data.user.user.is_staff}
+				label="Assigned Tickets"
+				lastMonthCount={0}
+				count={TicketStatsStore.data?.data.assigned_tickets ?? 0}
+			/>
+			<MSummaryCountItem showTrend={data.user.user.is_staff} label="Solved Tickets" count={0} />
+			<MSummaryCountItem showTrend={data.user.user.is_staff} label="Closed Tickets" count={0} />
 		</div>
 		<div class="flex w-full items-start gap-4">
 			<div class="flex-1 rounded-xl bg-white p-4">

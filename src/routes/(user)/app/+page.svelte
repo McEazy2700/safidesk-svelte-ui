@@ -1,12 +1,14 @@
 <script>
 	import ALogo from '$lib/components/atoms/a-logo.svelte';
 	import ASearchInput from '$lib/components/atoms/a-search-input.svelte';
-	import { APP_NAVIGATION } from '$lib/constants/navigation/app';
 	import { resolve } from '$app/paths';
 	import { cast } from '$lib/utils/typing';
 	import { twMerge } from 'tailwind-merge';
+	import { getUserNaviation } from '$lib/constants/navigation/app';
 
-	const DashboardNavs = APP_NAVIGATION.map((n) => ({
+	let { data } = $props();
+
+	const DashboardNavs = getUserNaviation(data.user.user).map((n) => ({
 		name: n.label,
 		href: n.baseRoute,
 		icon: n.icon

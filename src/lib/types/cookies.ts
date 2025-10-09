@@ -1,7 +1,7 @@
-import type { AuthUser } from "./api/auth";
+import type { UserDetails } from './api/auth';
 
 export type AuthTokens = {
   refresh: string;
   access: string;
-  user?: AuthUser;
+  user?: UserDetails;
 };

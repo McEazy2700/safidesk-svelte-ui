@@ -36,12 +36,15 @@
 </script>
 
 <div
-	class="flex max-w-xs flex-col gap-2 rounded-2xl border border-black/5 p-4 shadow-xl shadow-black/5"
+	class="flex max-w-xs flex-col gap-6 rounded-2xl border border-black/5 p-4 shadow-xl shadow-black/5"
 >
 	<div class="flex items-center justify-between gap-4">
 		<Icon class={colors[color].text} size={70} />
 		<a
-			class={twMerge('rounded-xl p-2 px-4 text-lg font-semibold text-white', colors[color].bg)}
+			class={twMerge(
+				'rounded-xl p-2 px-4 text-lg font-semibold text-white transition-all hover:scale-110',
+				colors[color].bg
+			)}
 			href={resolve(cast<Unknown>(String(href)))}
 		>
 			{prompt}
