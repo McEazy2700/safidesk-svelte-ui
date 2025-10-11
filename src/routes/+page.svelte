@@ -1,94 +1,65 @@
 <script lang="ts">
-	import { Toast } from '$lib/stores/toast.svelte.js';
-	import { superForm } from 'sveltekit-superforms';
+	import ALogo from '$lib/components/atoms/a-logo.svelte';
+	import { resolve } from '$app/paths';
+	import ACarousel from '$lib/components/atoms/a-carousel.svelte';
 
-	let { data } = $props();
-
-	const { form, errors, constraints, delayed, enhance } = superForm(data.loginForm, {
-		onUpdate: (v) => {
-			if (v.form.message?.status === 'error') {
-				v.form.message.messages.forEach((m) => {
-					if (typeof m === 'string') {
-						Toast.append({ message: m, type: 'error' });
-					}
-				});
-			}
-		}
-	});
+	const HERO_VIDEOS = [
+		'https://videos.pexels.com/video-files/8048483/8048483-hd_1080_1920_25fps.mp4',
+		'https://videos.pexels.com/video-files/8865602/8865602-hd_1080_1920_25fps.mp4',
+		'https://videos.pexels.com/video-files/4708366/4708366-uhd_1440_2732_25fps.mp4',
+		'https://videos.pexels.com/video-files/5377992/5377992-uhd_1440_2560_25fps.mp4',
+		'https://videos.pexels.com/video-files/5377976/5377976-uhd_1440_2560_25fps.mp4'
+	];
 </script>
 
-<!-- <div class="flex h-screen w-screen items-center justify-center bg-black/10"> -->
-<!-- 	<div class="flex items-start overflow-hidden rounded-2xl bg-white shadow-lg"> -->
-<!-- 	</div> -->
-<!-- </div> -->
-
-<div class="flex h-screen w-screen">
-	<div class="flex flex-1 flex-col justify-between p-2">
-		<div
-			class="relative flex flex-1 flex-col justify-between overflow-hidden rounded-3xl bg-white shadow-xl shadow-black/5"
+<nav class="flex items-center justify-between p-4 pr-8">
+	<ALogo />
+	<div
+		class="flex items-center gap-4 rounded-full bg-black/10 p-2 px-4 font-medium backdrop-blur-md"
+	>
+		<a href={resolve('/')}>Home</a>
+		<a href={resolve('/')}>About</a>
+		<a href={resolve('/')}>Features</a>
+	</div>
+	<div>
+		<a
+			class="rounded-full bg-black/10 p-2 px-4 font-medium backdrop-blur-md"
+			href={resolve('/auth/login')}
 		>
-			<div class="flex flex-col items-center rounded-3xl bg-neutral p-4 py-20 text-neutral-content">
-				<h2 class="text-2xl font-semibold">Welcome Back</h2>
-				<p>Sign In to continue to SafiDesk</p>
-			</div>
-			<img
-				src="/images/logo.png"
-				class="absolute top-44 right-1/2 h-20 w-20 translate-x-1/2 rounded-full border bg-white p-2"
-				alt=""
-			/>
-			<div class="mt-10 flex w-full flex-1 justify-center px-2">
-				<form method="post" class="w-full max-w-2xl p-4" use:enhance>
-					<fieldset disabled={$delayed} class="fieldset">
-						<div>
-							<label for="username" class="label mb-1">Username</label>
-							<input
-								bind:value={$form.username}
-								name="username"
-								aria-invalid={$errors.username ? 'true' : undefined}
-								class="validator input input-lg w-full"
-								placeholder="JohnDoe235"
-								{...$constraints.username}
-							/>
-							{#if $errors.username}
-								<span class="validator-hint">{$errors.username}</span>
-							{/if}
-						</div>
-						<div>
-							<label for="password" class="label mt-4 mb-1">Password</label>
-							<input
-								name="password"
-								type="password"
-								class="input input-lg w-full"
-								placeholder="Password"
-								bind:value={$form.password}
-								aria-invalid={$errors.password ? 'true' : undefined}
-								{...$constraints.password}
-							/>
-							{#if $errors.password}
-								<span class="validator-hint">{$errors.password}</span>
-							{/if}
-						</div>
+			Login
+		</a>
+	</div>
+</nav>
 
-						<button disabled={$delayed} class="btn mt-4 btn-lg btn-neutral">
-							{#if $delayed}
-								<span class="loading loading-spinner"></span>
-							{:else}
-								Login
-							{/if}
-						</button>
-					</fieldset>
-				</form>
-			</div>
-		</div>
-		<div class="mt-2 flex w-full items-center justify-center">
-			<span class="text-xs opacity-65">&copy; 2024 safidesk</span>
+<div class="flex items-center gap-8 p-4 lg:gap-14 lg:p-8 xl:p-16">
+	<div class="flex flex-1 flex-col gap-4">
+		<h1 class="text-7xl font-semibold">Service Management, Simplified.</h1>
+		<p class="text-xl font-light">
+			The modern, unified ITSM platform designed for IT efficiency and user satisfaction.
+		</p>
+		<div class="mt-4 flex items-center gap-4">
+			<a href={resolve('/')} class="rounded-full bg-base-content p-4 px-8 text-base-200"
+				>Learn More</a
+			>
+			<a href={resolve('/auth/login')} class="rounded-full bg-base-content/20 p-4 px-10">Sign In</a>
 		</div>
 	</div>
-	<figure class="flex-1 p-2">
-		<img
-			src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-			alt="it-professional"
-			class="h-full w-full rounded-3xl object-cover"
-		/>
-	</figure>
+	<div class="flex h-[80vh] flex-[0.8] items-center justify-center">
+		<ACarousel class="h-[70vh]" speed="30s" reverse>
+			{#each HERO_VIDEOS as video, index (index)}
+				<div class="mb-4 aspect-[160/270] w-52 overflow-hidden rounded-4xl bg-base-content/10">
+					<video class="h-full w-full object-cover" src={video} autoplay loop playsinline muted
+					></video>
+				</div>
+			{/each}
+		</ACarousel>
+		<ACarousel class="h-[70vh]" speed="30s">
+			{#each HERO_VIDEOS as video, index (index)}
+				<div class="mb-4 aspect-[160/270] w-52 overflow-hidden rounded-4xl bg-base-content/10">
+					<video class="h-full w-full object-cover" src={video} autoplay loop playsinline muted
+					></video>
+				</div>
+			{/each}
+		</ACarousel>
+	</div>
 </div>
