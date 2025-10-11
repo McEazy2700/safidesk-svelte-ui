@@ -12,10 +12,10 @@
 	];
 </script>
 
-<nav class="flex items-center justify-between p-4 pr-8">
+<nav class="fixed inset-x-0 top-0 z-[1000] flex items-center justify-between p-4 pr-8">
 	<ALogo />
 	<div
-		class="flex items-center gap-4 rounded-full bg-black/10 p-2 px-4 font-medium backdrop-blur-md"
+		class="flex items-center gap-4 rounded-full bg-black/10 p-4 px-8 font-medium backdrop-blur-md"
 	>
 		<a href={resolve('/')}>Home</a>
 		<a href={resolve('/')}>About</a>
@@ -23,7 +23,7 @@
 	</div>
 	<div>
 		<a
-			class="rounded-full bg-black/10 p-2 px-4 font-medium backdrop-blur-md"
+			class="rounded-full bg-black/10 p-4 px-8 font-medium backdrop-blur-md"
 			href={resolve('/auth/login')}
 		>
 			Login
@@ -31,7 +31,7 @@
 	</div>
 </nav>
 
-<div class="flex items-center gap-8 p-4 lg:gap-14 lg:p-8 xl:p-16">
+<div class="mt-14 flex items-center gap-8 p-4 lg:gap-14 lg:p-8 xl:p-16">
 	<div class="flex flex-1 flex-col gap-4">
 		<h1 class="text-7xl font-semibold">Service Management, Simplified.</h1>
 		<p class="text-xl font-light">
@@ -61,5 +61,56 @@
 				</div>
 			{/each}
 		</ACarousel>
+	</div>
+</div>
+<div class="flex flex-col items-center">
+	<div class="mt-8 flex flex-col items-center gap-4">
+		<h2 class="max-w-lg text-center text-4xl font-extrabold">
+			Powerful Features to Streamline Your Workflow
+		</h2>
+		<p class="max-w-2xl text-center">
+			SafiDesk is built to remove the complexity of IT service management. We focus on giving your
+			team the tools they need to be more efficient, reduce response times, and provide exceptional
+			support.
+		</p>
+	</div>
+	<div class="flex items-center gap-8">
+		<div class="max-w-sm rounded-xl bg-white p-3 shadow-xl shadow-black/5">
+			<h3 class="mb-2 py-1 text-xl font-bold">Automated Ticket Routing</h3>
+			<img
+				class="aspect-square w-full rounded-md border border-black/5 bg-base-200 object-cover"
+				src="https://img.freepik.com/free-vector/web-page-visualization-protocol-procedure-dynamic-software-workflow-full-stack-development-markup-administrate-system-driver-shared-memory-vector-isolated-concept-metaphor-illustration_335657-4299.jpg"
+				alt=""
+			/>
+			<p class="p-2 text-center text-sm text-base-content/70">
+				Our system automatically routes new requests to the correct agent or team based on keywords,
+				issue type, or priority, ensuring every ticket is handled promptly by the right expert.
+			</p>
+		</div>
+		<div class="mt-24 max-w-sm rounded-xl bg-white p-3 shadow-xl shadow-black/5">
+			<h3 class="mb-2 py-1 text-xl font-bold">Intuitive Knowledge Base</h3>
+			<img
+				class="aspect-square w-full rounded-md border border-black/5 bg-base-200 object-cover"
+				src="https://img.freepik.com/free-photo/books-with-brain-digital-art-style-education-day_23-2151164350.jpg"
+				alt=""
+			/>
+			<p class="p-2 text-center text-sm text-base-content/70">
+				Our integrated knowledge base makes it easy to create and share help articles, guides, and
+				FAQs, significantly reducing the number of repeat questions your team receives.
+			</p>
+		</div>
+		<div class="mt-48 max-w-sm rounded-xl bg-white p-3 shadow-xl shadow-black/5">
+			<h3 class="mb-2 py-1 text-xl font-bold">Real-time Analytics Dashboard</h3>
+			<img
+				class="aspect-square w-full rounded-md border border-black/5 bg-base-200 object-cover"
+				src="https://img.freepik.com/free-vector/social-media-data-center-smm-stats-digital-marketing-research-market-trends-analysis-female-expert-studying-online-survey-results_335657-2392.jpg"
+				alt=""
+			/>
+			<p class="p-2 text-center text-sm text-base-content/70">
+				Gain a clear overview of your team's performance with customizable dashboards. Monitor key
+				metrics like ticket volume, resolution times, and customer satisfaction to make data-driven
+				decisions and optimize your support operations.
+			</p>
+		</div>
 	</div>
 </div>
