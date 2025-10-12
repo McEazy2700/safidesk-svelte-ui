@@ -7,6 +7,7 @@
 	import ALogo from '$lib/components/atoms/a-logo.svelte';
 	import { NOTIFICATIONS, POPULAR_SOLUTIONS } from '$lib/constants/mocks/solutions';
 	import { formatToFriendlyDateTime } from '$lib/utils/time';
+	import ANotifications from '$lib/components/atoms/a-notifications.svelte';
 </script>
 
 <div class="h-[calc(100vh-70px)] overflow-y-auto">
@@ -57,25 +58,7 @@
 				</div>
 				<div class="mx-8 h-[300px] w-px self-center bg-black/5"></div>
 				<div class="flex-1">
-					<div class="flex w-full flex-col gap-3">
-						<div class="flex w-full flex-col border-b border-black/5 pb-2">
-							<h4 class="self-center">Notifications</h4>
-						</div>
-						{#each NOTIFICATIONS as notification, index (index)}
-							<div class="border-b border-black/5 p-2">
-								<span class="text-lg font-bold">{notification.title}</span>
-								<div class="flex items-end justify-between">
-									<p>{notification.summary}</p>
-									<time
-										class="text-xs whitespace-nowrap"
-										datetime={new Date(notification.date).toISOString()}
-									>
-										{formatToFriendlyDateTime(notification.date)}
-									</time>
-								</div>
-							</div>
-						{/each}
-					</div>
+					<ANotifications />
 				</div>
 			</div>
 		</div>

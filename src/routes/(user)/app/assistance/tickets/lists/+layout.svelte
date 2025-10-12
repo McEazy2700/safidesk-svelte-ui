@@ -87,7 +87,10 @@
 		{#if !page.url.pathname.endsWith('/new')}
 			<a
 				href={resolve('/app/assistance/tickets/lists/new')}
-				class="btn fixed right-6 bottom-6 z-[1000] h-[60px] w-[60px] justify-end overflow-hidden rounded-full p-0 pr-4 transition-all duration-300 btn-lg btn-info hover:w-[180px]"
+				class={twMerge(
+					'btn fixed right-6 z-[1000] h-[60px] w-[60px] justify-end overflow-hidden rounded-full p-0 pr-4 transition-all duration-300 btn-lg btn-info hover:w-[180px]',
+					page.url.pathname === '/app/assistance/tickets/lists/chat' ? 'top-[72px]' : 'bottom-6 '
+				)}
 			>
 				<div class="relative flex items-center justify-center">
 					<span class="absolute right-11 whitespace-nowrap">New Ticket</span>

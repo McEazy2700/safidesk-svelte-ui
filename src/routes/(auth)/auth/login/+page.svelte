@@ -17,13 +17,8 @@
 	});
 </script>
 
-<!-- <div class="flex h-screen w-screen items-center justify-center bg-black/10"> -->
-<!-- 	<div class="flex items-start overflow-hidden rounded-2xl bg-white shadow-lg"> -->
-<!-- 	</div> -->
-<!-- </div> -->
-
-<div class="flex h-screen w-screen">
-	<div class="flex flex-1 flex-col justify-between p-2">
+<div class="flex h-screen w-screen items-center justify-center">
+	<div class="flex max-w-lg flex-1 flex-col justify-between p-2">
 		<div
 			class="relative flex flex-1 flex-col justify-between overflow-hidden rounded-3xl bg-white shadow-xl shadow-black/5"
 		>
@@ -69,7 +64,7 @@
 							{/if}
 						</div>
 
-						<button disabled={$delayed} class="btn mt-4 btn-lg btn-neutral">
+						<button disabled={$delayed} class="btn mt-14 btn-lg btn-neutral">
 							{#if $delayed}
 								<span class="loading loading-spinner"></span>
 							{:else}
@@ -84,11 +79,4 @@
 			<span class="text-xs opacity-65">&copy; 2024 safidesk</span>
 		</div>
 	</div>
-	<figure class="flex-1 p-2">
-		<img
-			src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-			alt="it-professional"
-			class="h-full w-full rounded-3xl object-cover"
-		/>
-	</figure>
 </div>

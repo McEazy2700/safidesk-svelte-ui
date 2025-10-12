@@ -10,15 +10,23 @@
 		primary?: boolean;
 		showTrend?: boolean;
 		lastMonthCount?: number;
+		description?: string;
 	};
 
-	let { label, count, primary, lastMonthCount = 0, showTrend = true }: Props = $props();
+	let {
+		label,
+		count,
+		primary,
+		lastMonthCount = 0,
+		showTrend = false,
+		description
+	}: Props = $props();
 	let percentage = $derived((count * (100 / (count - lastMonthCount))).toFixed(0).replace('-', ''));
 </script>
 
 <div
 	class={twMerge(
-		'flex flex-col gap-3 rounded-xl bg-white p-4',
+		'flex h-full flex-1 flex-col gap-3 rounded-xl bg-white p-4',
 		primary && 'bg-secondary text-secondary-content'
 	)}
 >
@@ -27,6 +35,11 @@
 		<ACountUp target={count} />
 	</span>
 
+	{#if description}
+		<div class="text-sm0 flex items-center gap-1 rounded-lg text-base-content/70">
+			<span>{description}</span>
+		</div>
+	{/if}
 	{#if showTrend}
 		<div>
 			{#if lastMonthCount < count}
