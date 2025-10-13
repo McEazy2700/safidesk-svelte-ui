@@ -16,7 +16,6 @@
 		icon: n.icon
 	}));
 	const userType = getUserType(data.user);
-	console.log(data.user)
 </script>
 
 {#if userType === 'staff'}

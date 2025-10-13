@@ -13,10 +13,6 @@
 	$effect(() => {
 		TicketStatsStore.load({});
 	});
-
-	$effect(() => {
-		console.log(TicketStatsStore.data);
-	});
 </script>
 
 <ATicketScreen>
