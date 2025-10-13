@@ -114,6 +114,9 @@ importers:
       '@eslint/js':
         specifier: ^9.22.0
         version: 9.35.0
+      '@event-calendar/core':
+        specifier: ^4.7.0
+        version: 4.7.0
       '@hey-api/openapi-ts':
         specifier: 0.84.2
         version: 0.84.2(typescript@5.9.2)
@@ -135,6 +138,9 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.0.0
         version: 4.1.13(vite@7.1.6(@types/node@22.18.6)(jiti@2.5.1)(lightningcss@1.30.1)(sass-embedded@1.93.2)(sass@1.93.2))
+      '@types/event-calendar__core':
+        specifier: ^4.7.0
+        version: 4.7.0
       '@types/lodash.throttle':
         specifier: ^4.1.9
         version: 4.1.9
@@ -416,6 +422,9 @@ packages:
   '@eslint/plugin-kit@0.3.5':
     resolution: {integrity: sha512-Z5kJ+wU3oA7MMIqVR9tyZRtjYPr4OC004Q4Rw7pgOKUOKkJfZ3O24nz3WYfGRpMDNmcOi3TwQOmgm7B7Tpii0w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@event-calendar/core@4.7.0':
+    resolution: {integrity: sha512-gAMihb0L55LQK+mWJoOAAAtEdPhcBcIzthfH3u6WOcqDeQb/Z/iQcnSDEmBprJ6G9Z6YRVeGPOweLW3+eNciwA==}
 
   '@exodus/schemasafe@1.3.0':
     resolution: {integrity: sha512-5Aap/GaRupgNx/feGBwLLTVv8OQFfv3pq2lPRzPg9R+IOBnDgghTGW7l7EuVXOvg5cc/xSAlRW8rBrjIC3Nvqw==}
@@ -1416,6 +1425,9 @@ packages:
 
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
+
+  '@types/event-calendar__core@4.7.0':
+    resolution: {integrity: sha512-SPtSChJyamYDR92iMiARvS/3mK9tg6Imb9dO8sbTpqLzU7mRc6Sj8uSbnT0rzEz3NASjF3ChDelclJNplfXmTQ==}
 
   '@types/hast@3.0.4':
     resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
@@ -3347,6 +3359,10 @@ snapshots:
       '@eslint/core': 0.15.2
       levn: 0.4.1
 
+  '@event-calendar/core@4.7.0':
+    dependencies:
+      svelte: 5.39.2
+
   '@exodus/schemasafe@1.3.0':
     optional: true
 
@@ -4315,6 +4331,10 @@ snapshots:
   '@types/cookie@0.6.0': {}
 
   '@types/estree@1.0.8': {}
+
+  '@types/event-calendar__core@4.7.0':
+    dependencies:
+      svelte: 5.39.2
 
   '@types/hast@3.0.4':
     dependencies:

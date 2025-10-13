@@ -17,6 +17,7 @@
 	"devDependencies": {
 		"@eslint/compat": "^1.2.5",
 		"@eslint/js": "^9.22.0",
+		"@event-calendar/core": "^4.7.0",
 		"@hey-api/openapi-ts": "0.84.2",
 		"@sveltejs/adapter-node": "^5.2.12",
 		"@sveltejs/kit": "^2.43.2",
@@ -24,6 +25,7 @@
 		"@tailwindcss/forms": "^0.5.9",
 		"@tailwindcss/typography": "^0.5.15",
 		"@tailwindcss/vite": "^4.0.0",
+		"@types/event-calendar__core": "^4.7.0",
 		"@types/lodash.throttle": "^4.1.9",
 		"@types/node": "^22",
 		"@types/pikaday": "^1.7.9",
