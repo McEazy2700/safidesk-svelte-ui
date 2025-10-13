@@ -5,14 +5,13 @@
 	import HugeiconsAiIdea from '$lib/components/icons/hugeicons-ai-idea.svelte';
 	import ASearchInput from '$lib/components/atoms/a-search-input.svelte';
 	import ALogo from '$lib/components/atoms/a-logo.svelte';
-	import { NOTIFICATIONS, POPULAR_SOLUTIONS } from '$lib/constants/mocks/solutions';
-	import { formatToFriendlyDateTime } from '$lib/utils/time';
+	import { POPULAR_SOLUTIONS } from '$lib/constants/mocks/solutions';
 	import ANotifications from '$lib/components/atoms/a-notifications.svelte';
 </script>
 
 <div class="h-[calc(100vh-70px)] overflow-y-auto">
 	<div class="flex flex-col items-center justify-center gap-4 pb-10">
-		<div class="mt-40 flex flex-col items-center gap-1">
+		<div class="mt-24 flex flex-col items-center gap-1">
 			<ALogo />
 			<h1 class="text-2xl font-bold">How can we help you?</h1>
 		</div>

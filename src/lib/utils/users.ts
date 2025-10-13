@@ -4,7 +4,7 @@ export function getUserType(user: UserResponseData) {
   if (user.user.is_staff) {
     return "admin";
   }
-  if (!user.user.is_staff && !user.groups && !user.queues) {
+  if (!user.user.is_staff && !user.groups?.length && !user.queues?.length) {
     return "user";
   }
   return "staff";

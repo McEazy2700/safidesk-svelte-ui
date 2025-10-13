@@ -8,6 +8,7 @@ import { cast } from "$lib/utils/typing";
 import type { GetCurrentAuthUser, LoginResponse } from "$lib/types/api/auth";
 import type { AuthTokens } from "$lib/types/cookies";
 import COOKIES from "$lib/constants/cookies";
+import { getUserType } from "$lib/utils/users";
 
 export const load = async () => {
 	const loginForm: LoginForm = await superValidate(zod(loginSchema));
@@ -46,8 +47,6 @@ export const actions: Actions = {
 
 		const userData = cast<GetCurrentAuthUser>(userRes.data);
 
-		console.log(userData.data);
-
 		if (data) {
 			const tokens: AuthTokens = {
 				refresh: data.data.refresh,
@@ -65,11 +64,9 @@ export const actions: Actions = {
 				maxAge: 60 * 60 * 24 * 7,
 			});
 
-			if (
-				!tokens.user?.user?.is_staff &&
-				!tokens.user?.groups &&
-				!tokens?.user?.queues
-			) {
+			const userType = getUserType(userData.data);
+
+			if (userType === "user") {
 				throw redirect(301, "/app/assistance/dashboard");
 			}
 			throw redirect(301, "/app");
