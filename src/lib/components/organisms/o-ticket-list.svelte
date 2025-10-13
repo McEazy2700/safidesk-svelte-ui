@@ -23,7 +23,7 @@
 			} else if (user.user.username === 'admin') {
 				return undefined;
 			} else if (user.user.is_staff) {
-				return user.queues.map((v) => v.queue_id);
+				return user.queues?.map((v) => v.queue_id);
 			}
 			return undefined;
 		})()

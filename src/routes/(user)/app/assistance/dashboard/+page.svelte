@@ -16,7 +16,7 @@
 
 <div class="h-[calc(100vh-70px)] overflow-y-auto">
 	{#if userType !== 'user'}
-		<StaffAssisntanceDashboard />
+		<StaffAssisntanceDashboard user={data.user} />
 	{:else}
 		<div class="flex flex-col items-center justify-center gap-4 pb-10">
 			<div class="mt-24 flex flex-col items-center gap-1">
