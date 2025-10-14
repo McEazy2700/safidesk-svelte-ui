@@ -5,6 +5,7 @@
 	import OTicketList from '$lib/components/organisms/o-ticket-list.svelte';
 	import ANotifications from '$lib/components/atoms/a-notifications.svelte';
 	import type { UserResponseData } from '$lib/types/api/auth';
+	import { formatToFriendlyDateTime } from '$lib/utils/time';
 
 	type Props = {
 		user: UserResponseData;
@@ -54,15 +55,41 @@
 </script>
 
 <div class="p-5">
-	<div class="flex flex-col gap-4">
-		<h1 class="text-3xl font-bold">Summary</h1>
-		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+	<div class="flex items-center justify-between">
+		<div class="flex-1 text-lg">
+			<p>Welcome,</p>
+			<h1 class="text-4xl font-bold">{user.user.username}</h1>
+			<div class="text-sm">
+				<span class="text-base-content/40">last login</span>
+				<span>- {formatToFriendlyDateTime(new Date())}</span>
+			</div>
+		</div>
+		<div class="grid flex-[1.5] grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-2">
 			<MSummaryCountItem
-				label="Open Tickets"
+				size="sm"
+				showTrend
+				label="Total Tickets"
 				count={TicketStatsStore.data?.data.total_tickets ?? 0}
+				lastMonthCount={0}
 			/>
-			<MSummaryCountItem label="Services to Fulfill" count={4} />
-			<MSummaryCountItem label="Due Today" count={2} />
+			<MSummaryCountItem
+				size="sm"
+				description={`Last updated: ${formatToFriendlyDateTime(new Date())}`}
+				label="Services to Fulfill"
+				count={10}
+			/>
+			<MSummaryCountItem
+				size="sm"
+				description={`Last updated: ${formatToFriendlyDateTime(new Date())}`}
+				label="Due Today"
+				count={4}
+			/>
+			<MSummaryCountItem
+				size="sm"
+				description={`Last updated: ${formatToFriendlyDateTime(new Date())}`}
+				label="New Notifications"
+				count={9}
+			/>
 		</div>
 	</div>
 

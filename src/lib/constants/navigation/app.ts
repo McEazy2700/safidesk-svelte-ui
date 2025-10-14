@@ -46,7 +46,7 @@ import TablerReport from "$lib/components/icons/tabler-report.svelte";
 import FamiconsBookmarksOutline from "$lib/components/icons/famicons-bookmarks-outline.svelte";
 import TablerShieldCheck from "$lib/components/icons/tabler-shield-check.svelte";
 import TablerUser from "$lib/components/icons/tabler-user.svelte";
-import type { UserDetails, UserResponseData } from "$lib/types/api/auth";
+import type { UserResponseData } from "$lib/types/api/auth";
 import { getUserType } from "$lib/utils/users";
 
 export const APP_NAVIGATION: NavGroup[] = [
@@ -170,12 +170,6 @@ export const APP_NAVIGATION: NavGroup[] = [
 		label: "Assistance",
 		baseRoute: "/app/assistance",
 		navs: [
-			{
-				label: "Dashboard",
-				href: "/app/assistance/dashboard",
-				disabled: false,
-				icon: BxsDashboard,
-			},
 			{
 				label: "Tickets",
 				href: "/app/assistance/tickets",
