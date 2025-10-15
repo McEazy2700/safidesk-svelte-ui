@@ -490,7 +490,7 @@
 				{:else}
 					<LucideSend size={20} />
 				{/if}
-				<span class="text-lg font-semibold">Send</span>
+				<span class="text-lg font-semibold">Save</span>
 			</button>
 		</div>
 	</div>

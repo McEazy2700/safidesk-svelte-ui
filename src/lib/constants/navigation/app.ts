@@ -17,6 +17,7 @@ import Question24Filled from "$lib/components/icons/question-24-filled.svelte";
 import Cable from "$lib/components/icons/cable.svelte";
 import Sim24Regular from "$lib/components/icons/sim-24-regular.svelte";
 import GlobalStorageArchitecture from "$lib/components/icons/global-storage-architecture.svelte";
+import HeadsetSolid from "$lib/components/icons/headset-solid.svelte";
 import TaskListSquare24Regular from "$lib/components/icons/task-list-square-24-regular.svelte";
 import CRMService from "$lib/components/icons/crm-service.svelte";
 import Calendar from "$lib/components/icons/calendar.svelte";
@@ -55,34 +56,6 @@ export const APP_NAVIGATION: (NavGroup | NavItem)[] = [
 		href: "/app",
 		disabled: false,
 		icon: BxsDashboard,
-	},
-	{
-		type: "item",
-		label: "Tickets",
-		href: "/app/assistance/tickets",
-		disabled: false,
-		icon: TaskListSquare24Regular,
-	},
-	{
-		type: "item",
-		label: "Services",
-		href: "/app/assistance/services",
-		disabled: true,
-		icon: CRMService,
-	},
-	{
-		type: "item",
-		label: "Planning",
-		href: "/app/assistance/planning",
-		disabled: true,
-		icon: Calendar,
-	},
-	{
-		type: "item",
-		label: "Statistics",
-		href: "/app/assistance/statistics",
-		disabled: true,
-		icon: ChartPie,
 	},
 	{
 		icon: Package2Outline,
@@ -215,6 +188,42 @@ export const APP_NAVIGATION: (NavGroup | NavItem)[] = [
 				href: "/app/assets",
 				disabled: true,
 				icon: GlobalStorageArchitecture,
+			},
+		],
+	},
+	{
+		type: "group",
+		icon: HeadsetSolid,
+		label: "Assistance",
+		baseRoute: "/app/assistance",
+		navs: [
+			{
+				type: "item",
+				label: "Tickets",
+				href: "/app/assistance/tickets",
+				disabled: false,
+				icon: TaskListSquare24Regular,
+			},
+			{
+				type: "item",
+				label: "Services",
+				href: "/app/assistance/services",
+				disabled: true,
+				icon: CRMService,
+			},
+			{
+				type: "item",
+				label: "Planning",
+				href: "/app/assistance/planning",
+				disabled: true,
+				icon: Calendar,
+			},
+			{
+				type: "item",
+				label: "Statistics",
+				href: "/app/assistance/statistics",
+				disabled: true,
+				icon: ChartPie,
 			},
 		],
 	},
@@ -394,7 +403,9 @@ export const APP_NAVIGATION: (NavGroup | NavItem)[] = [
 export function getUserNaviation(user: UserResponseData) {
 	const userType = getUserType(user);
 	if (userType === "user") {
-		return APP_NAVIGATION.filter((nav) => ["Assistance"].includes(nav.label));
+		return APP_NAVIGATION.filter((nav) =>
+			["Assistance", "Dashboard"].includes(nav.label),
+		);
 	}
 	return APP_NAVIGATION;
 }

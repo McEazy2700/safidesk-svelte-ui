@@ -97,7 +97,7 @@
 		<div class="flex flex-col gap-4 lg:col-span-2">
 			<div class="flex flex-col gap-4">
 				<h2 class="text-2xl font-bold">Your Tickets</h2>
-				<div class="min-h-[400px] rounded-2xl bg-white p-4">
+				<div class="rounded-2xl bg-white p-4">
 					<OTicketList {user} />
 				</div>
 			</div>
