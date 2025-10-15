@@ -1,4 +1,4 @@
-import type { NavGroup } from "$lib/types/navigation";
+import type { NavGroup, NavItem } from "$lib/types/navigation";
 import BxsDashboard from "$lib/components/icons/bxs-dashboard.svelte";
 import Package2Outline from "$lib/components/icons/package-2-outline.svelte";
 import ComputerOutline from "$lib/components/icons/computer-outline.svelte";
@@ -17,7 +17,6 @@ import Question24Filled from "$lib/components/icons/question-24-filled.svelte";
 import Cable from "$lib/components/icons/cable.svelte";
 import Sim24Regular from "$lib/components/icons/sim-24-regular.svelte";
 import GlobalStorageArchitecture from "$lib/components/icons/global-storage-architecture.svelte";
-import HeadsetSolid from "$lib/components/icons/headset-solid.svelte";
 import TaskListSquare24Regular from "$lib/components/icons/task-list-square-24-regular.svelte";
 import CRMService from "$lib/components/icons/crm-service.svelte";
 import Calendar from "$lib/components/icons/calendar.svelte";
@@ -49,115 +48,169 @@ import TablerUser from "$lib/components/icons/tabler-user.svelte";
 import type { UserResponseData } from "$lib/types/api/auth";
 import { getUserType } from "$lib/utils/users";
 
-export const APP_NAVIGATION: NavGroup[] = [
+export const APP_NAVIGATION: (NavGroup | NavItem)[] = [
+	{
+		type: "item",
+		label: "Dashboard",
+		href: "/app",
+		disabled: false,
+		icon: BxsDashboard,
+	},
+	{
+		type: "item",
+		label: "Tickets",
+		href: "/app/assistance/tickets",
+		disabled: false,
+		icon: TaskListSquare24Regular,
+	},
+	{
+		type: "item",
+		label: "Services",
+		href: "/app/assistance/services",
+		disabled: true,
+		icon: CRMService,
+	},
+	{
+		type: "item",
+		label: "Planning",
+		href: "/app/assistance/planning",
+		disabled: true,
+		icon: Calendar,
+	},
+	{
+		type: "item",
+		label: "Statistics",
+		href: "/app/assistance/statistics",
+		disabled: true,
+		icon: ChartPie,
+	},
 	{
 		icon: Package2Outline,
+		type: "group",
 		label: "Assets",
 		baseRoute: "/app/assets",
 		navs: [
 			{
+				type: "item",
 				label: "Dashboard",
 				href: "/app/assets",
 				disabled: true,
 				icon: BxsDashboard,
 			},
 			{
+				type: "item",
 				label: "Computer",
 				href: "/app/assets",
 				disabled: true,
 				icon: ComputerOutline,
 			},
 			{
+				type: "item",
 				label: "Monitor",
 				href: "/app/assets",
 				disabled: true,
 				icon: Monitor,
 			},
 			{
+				type: "item",
 				label: "Software",
 				href: "/app/assets",
 				disabled: true,
 				icon: Software,
 			},
 			{
+				type: "item",
 				label: "Network Devices",
 				href: "/app/assets",
 				disabled: true,
 				icon: NetworkLeft,
 			},
 			{
+				type: "item",
 				label: "Peripherals",
 				href: "/app/assets",
 				disabled: true,
 				icon: USB,
 			},
 			{
+				type: "item",
 				label: "Printers",
 				href: "/app/assets",
 				disabled: true,
 				icon: Printer,
 			},
 			{
+				type: "item",
 				label: "Cartridges",
 				href: "/app/assets",
 				disabled: true,
 				icon: InkOutline,
 			},
 			{
+				type: "item",
 				label: "Consumables",
 				href: "/app/assets",
 				disabled: true,
 				icon: Package2Outline,
 			},
 			{
+				type: "item",
 				label: "Phones",
 				href: "/app/assets",
 				disabled: true,
 				icon: Phone,
 			},
 			{
+				type: "item",
 				label: "Racks",
 				href: "/app/assets",
 				disabled: true,
 				icon: HDDRack,
 			},
 			{
+				type: "item",
 				label: "Enclosures",
 				href: "/app/assets",
 				disabled: true,
 				icon: ServerPathLinear,
 			},
 			{
+				type: "item",
 				label: "PUCs",
 				href: "/app/assets",
 				disabled: true,
 				icon: MapConnection,
 			},
 			{
+				type: "item",
 				label: "Passive Devices",
 				href: "/app/assets",
 				disabled: true,
 				icon: DeviceIpad,
 			},
 			{
+				type: "item",
 				label: "Unmanaged Devices",
 				href: "/app/assets",
 				disabled: true,
 				icon: Question24Filled,
 			},
 			{
+				type: "item",
 				label: "Cables",
 				href: "/app/assets",
 				disabled: true,
 				icon: Cable,
 			},
 			{
+				type: "item",
 				label: "Simcard Items",
 				href: "/app/assets",
 				disabled: true,
 				icon: Sim24Regular,
 			},
 			{
+				type: "item",
 				label: "Global",
 				href: "/app/assets",
 				disabled: true,
@@ -166,114 +219,97 @@ export const APP_NAVIGATION: NavGroup[] = [
 		],
 	},
 	{
-		icon: HeadsetSolid,
-		label: "Assistance",
-		baseRoute: "/app/assistance",
-		navs: [
-			{
-				label: "Tickets",
-				href: "/app/assistance/tickets",
-				disabled: false,
-				icon: TaskListSquare24Regular,
-			},
-			{
-				label: "Services",
-				href: "/app/assistance/services",
-				disabled: true,
-				icon: CRMService,
-			},
-			{
-				label: "Planning",
-				href: "/app/assistance/planning",
-				disabled: true,
-				icon: Calendar,
-			},
-			{
-				label: "Statistics",
-				href: "/app/assistance/statistics",
-				disabled: true,
-				icon: ChartPie,
-			},
-		],
-	},
-	{
+		type: "group",
 		icon: LucideWallet,
 		label: "Management",
 		baseRoute: "/app/management",
 		navs: [
 			{
+				type: "item",
 				label: "Licences",
 				href: "/app/management",
 				disabled: true,
 				icon: CodiconKey,
 			},
 			{
+				type: "item",
 				label: "Budgets",
 				href: "/app/management",
 				disabled: true,
 				icon: SolarCalculatorOutline,
 			},
 			{
+				type: "item",
 				label: "Suppliers",
 				href: "/app/management",
 				disabled: true,
 				icon: WheelBarrowEmpty,
 			},
 			{
+				type: "item",
 				label: "Contacts",
 				href: "/app/management",
 				disabled: true,
 				icon: ContactCardRegular,
 			},
 			{
+				type: "item",
 				label: "Contracts",
 				href: "/app/management",
 				disabled: true,
 				icon: ContractOutlineRounded,
 			},
 			{
+				type: "item",
 				label: "Documents",
 				href: "/app/management",
 				disabled: true,
 				icon: SolarDocumentsOutline,
 			},
 			{
+				type: "item",
 				label: "Lines",
 				href: "/app/management",
 				disabled: true,
 				icon: UilPhone,
 			},
 			{
+				type: "item",
 				label: "Certificates",
 				href: "/app/management",
 				disabled: true,
 				icon: FluentCertificateRegular,
 			},
 			{
+				type: "item",
 				label: "Datacenters",
 				href: "/app/management",
 				disabled: true,
 				icon: BuildingFour,
 			},
 			{
+				type: "item",
 				label: "Clusters",
 				href: "/app/management",
 				disabled: true,
 				icon: CarbonAssemblyCluster,
 			},
 			{
+				type: "item",
 				label: "Domains",
 				href: "/app/management",
 				disabled: true,
 				icon: StreamlinePlumpWeb,
 			},
 			{
+				type: "item",
 				label: "Appliances",
 				href: "/app/management",
 				disabled: true,
 				icon: PhDevices,
 			},
 			{
+				type: "item",
 				label: "Databases",
 				href: "/app/management",
 				disabled: true,
@@ -282,47 +318,55 @@ export const APP_NAVIGATION: NavGroup[] = [
 		],
 	},
 	{
+		type: "group",
 		icon: IconoirTools,
 		label: "Tools",
 		baseRoute: "/app/management",
 		navs: [
 			{
+				type: "item",
 				label: "Project",
 				href: "/app/tools",
 				disabled: true,
 				icon: TablerTemplate,
 			},
 			{
+				type: "item",
 				label: "Reminders",
 				href: "/app/tools",
 				disabled: true,
 				icon: PhNotification,
 			},
 			{
+				type: "item",
 				label: "RSS Feed",
 				href: "/app/tools",
 				disabled: true,
 				icon: MeteorIconsRss,
 			},
 			{
+				type: "item",
 				label: "Knowledge Base",
 				href: "/app/tools",
 				disabled: true,
 				icon: HugeiconsKnowledge,
 			},
 			{
+				type: "item",
 				label: "Reservations",
 				href: "/app/tools",
 				disabled: true,
 				icon: AkarIconsSchedule,
 			},
 			{
+				type: "item",
 				label: "Reports",
 				href: "/app/tools",
 				disabled: true,
 				icon: TablerReport,
 			},
 			{
+				type: "item",
 				label: "Saved Searches",
 				href: "/app/tools",
 				disabled: true,
@@ -331,11 +375,13 @@ export const APP_NAVIGATION: NavGroup[] = [
 		],
 	},
 	{
+		type: "group",
 		icon: TablerShieldCheck,
 		label: "Administration",
 		baseRoute: "/app/administration",
 		navs: [
 			{
+				type: "item",
 				label: "Users",
 				href: "/app/administration",
 				disabled: true,
