@@ -8,7 +8,7 @@
 	import { cast } from '$lib/utils/typing';
 	import { resolve } from '$app/paths';
 	import { slugify } from '$lib/utils/urls';
-	import ATicketScreen from '$lib/components/atoms/a-ticket-screen.svelte';
+	import ATicketScreen from '$lib/components/atoms/a-top-header-screen.svelte';
 	import { getFutureDate } from '$lib/utils/time';
 	import { TICKET_RESPONSE_DURATIONS } from '$lib/constants/tickets';
 

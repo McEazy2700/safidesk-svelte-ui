@@ -3,13 +3,17 @@
 	import IconamoonTrendUpLight from '../icons/iconamoon-trend-up-light.svelte';
 	import IconamoonTrendDownLight from '../icons/iconamoon-trend-down-light.svelte';
 	import ACountUp from '../atoms/a-count-up.svelte';
+	import type { Component } from 'svelte';
+	import type { SvgProps } from '$lib/types/svg';
 
 	type Props = {
 		label: string;
 		count: number;
 		primary?: boolean;
+		secondary?: boolean;
 		showTrend?: boolean;
 		lastMonthCount?: number;
+		icon?: Component<SvgProps>;
 		description?: string;
 		size?: 'sm' | 'base';
 	};
@@ -18,18 +22,23 @@
 		label,
 		count,
 		primary,
+		secondary,
 		lastMonthCount = 0,
 		showTrend = false,
+		icon,
 		description,
 		size = 'base'
 	}: Props = $props();
 	let percentage = $derived((count * (100 / (count - lastMonthCount))).toFixed(0).replace('-', ''));
+
+	const Icon = icon;
 </script>
 
 <div
 	class={twMerge(
 		'flex h-full flex-1 flex-col gap-3 rounded-xl bg-white p-4',
-		primary && 'bg-secondary text-secondary-content',
+		secondary && 'bg-secondary text-secondary-content',
+		primary && 'bg-primary-300 text-primary-content',
 		size === 'sm' && 'gap-1'
 	)}
 >
@@ -49,12 +58,12 @@
 		</div>
 	{/if}
 	{#if showTrend}
-		<div>
+		<div class="flex items-center justify-between">
 			{#if lastMonthCount < count}
 				<div
 					class={twMerge(
 						'flex items-center gap-1 rounded-lg text-sm text-green-300',
-						!primary && 'text-green-500',
+						!(secondary || primary) && 'text-green-500',
 						size === 'sm' && 'text-xs'
 					)}
 				>
@@ -66,7 +75,7 @@
 				<div
 					class={twMerge(
 						'flex items-center gap-1 rounded-lg text-sm text-red-100',
-						!primary && 'text-red-500',
+						!(secondary || primary) && 'text-red-500',
 						size === 'sm' && 'text-xs'
 					)}
 				>
@@ -75,6 +84,11 @@
 					<span>Down</span>
 					<span>from last month</span>
 				</div>
+			{/if}
+			{#if Icon}
+				<span class="opacity-60">
+					<Icon size={24} />
+				</span>
 			{/if}
 		</div>
 	{/if}

@@ -67,7 +67,7 @@ export const APP_NAVIGATION: (NavGroup | NavItem)[] = [
 				type: "item",
 				label: "Dashboard",
 				href: "/app/assets",
-				disabled: true,
+				disabled: false,
 				icon: BxsDashboard,
 			},
 			{

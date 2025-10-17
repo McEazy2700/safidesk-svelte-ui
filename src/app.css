@@ -10,6 +10,7 @@
 	--color-base-300: oklch(92% 0.013 255.508);
 	--color-base-content: oklch(20% 0.042 265.755);
 	--color-primary: oklch(44% 0.11 240.79);
+	--color-primary-300: oklch(34.92% 0.086 246.4);
 	--color-primary-content: oklch(98% 0.002 247.839);
 	--color-secondary: oklch(66% 0.179 58.318);
 	--color-secondary-content: oklch(96% 0.001 286.375);
@@ -49,6 +50,7 @@
 	--color-base-300: oklch(92% 0.013 255.508);
 	--color-base-content: oklch(20% 0.042 265.755);
 	--color-primary: oklch(44% 0.11 240.79);
+	--color-primary-300: oklch(34.92% 0.086 246.4);
 	--color-primary-content: oklch(98% 0.002 247.839);
 	--color-secondary: oklch(66% 0.179 58.318);
 	--color-secondary-content: oklch(96% 0.001 286.375);

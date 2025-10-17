@@ -1,7 +1,7 @@
 <script lang="ts">
 	import AAiChatInput from '$lib/components/atoms/a-ai-chat-input.svelte';
 	import AChatBubble from '$lib/components/atoms/a-chat-bubble.svelte';
-	import ATicketScreen from '$lib/components/atoms/a-ticket-screen.svelte';
+	import ATicketScreen from '$lib/components/atoms/a-top-header-screen.svelte';
 	import { AIAgentMutation } from '$lib/services/utils/mutations/aiAgent.svelte';
 	import type { Message } from '$lib/types/chat.js';
 

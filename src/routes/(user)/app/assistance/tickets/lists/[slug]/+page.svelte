@@ -13,7 +13,7 @@
 	import { cast } from '$lib/utils/typing';
 	import MTicketForm, { type TicketFormArgs } from '$lib/components/molecules/m-ticket-form.svelte';
 	import ARichTextContent from '$lib/components/atoms/a-rich-text-content.svelte';
-	import ATicketScreen from '$lib/components/atoms/a-ticket-screen.svelte';
+	import ATicketScreen from '$lib/components/atoms/a-top-header-screen.svelte';
 
 	const TicketDetails = getTicketDetailsState();
 	const FollowUps = getFollowUpState();
