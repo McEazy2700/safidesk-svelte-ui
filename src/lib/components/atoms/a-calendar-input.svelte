@@ -20,18 +20,22 @@
 	type Props = {
 		disabled?: boolean;
 		due_date?: string | null;
+		label?: string;
 	};
-	let { disabled, due_date = $bindable() }: Props = $props();
+	let { disabled, label, due_date = $bindable() }: Props = $props();
 </script>
 
 <label
 	for="date-picker"
 	class={twMerge(
 		'btn ml-1 w-full justify-start border-black/10 bg-white btn-outline',
-		disabled && 'pointer-events-none cursor-not-allowed opacity-60'
+		disabled && 'pointer-events-none cursor-not-allowed opacity-60',
+		!label && 'ml-0 px-0'
 	)}
 >
-	<span class="border-r border-black/10 pr-4 whitespace-nowrap">Due Date</span>
+	{#if label}
+		<span class="border-r border-black/10 pr-4 whitespace-nowrap">{label}</span>
+	{/if}
 	<input
 		id="date-picker"
 		onchange={() => (due_date = picker?.getDate()?.toISOString())}

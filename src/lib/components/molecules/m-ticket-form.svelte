@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { QueuesStore } from '$lib/stores/queries/queues.svelte';
-	import AClendarInput from '../atoms/a-clendar-input.svelte';
+	import ACalendarInput from '../atoms/a-calendar-input.svelte';
 	import AQueueDropdown from '../atoms/a-queue-dropdown.svelte';
 	import ATicketPriorityDropdown from '../atoms/a-ticket-priority-dropdown.svelte';
 	import ATicketStatusDropdown from '../atoms/a-ticket-status-dropdown.svelte';
@@ -51,7 +51,7 @@
 		<AQueueDropdown disabled={edit} bind:queue_id />
 		<ATicketPriorityDropdown disabled={edit} bind:priority />
 		<ATicketStatusDropdown disabled={!edit} bind:status />
-		<AClendarInput disabled={!edit} bind:due_date />
+		<ACalendarInput label="Due Date" disabled={!edit} bind:due_date />
 	</div>
 	<input
 		bind:value={title}

@@ -53,6 +53,7 @@
 		autosaveKey?: string | null;
 		placeholder?: string;
 		loading?: boolean;
+		hideSend?: boolean;
 		exportDisabled?: boolean;
 		onupdate?: (data: EditorData) => void;
 		onautosave?: (args: { key: string }) => void;
@@ -77,6 +78,7 @@
 		onautosave,
 		onloadAutosave,
 		onexport,
+		hideSend,
 		placeholder = 'Start writing — notes, draft…',
 		autosaveKey = 'tiptap-draft'
 	}: Props = $props();
@@ -479,20 +481,22 @@
 			<span>{charCount} chars</span>
 		</div>
 
-		<div class="exports">
-			<button
-				disabled={loading || exportDisabled}
-				class="btn flex items-center gap-2 btn-secondary"
-				onclick={() => onexport?.({ html: exportHTML(), json: exportJSON() })}
-			>
-				{#if loading}
-					<span class="loading loading-spinner"></span>
-				{:else}
-					<LucideSend size={20} />
-				{/if}
-				<span class="text-lg font-semibold">Save</span>
-			</button>
-		</div>
+		{#if !hideSend}
+			<div class="exports">
+				<button
+					disabled={loading || exportDisabled}
+					class="btn flex items-center gap-2 btn-secondary"
+					onclick={() => onexport?.({ html: exportHTML(), json: exportJSON() })}
+				>
+					{#if loading}
+						<span class="loading loading-spinner"></span>
+					{:else}
+						<LucideSend size={20} />
+					{/if}
+					<span class="text-lg font-semibold">Save</span>
+				</button>
+			</div>
+		{/if}
 	</div>
 </div>
 

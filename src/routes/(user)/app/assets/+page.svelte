@@ -14,7 +14,7 @@
 	{#snippet header()}
 		<div class="flex w-full items-center justify-between">
 			<h3 class="text-xl font-semibold text-primary capitalize">Assets Dahboard</h3>
-			<ANewButton href="/app/assistance/tickets/lists/new" label="New Asset" />
+			<ANewButton href="/app/assets/new" label="New Asset" />
 		</div>
 	{/snippet}
 
