@@ -2,6 +2,9 @@ export const ASSET_CATEGORIES = {
   Hardware: [
     "Laptops",
     "Desktops",
+    "Network Devices",
+    "Peripherals",
+    "Catridges",
     "Mobile Phones",
     "Tablets",
     "Monitors",
