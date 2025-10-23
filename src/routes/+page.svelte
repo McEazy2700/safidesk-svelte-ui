@@ -116,8 +116,8 @@
 		</div>
 	</div>
 
-	<div class="mt-14 grid grid-cols-[3fr_4fr] gap-6">
-		<div class="grid-cols grid">
+	<div class="mt-14 flex flex-row gap-6">
+		<div class="grid-cols grid flex-1">
 			<h3 class="mb-2 font-bold">Use Cases</h3>
 			<div class="grid h-60 grid-cols-2 gap-6 rounded-xl bg-primary p-8">
 				<div class="flex flex-row gap-2 text-white">
@@ -151,7 +151,7 @@
 			</div>
 		</div>
 
-		<div class="grid-cols grid">
+		<div class="grid-cols grid flex-1">
 			<h3 class="mb-2 font-bold">Built for everyone</h3>
 			<div class="flex h-60 flex-col gap-6 rounded-xl bg-primary p-8 text-white">
 				<h3 class="text-xl font-bold">Trusted by leading teams</h3>
