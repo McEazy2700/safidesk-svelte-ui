@@ -119,7 +119,7 @@
 	<div class="mt-14 grid grid-cols-[3fr_4fr] gap-6">
 		<div class="grid-cols grid">
 			<h3 class="mb-2 font-bold">Use Cases</h3>
-			<div class="grid grid-cols-2 gap-6 rounded-xl bg-primary p-8">
+			<div class="grid h-60 grid-cols-2 gap-6 rounded-xl bg-primary p-8">
 				<div class="flex flex-row gap-2 text-white">
 					<NavManage size={50} />
 					<div>
@@ -150,26 +150,21 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="grid-cols grid">
 			<h3 class="mb-2 font-bold">Built for everyone</h3>
-			<div class="grid-col-2 grid gap-6 rounded-xl bg-primary p-8 text-white">
-				<div class="w-70">
-					<h3 class="text-xl font-bold">Trusted by leading teams</h3>
-					<h4>SafiDesk transformed our IT. Our resolution time dropped by 30%!</h4>
-					<p></p>
-					<div class="mt-4 flex items-center gap-2">
-						<a href={resolve('/')} class="rounded-full bg-base-content p-3 text-sm text-base-200"
-							>Learn More</a
-						>
-						<a href={resolve('/auth/login')} class="rounded-full bg-base-content/20 p-3 text-sm"
-							>Start free trial</a
-						>
-					</div>
+			<div class="flex h-60 flex-col gap-6 rounded-xl bg-primary p-8 text-white">
+				<h3 class="text-xl font-bold">Trusted by leading teams</h3>
+				<h4>SafiDesk transformed our IT. Our resolution time dropped by 30%!</h4>
+				<p></p>
+				<div class="flex items-center gap-2">
+					<a href={resolve('/')} class="rounded-full bg-base-content p-3 text-sm text-base-200"
+						>Learn More</a
+					>
+					<a href={resolve('/auth/login')} class="rounded-full bg-base-content/20 p-3 text-sm"
+						>Start free trial</a
+					>
 				</div>
-			</div>
-			<div>
-				<div></div>
-				<div></div>
 			</div>
 		</div>
 	</div>
