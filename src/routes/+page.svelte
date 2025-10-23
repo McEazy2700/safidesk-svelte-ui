@@ -1,21 +1,24 @@
 <script lang="ts">
-	import ALogo from '$lib/components/atoms/a-logo.svelte';
 	import { resolve } from '$app/paths';
-	import ACarousel from '$lib/components/atoms/a-carousel.svelte';
-
-	const HERO_VIDEOS = [
-		'https://videos.pexels.com/video-files/8048483/8048483-hd_1080_1920_25fps.mp4',
-		'https://videos.pexels.com/video-files/8865602/8865602-hd_1080_1920_25fps.mp4',
-		'https://videos.pexels.com/video-files/4708366/4708366-uhd_1440_2732_25fps.mp4',
-		'https://videos.pexels.com/video-files/5377992/5377992-uhd_1440_2560_25fps.mp4',
-		'https://videos.pexels.com/video-files/5377976/5377976-uhd_1440_2560_25fps.mp4'
-	];
+	import ActivityManagement from '$lib/components/icons/activity-management.svelte';
+	import CarbonWorkflowAutomation from '$lib/components/icons/carbon-workflow-automation.svelte';
+	import EmojioneMonotoneGear from '$lib/components/icons/emojione-monotone-gear.svelte';
+	import FaGear from '$lib/components/icons/fa-gear.svelte';
+	import NavManage from '$lib/components/icons/nav-manage.svelte';
+	import OutlineFind from '$lib/components/icons/outline-find.svelte';
+	import RoundPeople from '$lib/components/icons/round-people.svelte';
+	import SearchInsights from '$lib/components/icons/search-insights.svelte';
+	import SettingDone from '$lib/components/icons/setting-done.svelte';
+	import StreamlineIndustryAndInfrastructureSolid from '$lib/components/icons/streamline-industry-and-infrastructure-solid.svelte';
 </script>
 
-<nav class="fixed inset-x-0 top-0 z-[1000] flex items-center justify-between p-4 pr-8">
-	<ALogo />
+<nav class="fixed inset-x-0 top-0 z-[1000] flex items-center justify-between bg-primary p-2 pr-8">
+	<div class="flex items-center">
+		<img src="/images/logo.png" class="h-16 w-16" alt="" />
+		<span class="-translate-x-3 text-2xl font-bold text-white">SafiDesk</span>
+	</div>
 	<div
-		class="flex items-center gap-4 rounded-full bg-black/10 p-4 px-8 font-medium backdrop-blur-md"
+		class="flex items-center gap-4 rounded-full bg-primary-content/20 p-4 px-8 font-medium text-white backdrop-blur-md"
 	>
 		<a href={resolve('/')}>Home</a>
 		<a href={resolve('/')}>About</a>
@@ -23,7 +26,7 @@
 	</div>
 	<div>
 		<a
-			class="rounded-full bg-black/10 p-4 px-8 font-medium backdrop-blur-md"
+			class="rounded-full bg-primary-content/20 p-4 px-8 font-medium text-white backdrop-blur-md"
 			href={resolve('/auth/login')}
 		>
 			Login
@@ -31,38 +34,147 @@
 	</div>
 </nav>
 
-<div class="mt-14 flex flex-col items-center gap-8 p-8 lg:flex-row lg:gap-14 lg:p-8 xl:p-16">
-	<div class="flex flex-1 flex-col gap-4 pb-14 lg:py-0">
-		<h1 class="mt-14 text-5xl font-semibold lg:text-7xl">Service Management, Simplified.</h1>
-		<p class="text-xl font-light">
-			The modern, unified ITSM platform designed for IT efficiency and user satisfaction.
-		</p>
-		<div class="mt-4 flex items-center gap-4">
-			<a href={resolve('/')} class="rounded-full bg-base-content p-4 px-8 text-base-200"
-				>Learn More</a
-			>
-			<a href={resolve('/auth/login')} class="rounded-full bg-base-content/20 p-4 px-10">Sign In</a>
+<div class="mt-14 flex flex-col bg-base-300 p-6">
+	<div class="flex flex-row">
+		<div class="flex flex-col gap-8 lg:flex-row lg:gap-14 lg:p-4">
+			<div class="flex flex-1 flex-col gap-4 pb-14 lg:py-0">
+				<h1 class="mt-14 text-5xl font-semibold lg:text-5xl">Service Management, Simplified.</h1>
+				<p class="text-xl font-light">
+					The modern, unified ITSM platform designed for IT efficiency and user satisfaction.
+				</p>
+				<div class="mt-4 flex items-center gap-4">
+					<a href={resolve('/')} class="rounded-full bg-base-content p-4 px-8 text-base-200"
+						>Learn More</a
+					>
+					<a href={resolve('/auth/login')} class="rounded-full bg-base-content/20 p-4 px-10"
+						>Sign In</a
+					>
+				</div>
+			</div>
+		</div>
+		<div>
+			<img
+				class="w-150"
+				src="/images/Gemini_Generated_Image_nig630nig630nig6.png"
+				alt="people discussing business"
+			/>
 		</div>
 	</div>
-	<div class="hidden h-[80vh] flex-[0.8] items-center justify-center gap-8 lg:flex">
-		<ACarousel class="h-[70vh]" speed="30s" reverse>
-			{#each HERO_VIDEOS as video, index (index)}
-				<div class="mb-4 aspect-[160/270] w-52 overflow-hidden rounded-4xl bg-base-content/10">
-					<video class="h-full w-full object-cover" src={video} autoplay loop playsinline muted
-					></video>
+	<div class="mt-7 flex flex-col items-center gap-3">
+		<h3 class="text-3xl font-semibold">How Safidesk Helps</h3>
+		<div class="grid grid-cols-3 gap-3">
+			<div class="flex h-50 flex-col justify-between gap-4 rounded-xl bg-white p-5">
+				<div class="flex flex-row gap-3">
+					<StreamlineIndustryAndInfrastructureSolid size={50} />
+					<div>
+						<h3 class="text-sm font-bold">Unified Platform</h3>
+						<span class="text-sm font-light">Consulate tools, data, & teams</span>
+					</div>
 				</div>
-			{/each}
-		</ACarousel>
-		<ACarousel class="h-[70vh]" speed="30s">
-			{#each HERO_VIDEOS as video, index (index)}
-				<div class="mb-4 aspect-[160/270] w-52 overflow-hidden rounded-4xl bg-base-content/10">
-					<video class="h-full w-full object-cover" src={video} autoplay loop playsinline muted
-					></video>
+				<div class="flex flex-row gap-3">
+					<EmojioneMonotoneGear size={50} />
+					<div>
+						<h3 class="text-sm font-bold">Investigate Issues</h3>
+						<span class="text-sm font-light">Resolve issues or smart help</span>
+					</div>
 				</div>
-			{/each}
-		</ACarousel>
+			</div>
+
+			<div class="flex h-50 flex-col justify-between gap-4 rounded-xl bg-white p-5">
+				<div class="flex flex-row gap-3">
+					<FaGear size={50} />
+					<div>
+						<h3 class="text-sm font-bold">Automated Workflows</h3>
+						<span class="text-sm font-light">Consulate tools, data, & teams</span>
+					</div>
+				</div>
+				<div class="flex flex-row gap-3">
+					<CarbonWorkflowAutomation size={50} />
+					<div>
+						<h3 class="text-sm font-bold">DevOps</h3>
+						<span class="text-sm font-light">Integrate development & team help</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="flex h-50 flex-col justify-between gap-4 rounded-xl bg-white p-6">
+				<div class="flex flex-row gap-3">
+					<SearchInsights size={50} />
+					<div>
+						<h3 class="text-sm font-bold">Insigntful</h3>
+						<span class="text-sm font-light">Consulate tools, data, & teams</span>
+					</div>
+				</div>
+				<div class="flex flex-row gap-3">
+					<ActivityManagement size={50} />
+					<div>
+						<h3 class="text-sm font-bold">Facility Management</h3>
+						<span class="text-sm font-light">Manage Assets with</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="mt-14 grid grid-cols-[3fr_4fr] gap-6">
+		<div class="grid-cols grid">
+			<h3 class="mb-2 font-bold">Use Cases</h3>
+			<div class="grid grid-cols-2 gap-6 rounded-xl bg-primary p-8">
+				<div class="flex flex-row gap-2 text-white">
+					<NavManage size={50} />
+					<div>
+						<h4 class="font-bold">For IT Teams</h4>
+						<p class="text-sm">Streamline software management</p>
+					</div>
+				</div>
+				<div class="flex flex-row gap-2 text-white">
+					<SettingDone size={50} />
+					<div>
+						<h4 class="font-bold">DevOps</h4>
+						<p class="text-sm">Manage development processes</p>
+					</div>
+				</div>
+				<div class="flex flex-row gap-2 text-white">
+					<RoundPeople size={50} />
+					<div>
+						<h4 class="font-bold">Employees</h4>
+						<p class="text-sm">Quick and easy assignment of tasks</p>
+					</div>
+				</div>
+				<div class="flex flex-row gap-2 text-white">
+					<OutlineFind size={50} />
+					<div>
+						<h4 class="font-bold">Observation</h4>
+						<p class="text-sm">close task handling and completions</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="grid-cols grid">
+			<h3 class="mb-2 font-bold">Built for everyone</h3>
+			<div class="grid-col-2 grid gap-6 rounded-xl bg-primary p-8 text-white">
+				<div class="w-70">
+					<h3 class="text-xl font-bold">Trusted by leading teams</h3>
+					<h4>SafiDesk transformed our IT. Our resolution time dropped by 30%!</h4>
+					<p></p>
+					<div class="mt-4 flex items-center gap-2">
+						<a href={resolve('/')} class="rounded-full bg-base-content p-3 text-sm text-base-200"
+							>Learn More</a
+						>
+						<a href={resolve('/auth/login')} class="rounded-full bg-base-content/20 p-3 text-sm"
+							>Start free trial</a
+						>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
 	</div>
 </div>
+
 <div class="flex flex-col items-center">
 	<div class="mt-8 flex flex-col items-center gap-4">
 		<h2 class="max-w-lg text-center text-4xl font-extrabold">
