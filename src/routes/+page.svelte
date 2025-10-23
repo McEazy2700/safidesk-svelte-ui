@@ -34,7 +34,7 @@
 	</div>
 </nav>
 
-<div class="mt-14 flex flex-col bg-base-300 p-6">
+<div class="mt-14 flex flex-col bg-base-300 p-6 lg:px-12">
 	<div class="flex flex-row">
 		<div class="flex flex-col gap-8 lg:flex-row lg:gap-14 lg:p-4">
 			<div class="flex flex-1 flex-col gap-4 pb-14 lg:py-0">
