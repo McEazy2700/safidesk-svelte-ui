@@ -4,35 +4,83 @@
 	import CarbonWorkflowAutomation from '$lib/components/icons/carbon-workflow-automation.svelte';
 	import EmojioneMonotoneGear from '$lib/components/icons/emojione-monotone-gear.svelte';
 	import FaGear from '$lib/components/icons/fa-gear.svelte';
+	import Hamburger from '$lib/components/icons/hamburger.svelte';
 	import NavManage from '$lib/components/icons/nav-manage.svelte';
 	import OutlineFind from '$lib/components/icons/outline-find.svelte';
 	import RoundPeople from '$lib/components/icons/round-people.svelte';
 	import SearchInsights from '$lib/components/icons/search-insights.svelte';
 	import SettingDone from '$lib/components/icons/setting-done.svelte';
 	import StreamlineIndustryAndInfrastructureSolid from '$lib/components/icons/streamline-industry-and-infrastructure-solid.svelte';
+	import { onMount } from 'svelte';
+
+	let isMobile: boolean = false;
+	let mobileWidth: number = 585;
+
+	function checkDeviceSize() {
+		isMobile = window.innerWidth < mobileWidth;
+	}
+
+	onMount(() => {
+		checkDeviceSize();
+
+		window.addEventListener('resize', checkDeviceSize);
+		return;
+	});
 </script>
 
-<nav class="fixed inset-x-0 top-0 z-[1000] flex items-center justify-between bg-primary p-2 pr-8">
-	<div class="flex items-center">
-		<img src="/images/logo.png" class="h-16 w-16" alt="" />
-		<span class="-translate-x-3 text-2xl font-bold text-white">SafiDesk</span>
+{#if isMobile}
+	<div class="fixed inset-x-0 top-0 z-[1000] flex items-center justify-between bg-primary p-2 pr-8">
+		<div class="flex items-center">
+			<img src="/images/logo.png" class="h-16 w-16" alt="" />
+			<span class="-translate-x-3 text-2xl font-bold text-white">SafiDesk</span>
+		</div>
+
+		<div class="dropdown dropdown-end">
+			<!-- <div tabindex="0" role="button" class="btn m-1"></div> -->
+			<Hamburger class=" m-1" />
+			<ul
+				tabindex="-1"
+				class="dropdown-content menu z-1 w-52 rounded-box bg-base-100 p-2 shadow-sm"
+			>
+				<li class="mb-4 flex items-center gap-4 p-4 px-8 font-medium text-black backdrop-blur-md">
+					<a href={resolve('/')}>Home</a>
+					<a href={resolve('/')}>About</a>
+					<a href={resolve('/')}>Features</a>
+				</li>
+				<li>
+					<a
+						class="flex justify-center rounded-full bg-gray-300 p-4 px-8 font-medium text-black backdrop-blur-md"
+						href={resolve('/auth/login')}
+					>
+						Login
+					</a>
+				</li>
+			</ul>
+		</div>
 	</div>
-	<div
-		class="flex items-center gap-4 rounded-full bg-primary-content/20 p-4 px-8 font-medium text-white backdrop-blur-md"
-	>
-		<a href={resolve('/')}>Home</a>
-		<a href={resolve('/')}>About</a>
-		<a href={resolve('/')}>Features</a>
-	</div>
-	<div>
-		<a
-			class="rounded-full bg-primary-content/20 p-4 px-8 font-medium text-white backdrop-blur-md"
-			href={resolve('/auth/login')}
+{:else}
+	<nav class="fixed inset-x-0 top-0 z-[1000] flex items-center justify-between bg-primary p-2 pr-8">
+		<div class="flex items-center">
+			<img src="/images/logo.png" class="h-16 w-16" alt="" />
+			<span class="-translate-x-3 text-2xl font-bold text-white">SafiDesk</span>
+		</div>
+		<div
+			class="flex items-center gap-4 rounded-full bg-primary-content/20 p-4 px-8 font-medium text-white backdrop-blur-md"
 		>
-			Login
-		</a>
-	</div>
-</nav>
+			<a href={resolve('/')}>Home</a>
+			<a href={resolve('/')}>About</a>
+			<a href={resolve('/')}>Features</a>
+		</div>
+		<div>
+			<a
+				class="rounded-full bg-primary-content/20 p-4 px-8 font-medium text-white backdrop-blur-md"
+				href={resolve('/auth/login')}
+			>
+				Login
+			</a>
+		</div>
+	</nav>
+{/if}
 
 <div class="mt-14 flex flex-col bg-base-300 p-6 lg:px-12">
 	<div class="flex flex-col lg:flex-row">
@@ -116,7 +164,7 @@
 		</div>
 	</div>
 
-	<div class="mt-14 flex flex-col gap-6 lg:flex-row">
+	<div class="flex flex-col gap-6 lg:flex-row">
 		<div class="grid-cols grid flex-1">
 			<h3 class="mb-2 font-bold">Use Cases</h3>
 			<div class="grid h-60 grid-cols-2 gap-6 rounded-xl bg-primary p-8">
