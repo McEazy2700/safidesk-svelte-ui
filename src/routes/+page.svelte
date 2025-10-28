@@ -42,18 +42,13 @@
 				tabindex="-1"
 				class="dropdown-content menu z-1 w-52 rounded-box bg-base-100 p-2 shadow-sm"
 			>
-				<li class="mb-4 flex items-center gap-4 p-4 px-8 font-medium text-black backdrop-blur-md">
+				<li class="flex items-center gap-4 p-4 px-8 font-medium text-black backdrop-blur-md">
 					<a href={resolve('/')}>Home</a>
 					<a href={resolve('/')}>About</a>
 					<a href={resolve('/')}>Features</a>
 				</li>
-				<li>
-					<a
-						class="flex justify-center rounded-full bg-gray-300 p-4 px-8 font-medium text-black backdrop-blur-md"
-						href={resolve('/auth/login')}
-					>
-						Login
-					</a>
+				<li class="mb-4 flex items-center gap-4 px-8 font-medium text-black backdrop-blur-md">
+					<a href={resolve('/auth/login')}> Login </a>
 				</li>
 			</ul>
 		</div>
