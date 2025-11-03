@@ -31,7 +31,7 @@
 					<div class="flex flex-row gap-2">
 						<button class="btn"><CharmPlus size={15} /> Add New staff</button>
 						<button class="btn"
-							><MaterialSymbolFolderOpenRounded size={20} /> Manslen Settings</button
+							><MaterialSymbolFolderOpenRounded size={20} /> Manage Staff</button
 						>
 					</div>
 					<div class="flex flex-row gap-2">
