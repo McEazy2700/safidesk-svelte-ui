@@ -14,5 +14,5 @@ import type { ClientOptions as ClientOptions2 } from './types.gen';
 export type CreateClientConfig<T extends ClientOptions = ClientOptions2> = (override?: Config<ClientOptions & T>) => Config<Required<ClientOptions> & T>;
 
 export const client = createClient(createConfig<ClientOptions2>({
-    baseUrl: 'https://itms-mvp.onrender.com/'
+    baseUrl: 'https://itmsmvp-81072574537.europe-west1.run.app/'
 }));
