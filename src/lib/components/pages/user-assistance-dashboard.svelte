@@ -28,7 +28,7 @@
 				color="green"
 				prompt="Request a Service"
 				description="Ask for a new setup, access, or functional change. Technician fulfillment within 14 business days."
-				href="/app/assistance/tickets/lists/new"
+				href="/app/assistance/service-requests"
 				icon={CrmService}
 			/>
 			<AAssistanceDashboardItem
