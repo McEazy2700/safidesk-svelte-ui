@@ -2,11 +2,9 @@
 	import PaperPlane from '../icons/paper-plane.svelte';
 	import DragAndDropFileInput from '../atoms/drag-and-drop-file-input.svelte';
 
+	export type UrgencyType = 'low' | 'medium' | 'high';
 	let files = $state();
-	let high = $state<boolean>(false);
-	let medium = $state<boolean>(false);
-	let low = $state<boolean>(false);
-
+	let urgency = $state<UrgencyType>('medium');
 	const handleFileSelect = (fileList: File[]) => {
 		files = fileList;
 		console.log(files);
@@ -33,27 +31,21 @@
 				<label for="devices" class="font-semibold">Urgent</label>
 				<div class="urgency flex overflow-hidden rounded-md border border-black/10">
 					<button
-						data-active={low}
+						data-active={urgency === 'low'}
 						onclick={() => {
-							low = true;
-							medium = false;
-							high = false;
+							urgency = 'low';
 						}}>Low</button
 					>
 					<button
-						data-active={medium}
+						data-active={urgency === 'medium'}
 						onclick={() => {
-							medium = true;
-							low = false;
-							high = false;
+							urgency = 'medium';
 						}}>Medium</button
 					>
 					<button
-						data-active={high}
+						data-active={urgency === 'high'}
 						onclick={() => {
-							high = true;
-							low = false;
-							medium = false;
+							urgency = 'high';
 						}}>High</button
 					>
 				</div>
