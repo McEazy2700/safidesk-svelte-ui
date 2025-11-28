@@ -1,8 +1,10 @@
 <script lang="ts">
 	import PaperPlane from '../icons/paper-plane.svelte';
 	import DragAndDropFileInput from '../atoms/drag-and-drop-file-input.svelte';
+	import ATextDropdown from '../atoms/a-text-dropdown.svelte';
 
 	let files = $state();
+	let systemName = $state<string>();
 
 	const handleFileSelect = (fileList: File[]) => {
 		files = fileList;
@@ -18,11 +20,10 @@
 		<div class="mt-4 flex w-full flex-row gap-3">
 			<div class="flex w-full flex-1 flex-col text-sm">
 				<label for="system-name" class="font-semibold">System Name</label>
-				<select class="rounded border border-base-300 bg-white p-2" id="system-name">
-					<option value="laptop">ERP System</option>
-					<option value="laptop">NDP Network Protocol</option>
-					<option value="laptop">FENT Algorithm</option>
-				</select>
+				<ATextDropdown
+					bind:selected={systemName}
+					items={['ERP System', 'NDP Network Protocol', 'FENT Algorithm']}
+				/>
 			</div>
 		</div>
 

@@ -1,8 +1,11 @@
 <script lang="ts">
 	import PaperPlane from '../icons/paper-plane.svelte';
 	import DragAndDropFileInput from '../atoms/drag-and-drop-file-input.svelte';
+	import ATextDropdown from '../atoms/a-text-dropdown.svelte';
 
 	let files = $state();
+	let softwareTitle = $state<string>();
+	let targetDevice = $state<string>();
 
 	const handleFileSelect = (fileList: File[]) => {
 		files = fileList;
@@ -18,19 +21,18 @@
 		<div class="mt-4 flex w-full flex-row gap-3">
 			<div class="flex flex-1 flex-col text-sm">
 				<label for="devices" class="font-semibold">Software Title</label>
-				<select class="rounded border border-base-300 bg-white p-2" id="device-options">
-					<option value="laptop">Adobe Acrobat Pro</option>
-					<option value="laptop">Davinci resolve</option>
-					<option value="laptop">Unreal Engine</option>
-				</select>
+				<ATextDropdown
+					bind:selected={softwareTitle}
+					items={['Adobe Acrobat Pro', 'Davinci resolve', 'Unreal Engine']}
+				/>
 			</div>
+
 			<div class="flex flex-1 flex-col text-sm">
-				<label for="devices" class="font-semibold">Target Device</label>
-				<select class="rounded border border-base-300 bg-white p-2" id="device-options">
-					<option value="abuja">HP ProBook - Laptop-FIN-004</option>
-					<option value="desktop">Desktop Computer</option>
-					<option value="macbook">Apple Macbook</option>
-				</select>
+				<label for="devices" class="font-semibold">Software Title</label>
+				<ATextDropdown
+					bind:selected={targetDevice}
+					items={['HP ProBook - Laptop-FIN-004', 'Desktop Computer', 'Apple Macbook']}
+				/>
 			</div>
 		</div>
 
