@@ -1,6 +1,13 @@
-<script>
+<script lang="ts">
 	import PaperPlane from '../icons/paper-plane.svelte';
-	import DragAndDropFileInput from './drag-and-drop-file-input.svelte';
+	import DragAndDropFileInput from '../atoms/drag-and-drop-file-input.svelte';
+
+	let files = $state();
+
+	const handleFileSelect = (fileList: File[]) => {
+		files = fileList;
+		console.log(fileList);
+	};
 </script>
 
 <form class="mt-8 rounded bg-white p-4">
@@ -62,8 +69,8 @@
 		</div>
 
 		<div class="mt-4 flex flex-col text-sm">
-			<label class="font-semibold">Attachment</label>
-			<DragAndDropFileInput />
+			<p class="font-semibold">Attachment</p>
+			<DragAndDropFileInput onselectfiles={handleFileSelect} />
 		</div>
 	</div>
 	<div class="mt-4 flex justify-end gap-3">

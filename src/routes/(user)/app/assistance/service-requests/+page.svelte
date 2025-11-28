@@ -1,5 +1,5 @@
 <script lang="ts">
-	import AHardwareDetailsForm from '$lib/components/atoms/a-hardware-details-form.svelte';
+	import MHardwareDetailsForm from '$lib/components/molecules/m-hardware-details-form.svelte';
 	import AScreen from '$lib/components/atoms/a-screen.svelte';
 	import AServiceCatalogueButton, {
 		type CatalogueChoiceType
@@ -50,7 +50,7 @@
 					/>
 				</div>
 				{#if catalogChoice === 'hardware'}
-					<AHardwareDetailsForm />
+					<MHardwareDetailsForm />
 				{/if}
 			</div>
 			<div class="w-full flex-[0.5] rounded-xl border border-base-300 bg-white p-4">

@@ -1,28 +1,46 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
 	import CloudUploadOutline from '../icons/cloud-upload-outline.svelte';
 
-	let dropZoneElement;
-	let files = [];
+	type Props = {
+		onselectfiles?: (file: File[]) => void;
+	};
+
+	let dropZoneElement: HTMLDivElement;
+	let { onselectfiles }: Props = $props();
+	let addedFiles = $state<File[]>();
+	let uploadedFiles = $state<boolean>(false);
 
 	function handleFiles(files: FileList) {
-		console.log(files);
+		uploadedFiles = true;
+		addedFiles = Array.from(files);
+		onselectfiles?.(addedFiles);
 	}
 </script>
 
 <div
 	bind:this={dropZoneElement}
-	on:dragover|preventDefault
-	on:dragleave|preventDefault
-	on:drop|preventDefault|stopPropagation={(e) => {
+	ondragover={(e) => e.preventDefault()}
+	ondragleave={(e) => e.preventDefault()}
+	ondrop={(e) => {
+		e.preventDefault();
+		e.stopPropagation();
 		if (e.dataTransfer?.files.length) {
 			handleFiles(e.dataTransfer.files);
 		}
 	}}
-	on:click={() => document.getElementById('file-input')?.click()}
-	class="flex h-30 w-full flex-col items-center justify-center border border-dashed border-base-content p-10"
+	onclick={() => document.getElementById('file-input')?.click()}
+	class="mt-1 flex h-40 w-full flex-col items-center justify-center rounded-2xl border-3 border-dashed border-base-content/60 p-10"
 >
-	<CloudUploadOutline size={100} />
-	<p>Drag and drop files here or click to select</p>
+	<CloudUploadOutline size={50} />
+	{#if uploadedFiles}
+		<div class="flex flex-row">
+			{#each addedFiles as file (file.name)}
+				<p>{file.name.slice(0, 15)}</p>
+				&nbsp;&nbsp;&nbsp;
+			{/each}
+		</div>
+	{:else}
+		<p>Drag and drop files here or click to select</p>
+	{/if}
 	<input type="file" id="file-input" class="hidden" />
 </div>
