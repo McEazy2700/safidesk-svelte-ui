@@ -17,6 +17,8 @@
 	}
 </script>
 
+<!-- svelte-ignore a11y_no_static_element_interactions -->
+<!-- svelte-ignore a11y_click_events_have_key_events -->
 <div
 	bind:this={dropZoneElement}
 	ondragover={(e) => e.preventDefault()}
@@ -28,7 +30,6 @@
 			handleFiles(e.dataTransfer.files);
 		}
 	}}
-	onclick={() => document.getElementById('file-input')?.click()}
 	class="mt-1 flex h-40 w-full flex-col items-center justify-center rounded-2xl border-3 border-dashed border-base-content/60 p-10"
 >
 	<CloudUploadOutline size={50} />
@@ -40,7 +41,12 @@
 			{/each}
 		</div>
 	{:else}
-		<p>Drag and drop files here or click to select</p>
+		<p>
+			<button
+				class="btn p-0 font-semibold text-blue-500 btn-link no-underline"
+				onclick={() => document.getElementById('file-input')?.click()}>Upload Approval/Docs</button
+			> or drag and drop
+		</p>
 	{/if}
 	<input type="file" id="file-input" class="hidden" />
 </div>
