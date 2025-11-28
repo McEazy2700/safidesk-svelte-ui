@@ -65,7 +65,7 @@
 			<div class="w-full flex-[0.5] rounded-xl border border-base-300 bg-white p-4">
 				<h3 class="font-bold">My Recent Requests</h3>
 				<div class="mt-5 flex flex-col gap-3 text-xs text-base-content/60">
-					<div class="flex flex-col gap-3 rounded border border-base-300 bg-white p-4">
+					<div class="flex flex-col gap-3 rounded-xl border border-base-300 bg-white p-4">
 						<div>
 							<div class="flex flex-row justify-between">
 								<h4 class="font-bold text-black">Excel Installation</h4>
@@ -100,7 +100,7 @@
 						</div>
 					</div>
 
-					<div class="flex flex-col gap-3 rounded border border-base-300 bg-white p-4">
+					<div class="flex flex-col gap-3 rounded-xl border border-base-300 bg-white p-4">
 						<div>
 							<div class="flex flex-row justify-between">
 								<h4 class="font-bold text-black">Password Reset</h4>

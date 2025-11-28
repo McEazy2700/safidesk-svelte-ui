@@ -1,8 +1,11 @@
 <script lang="ts">
 	import PaperPlane from '../icons/paper-plane.svelte';
 	import DragAndDropFileInput from '../atoms/drag-and-drop-file-input.svelte';
+	import ATextDropdown from '../atoms/a-text-dropdown.svelte';
 
 	let files = $state();
+	let deviceSpcification = $state<string>();
+	let deliveryLocation = $state<string>();
 
 	const handleFileSelect = (fileList: File[]) => {
 		files = fileList;
@@ -38,19 +41,17 @@
 		<div class="mt-4 flex w-full flex-row gap-3">
 			<div class="flex flex-1 flex-col text-sm">
 				<label for="devices" class="font-semibold">Device Specification</label>
-				<select class="rounded border border-base-300 bg-white p-2" id="device-options">
-					<option value="laptop">Standard Laptop (HP ProBook)</option>
-					<option value="desktop">Desktop Computer</option>
-					<option value="macbook">Apple Macbook</option>
-				</select>
+				<ATextDropdown
+					bind:selected={deviceSpcification}
+					items={['Standard Laptop (HP ProBook)', 'Desktop Computer', 'Apple Macbook']}
+				/>
 			</div>
 			<div class="flex flex-1 flex-col text-sm">
 				<label for="devices" class="font-semibold">Delivery Location</label>
-				<select class="rounded border border-base-300 bg-white p-2" id="device-options">
-					<option value="abuja">Head Office - Abuja</option>
-					<option value="niger">Niger</option>
-					<option value="lagos">Regional Branch - Lagos</option>
-				</select>
+				<ATextDropdown
+					bind:selected={deliveryLocation}
+					items={['Head Office - Abuja', 'Niger', 'Regional Branch - Lagos']}
+				/>
 			</div>
 		</div>
 	</div>

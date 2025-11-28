@@ -19,7 +19,7 @@
 <button
 	onclick={onClick}
 	data-active={selected === choice}
-	class="flex flex-1 flex-col items-center justify-center gap-2 overflow-hidden rounded border border-base-300 bg-white p-3 px-8 data-[active=true]:bg-primary data-[active=true]:text-white"
+	class="flex flex-1 flex-col items-center justify-center gap-2 overflow-hidden rounded-lg border border-base-300 bg-white p-3 px-8 data-[active=true]:bg-primary data-[active=true]:text-white"
 >
 	{#if choice === 'hardware'}
 		<LaptopMacOutline size={30} />
