@@ -5,6 +5,9 @@
 		type CatalogueChoiceType
 	} from '$lib/components/atoms/a-service-catalogue-button.svelte';
 	import PlusInCircle from '$lib/components/icons/plus-in-circle.svelte';
+	import MSoftwareDetailsForm from '$lib/components/molecules/m-software-details-form.svelte';
+	import MAccessControlDetailsForm from '$lib/components/molecules/m-access-control-details-form.svelte';
+	import MGeneralDetailsForm from '$lib/components/molecules/m-general-details-form.svelte';
 
 	let { data } = $props();
 
@@ -51,6 +54,12 @@
 				</div>
 				{#if catalogChoice === 'hardware'}
 					<MHardwareDetailsForm />
+				{:else if catalogChoice === 'software'}
+					<MSoftwareDetailsForm />
+				{:else if catalogChoice === 'access'}
+					<MAccessControlDetailsForm />
+				{:else if catalogChoice === 'general'}
+					<MGeneralDetailsForm />
 				{/if}
 			</div>
 			<div class="w-full flex-[0.5] rounded-xl border border-base-300 bg-white p-4">
