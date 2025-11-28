@@ -2,7 +2,7 @@
 	import PaperPlane from '../icons/paper-plane.svelte';
 	import DragAndDropFileInput from '../atoms/drag-and-drop-file-input.svelte';
 
-	export type UrgencyType = 'low' | 'medium' | 'high';
+	type UrgencyType = 'low' | 'medium' | 'high';
 	let files = $state();
 	let urgency = $state<UrgencyType>('medium');
 	const handleFileSelect = (fileList: File[]) => {
