@@ -3,7 +3,7 @@
 	import ANewButton from '$lib/components/atoms/a-new-button.svelte';
 	import AQueueForm from '$lib/components/atoms/a-queue-form.svelte';
 	import ASubNavItem from '$lib/components/atoms/a-sub-nav-item.svelte';
-	import ATicketScreen from '$lib/components/atoms/a-top-header-screen.svelte';
+	import ATopHeaderScreen from '$lib/components/atoms/a-top-header-screen.svelte';
 	import MSummaryCountItem from '$lib/components/molecules/m-summary-count-item.svelte';
 	import OTicketList from '$lib/components/organisms/o-ticket-list.svelte';
 	import { TicketStatsStore } from '$lib/stores/queries/ticket-stats-svelte.js';
@@ -15,7 +15,7 @@
 	});
 </script>
 
-<ATicketScreen>
+<ATopHeaderScreen>
 	{#snippet header()}
 		<div class="flex w-full items-center justify-between">
 			<h1 class="text-3xl font-bold text-base-content/70">Tickets</h1>
@@ -85,4 +85,4 @@
 			</div>
 		</div>
 	</div>
-</ATicketScreen>
+</ATopHeaderScreen>

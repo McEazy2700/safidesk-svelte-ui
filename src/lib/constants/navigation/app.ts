@@ -1,22 +1,6 @@
 import type { NavGroup, NavItem } from "$lib/types/navigation";
 import BxsDashboard from "$lib/components/icons/bxs-dashboard.svelte";
 import Package2Outline from "$lib/components/icons/package-2-outline.svelte";
-import ComputerOutline from "$lib/components/icons/computer-outline.svelte";
-import Monitor from "$lib/components/icons/monitor.svelte";
-import Software from "$lib/components/icons/software.svelte";
-import NetworkLeft from "$lib/components/icons/network-left.svelte";
-import USB from "$lib/components/icons/usb.svelte";
-import Printer from "$lib/components/icons/printer-solid.svelte";
-import InkOutline from "$lib/components/icons/ink-outline.svelte";
-import Phone from "$lib/components/icons/phone.svelte";
-import HDDRack from "$lib/components/icons/hdd-rack.svelte";
-import ServerPathLinear from "$lib/components/icons/server-path-linear.svelte";
-import MapConnection from "$lib/components/icons/map-connection.svelte";
-import DeviceIpad from "$lib/components/icons/device-ipad.svelte";
-import Question24Filled from "$lib/components/icons/question-24-filled.svelte";
-import Cable from "$lib/components/icons/cable.svelte";
-import Sim24Regular from "$lib/components/icons/sim-24-regular.svelte";
-import GlobalStorageArchitecture from "$lib/components/icons/global-storage-architecture.svelte";
 import HeadsetSolid from "$lib/components/icons/headset-solid.svelte";
 import TaskListSquare24Regular from "$lib/components/icons/task-list-square-24-regular.svelte";
 import CRMService from "$lib/components/icons/crm-service.svelte";
@@ -102,9 +86,16 @@ export const APP_NAVIGATION: (NavGroup | NavItem)[] = [
 			},
 			{
 				type: "item",
+				label: "Agreements",
+				href: "/app/assistance/agreements",
+				disabled: false,
+				icon: TaskListSquare24Regular,
+			},
+			{
+				type: "item",
 				label: "Services",
-				href: "/app/assistance/services",
-				disabled: true,
+				href: "/app/assistance/service-requests",
+				disabled: false,
 				icon: CRMService,
 			},
 			{
