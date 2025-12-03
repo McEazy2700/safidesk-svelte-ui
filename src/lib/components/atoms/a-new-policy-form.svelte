@@ -34,7 +34,11 @@
 
 		<div>
 			<p class="mb-1">Apply When</p>
-			<ATextDropdown bind:selected={priority} items={['High', 'Medium', 'Low']} />
+			<div class="flex items-center gap-2">
+				<span class="rounded-lg bg-white p-2 px-4">Priority</span>
+				<span class="rounded-lg bg-white p-2 px-4">is</span>
+				<ATextDropdown bind:selected={priority} items={['High', 'Medium', 'Low']} />
+			</div>
 		</div>
 	</div>
 

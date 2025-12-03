@@ -29,7 +29,6 @@
 		<div class="drawer-side">
 			<label for="my-drawer-5" aria-label="close sidebar" class="drawer-overlay"></label>
 			<div class="menu min-h-full w-[50%] bg-base-200 p-4">
-				<!-- Sidebar content here -->
 				<div>
 					<div
 						class="mb-5 flex h-[50px] w-full items-center justify-between border-b border-black/10"
@@ -66,6 +65,7 @@
 				<tbody>
 					{#each dummyPolicies as policy}
 						<tr
+							class="cursor-pointer transition-all hover:bg-base-200/50"
 							onclick={() => {
 								formState.setCurrentPolicy(policy);
 								formState.toggleEdit();
