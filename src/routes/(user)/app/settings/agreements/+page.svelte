@@ -62,7 +62,7 @@
 						<th>RESOLUTION RULE</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="font-semibold text-base-content/50">
 					{#each dummyPolicies as policy}
 						<tr
 							class="cursor-pointer transition-all hover:bg-base-200/50"
@@ -71,8 +71,32 @@
 								formState.toggleEdit();
 							}}
 						>
-							<td><label for="my-drawer-5" class="drawer-button">{policy.policyName}</label></td>
-							<td><label for="my-drawer-5" class="drawer-button">{policy.priority}</label></td>
+							<td
+								><label for="my-drawer-5" class="drawer-button text-base-content"
+									>{policy.policyName}</label
+								></td
+							>
+							<td>
+								{#if policy.priority === 'High'}
+									<label
+										for="my-drawer-5"
+										class="drawer-button rounded-full bg-red-500/10 p-0.5 px-1.5 text-red-500"
+										>{policy.priority}</label
+									>
+								{:else if policy.priority === 'Medium'}
+									<label
+										for="my-drawer-5"
+										class="drawer-button rounded-full bg-amber-900/10 p-0.5 px-1.5 text-amber-900"
+										>{policy.priority}</label
+									>
+								{:else}
+									<label
+										for="my-drawer-5"
+										class="drawer-button rounded-full bg-green-500/10 p-0.5 px-1.5 text-green-500"
+										>{policy.priority}</label
+									>
+								{/if}
+							</td>
 							<td
 								><label for="my-drawer-5" class="drawer-button">{policy.responseTime} Mins</label
 								></td
