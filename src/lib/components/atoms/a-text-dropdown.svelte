@@ -5,10 +5,17 @@
 	type Props = {
 		items: string[];
 		disabled?: boolean;
+		onselect?: (value: string) => void;
 		selected?: string;
 		placeholder?: string;
 	};
-	let { selected = $bindable(), placeholder = 'Select item', items, disabled }: Props = $props();
+	let {
+		selected = $bindable(),
+		onselect,
+		placeholder = 'Select item',
+		items,
+		disabled
+	}: Props = $props();
 </script>
 
 <div
@@ -30,7 +37,14 @@
 	<ul tabindex="0" class="dropdown-content menu z-1 w-full rounded-box bg-base-100 p-2 shadow-sm">
 		{#each items as key (key)}
 			<li>
-				<button onclick={() => (selected = key)} type="button" class="capitalize">{key}</button>
+				<button
+					onclick={() => {
+						selected = key;
+						onselect?.(key);
+					}}
+					type="button"
+					class="capitalize">{key}</button
+				>
 			</li>
 		{/each}
 	</ul>

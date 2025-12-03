@@ -1,10 +1,9 @@
 <script lang="ts">
+	import type { CatalogueChoiceType } from '$lib/types/services';
 	import CicsProgram from '../icons/cics-program.svelte';
 	import Cog from '../icons/cog.svelte';
 	import LaptopMacOutline from '../icons/laptop-mac-outline.svelte';
 	import Padlock from '../icons/padlock.svelte';
-
-	export type CatalogueChoiceType = 'hardware' | 'software' | 'general' | 'access';
 
 	type Props = {
 		onClick?: () => void;

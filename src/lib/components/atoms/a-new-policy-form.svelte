@@ -1,15 +1,21 @@
 <script lang="ts">
-	import ArrowDown from '../icons/arrow-down.svelte';
+	import { getSlaFormState } from '$lib/stores/forms/sla.svelte';
+	import type { PriorityType, TimeMetricType, CalenerHourOptionsType } from '$lib/types/policy';
 	import ATextDropdown from './a-text-dropdown.svelte';
 
-	type PriorityType = 'Low' | 'Medium' | 'High';
-	type TimeMetricType = 'Hours' | 'Minutes' | 'Seconds';
-	type CalenerHourOptionsType = '24/7' | 'Business Hours (Mon-Fri 8-4)';
-
-	let priority = $state<PriorityType>('Medium');
-	let responseTimeMetric = $state<TimeMetricType>('Minutes');
-	let resolutionTimeMetric = $state<TimeMetricType>('Hours');
-	let calenderHourOptions = $state<CalenerHourOptionsType>('24/7');
+	const formState = getSlaFormState();
+	let priority = $state<PriorityType>(
+		formState.edit ? formState.currentPolicy!.priority : 'Medium'
+	);
+	let responseTimeMetric = $state<TimeMetricType>(
+		formState.edit ? formState.currentPolicy!.responseTimeMetric : 'Minutes'
+	);
+	let resolutionTimeMetric = $state<TimeMetricType>(
+		formState.edit ? formState.currentPolicy!.resolutionTimeMetric : 'Minutes'
+	);
+	let calenderHourOptions = $state<CalenerHourOptionsType>(
+		formState.edit ? formState.currentPolicy!.calenderHours : '24/7'
+	);
 </script>
 
 <form class=" flex flex-col text-xl font-semibold">
@@ -22,6 +28,7 @@
 				name="policy-name"
 				type="text"
 				placeholder="e.g., Critical Financial Support"
+				value={formState.edit ? formState.currentPolicy?.policyName : ''}
 			/>
 		</div>
 
@@ -41,6 +48,7 @@
 						placeholder="15"
 						type="number"
 						class="flex-3 rounded-tl rounded-bl border border-gray-400 bg-white p-2"
+						value={formState.edit ? formState.currentPolicy?.responseTime : 0}
 					/>
 					<div class="dropdown flex-1">
 						<div
@@ -56,7 +64,7 @@
 						>
 							<button>Hours</button>
 							<button>Minutes</button>
-							<button class="">Seconds</button>
+							<button>Seconds</button>
 						</ul>
 					</div>
 				</div>
@@ -68,6 +76,7 @@
 						placeholder="15"
 						type="number"
 						class="flex-3 rounded-tl rounded-bl border border-gray-400 bg-white p-2"
+						value={formState.edit ? formState.currentPolicy?.resolutionTime : 0}
 					/>
 					<div class="dropdown flex-1">
 						<div
@@ -113,8 +122,8 @@
 			class="mb-4 flex flex-col gap-4 rounded-lg border border-gray-400 bg-primary/5 p-3 text-sm"
 		>
 			<div>
-				<input type="checkbox" class="bg-white" />
-				<label>Enable Pre-Breach Label</label>
+				<input name="pre-breach-alert" type="checkbox" class="bg-white" />
+				<label for="pre-breach-alert">Enable Pre-Breach Label</label>
 			</div>
 			<div class="flex flex-row items-center">
 				<label for="notification-option">Send &nbsp;</label>
@@ -122,7 +131,11 @@
 					<ATextDropdown placeholder="Notification opiton" items={['Whatsapp', 'Email']} />
 				</div>
 				<label for="">&nbsp; notification &nbsp;</label>
-				<input type="number" class="input w-16" />
+				<input
+					type="number"
+					value={formState.edit ? formState.currentPolicy?.notificationTime : 0}
+					class="input w-16"
+				/>
 				<p>&nbsp; mins before breach</p>
 			</div>
 			<div>
@@ -133,10 +146,5 @@
 				/>
 			</div>
 		</div>
-	</div>
-
-	<div class="flex flex-row justify-end gap-4">
-		<button class="btn bg-gray-300">Cancel</button>
-		<button class="btn btn-primary">Save Policy</button>
 	</div>
 </form>

@@ -1,13 +1,12 @@
 <script lang="ts">
 	import MHardwareDetailsForm from '$lib/components/molecules/m-hardware-details-form.svelte';
 	import AScreen from '$lib/components/atoms/a-screen.svelte';
-	import AServiceCatalogueButton, {
-		type CatalogueChoiceType
-	} from '$lib/components/atoms/a-service-catalogue-button.svelte';
+	import AServiceCatalogueButton from '$lib/components/atoms/a-service-catalogue-button.svelte';
 	import PlusInCircle from '$lib/components/icons/plus-in-circle.svelte';
 	import MSoftwareDetailsForm from '$lib/components/molecules/m-software-details-form.svelte';
 	import MAccessControlDetailsForm from '$lib/components/molecules/m-access-control-details-form.svelte';
 	import MGeneralDetailsForm from '$lib/components/molecules/m-general-details-form.svelte';
+	import type { CatalogueChoiceType } from '$lib/types/services.js';
 
 	let { data } = $props();
 

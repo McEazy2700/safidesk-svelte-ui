@@ -24,6 +24,7 @@ export const actions: Actions = {
 		const res = await loginCreate({
 			body: form.data,
 		});
+		console.log(res.error);
 
 		if (res.error) {
 			return message<Message>(
