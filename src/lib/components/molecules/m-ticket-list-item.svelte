@@ -5,9 +5,8 @@
 	import { page } from '$app/state';
 	import { slugify } from '$lib/utils/urls';
 	import { cast } from '$lib/utils/typing';
-	import type { Pathname } from '$app/types';
 	import { twMerge } from 'tailwind-merge';
-	import type { CustomTicket } from '$lib/services/api';
+	import type { TicketRead } from '$lib/services/api';
 	import ATicketPriorityIcon from '../atoms/a-ticket-priority-icon.svelte';
 	import ATicketStatusIcon from '../atoms/a-ticket-status-icon.svelte';
 	import ATicketStatusPill from '../atoms/a-ticket-status-pill.svelte';
@@ -15,7 +14,7 @@
 
 	type Props = {
 		fullWidth?: boolean;
-		ticket: CustomTicket;
+		ticket: TicketRead;
 	};
 
 	let { ticket, fullWidth }: Props = $props();
@@ -40,7 +39,7 @@
 	{/if}
 	<div class="flex w-full items-center justify-between">
 		<a
-			href={resolve(cast<Pathname>(href() + `?${page.url.searchParams.toString()}`))}
+			href={resolve(cast<any>(href() + `?${page.url.searchParams.toString()}`))}
 			class="line-clamp-1 gap-4 font-semibold capitalize">{ticket.title}</a
 		>
 		<time datetime={ticket.due_date} class="text-sm whitespace-nowrap text-base-content/60"

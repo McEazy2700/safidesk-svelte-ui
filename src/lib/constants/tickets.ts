@@ -14,6 +14,14 @@ export const PRIORITY_NAMES: Record<number, string> = {
   5: "very_low",
 };
 
+export const TICKET_TYPES = [
+  "Incident",
+  "Problem",
+  "Service Request",
+  "Change Request",
+] as const;
+export type TicketType = (typeof TICKET_TYPES)[number];
+
 export const PRIORITY_COLORS: Record<number, string> = {
   1: "text-red-600",
   2: "text-orange-500",

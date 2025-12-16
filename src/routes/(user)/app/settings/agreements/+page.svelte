@@ -1,51 +1,50 @@
 <script>
+	import ANewButton from '$lib/components/atoms/a-new-button.svelte';
 	import ANewPolicyForm from '$lib/components/atoms/a-new-policy-form.svelte';
 	import ATopHeaderScreen from '$lib/components/atoms/a-top-header-screen.svelte';
-	import CharmPlus from '$lib/components/icons/charm-plus.svelte';
-	import LightClose from '$lib/components/icons/light-close.svelte';
+	import { PRIORITY_NAMES } from '$lib/constants/tickets';
+	import { SlaMutations } from '$lib/services/utils/mutations/policies.svelte';
 	import { getSlaFormState } from '$lib/stores/forms/sla.svelte';
-	import { dummyPolicies } from '$lib/utils/dummy/policy';
+	import { SlaPoliciesStore } from '$lib/stores/queries/policies.svelte';
+	import { twMerge } from 'tailwind-merge';
 
 	const formState = getSlaFormState();
+
+	$effect(() => {
+		SlaPoliciesStore.loadInitial();
+	});
+
+	const handleSave = () => {
+		SlaMutations.save(formState.current, formState.current.id);
+	};
 </script>
 
 <ATopHeaderScreen>
 	{#snippet header()}
 		<div class="flex w-full items-center justify-between">
 			<h1 class="text-3xl font-bold text-base-content/70">Service Level Agreement (SLAs)</h1>
-			<!-- svelte-ignore a11y_click_events_have_key_events -->
-			<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-			<label
+			<ANewButton
 				onclick={() => {
-					formState.currentPolicy = undefined;
+					formState.clearCurrent();
+					formState.toggleEdit();
 				}}
-				for="my-drawer-5"
-				class="drawer-button btn btn-primary"><CharmPlus /> Create New Policy</label
-			>
+				label="Create New Policy"
+			/>
 		</div>
 	{/snippet}
 	<div class="drawer drawer-end">
 		<input id="my-drawer-5" bind:checked={formState.edit} type="checkbox" class="drawer-toggle" />
 		<div class="drawer-side">
 			<label for="my-drawer-5" aria-label="close sidebar" class="drawer-overlay"></label>
-			<div class="menu min-h-full w-[50%] bg-base-200 p-4">
-				<div>
-					<div
-						class="mb-5 flex h-[50px] w-full items-center justify-between border-b border-black/10"
-					>
-						<h1 class="text-3xl font-bold text-base-content/70">Define New SLA Policy</h1>
-						<label for="my-drawer-5" aria-label="close sidebar">
-							<LightClose />
-						</label>
-					</div>
-					<ANewPolicyForm />
-					<div class="flex flex-row justify-end gap-4">
-						<label for="my-drawer-5" aria-label="close sidebar" class="btn bg-gray-300"
-							>Cancel</label
-						>
-						<button class="btn btn-primary">Save Policy</button>
-					</div>
-				</div>
+			<div class="menu h-screen w-[50%] overflow-y-auto bg-base-200 p-4">
+				<ANewPolicyForm
+					bind:priority={formState.current.priority}
+					bind:ticketType={formState.current.ticket_type}
+					bind:resolutionTime={formState.current.resolution_time}
+					bind:responseTime={formState.current.response_time}
+					bind:escalateToHighest={formState.current.escalate_to_highest_tech}
+					onSave={handleSave}
+				/>
 			</div>
 		</div>
 	</div>
@@ -63,7 +62,7 @@
 					</tr>
 				</thead>
 				<tbody class="font-semibold text-base-content/50">
-					{#each dummyPolicies as policy}
+					{#each SlaPoliciesStore.list as policy}
 						<tr
 							class="cursor-pointer transition-all hover:bg-base-200/50"
 							onclick={() => {
@@ -73,42 +72,56 @@
 						>
 							<td
 								><label for="my-drawer-5" class="drawer-button text-base-content"
-									>{policy.policyName}</label
+									>{policy.name}</label
 								></td
 							>
 							<td>
-								{#if policy.priority === 'High'}
-									<label
-										for="my-drawer-5"
-										class="drawer-button rounded-full bg-red-500/10 p-0.5 px-1.5 text-red-500"
-										>{policy.priority}</label
-									>
-								{:else if policy.priority === 'Medium'}
-									<label
-										for="my-drawer-5"
-										class="drawer-button rounded-full bg-amber-900/10 p-0.5 px-1.5 text-amber-900"
-										>{policy.priority}</label
-									>
-								{:else}
-									<label
-										for="my-drawer-5"
-										class="drawer-button rounded-full bg-green-500/10 p-0.5 px-1.5 text-green-500"
-										>{policy.priority}</label
-									>
-								{/if}
+								<label
+									for="my-drawer-5"
+									class={twMerge(
+										'drawer-button rounded p-1 px-2 capitalize',
+										policy.priority <= 2
+											? 'bg-red-500/10 text-red-500'
+											: policy.priority === 3
+												? 'bg-amber-900/10 text-amber-900'
+												: 'bg-green-500/10 text-green-500'
+									)}>{PRIORITY_NAMES[policy.priority]}</label
+								>
 							</td>
+							<td><label for="my-drawer-5" class="drawer-button">{policy.response_time}</label></td>
 							<td
-								><label for="my-drawer-5" class="drawer-button">{policy.responseTime} Mins</label
-								></td
+								><label for="my-drawer-5" class="drawer-button">{policy.resolution_time}</label></td
 							>
 							<td
-								><label for="my-drawer-5" class="drawer-button">{policy.resolutionTime} Hours</label
+								><label for="my-drawer-5" class="drawer-button"
+									>{policy.escalate_to_highest_tech
+										? 'Escalate to highest techinician'
+										: 'None'}</label
 								></td
-							>
-							<td><label for="my-drawer-5" class="drawer-button">{policy.escalationRule}</label></td
 							>
 						</tr>
 					{/each}
+					{#if SlaPoliciesStore.loading}
+						{#each Array.from({ length: 5 }) as _, index (index)}
+							<tr class="cursor-pointer transition-all hover:bg-base-200/50">
+								<td>
+									<div class="min-h-[20px] w-[100px] skeleton"></div>
+								</td>
+								<td>
+									<div class="min-h-[25px] w-[60px] skeleton rounded"></div>
+								</td>
+								<td>
+									<div class="min-h-[20px] w-[100px] skeleton"></div>
+								</td>
+								<td>
+									<div class="min-h-[20px] w-[100px] skeleton"></div>
+								</td>
+								<td>
+									<div class="min-h-[20px] w-[150px] skeleton"></div>
+								</td>
+							</tr>
+						{/each}
+					{/if}
 				</tbody>
 			</table>
 		</div>

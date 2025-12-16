@@ -1,12 +1,13 @@
 import {
   customizedHelpdeskticketsList,
   type CustomizedHelpdeskticketsListData,
-  type CustomTicket
-} from '$lib/services/api';
-import { BaseListQueryStore } from './base.svelte';
+  type TicketRead,
+} from "$lib/services/api";
+import { BaseListQueryStore } from "./base.svelte";
 
-export const TicketsStore = new BaseListQueryStore<CustomTicket, CustomizedHelpdeskticketsListData>(
-  {
-    fetchFn: customizedHelpdeskticketsList
-  }
-);
+export const TicketsStore = new BaseListQueryStore<
+  TicketRead,
+  CustomizedHelpdeskticketsListData
+>({
+  fetchFn: customizedHelpdeskticketsList,
+});

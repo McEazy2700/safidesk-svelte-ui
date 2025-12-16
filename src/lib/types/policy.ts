@@ -1,6 +1,6 @@
-export type PriorityType = 'Low' | 'Medium' | 'High';
-export type TimeMetricType = 'Hours' | 'Minutes' | 'Seconds';
-export type CalenerHourOptionsType = '24/7' | 'Business Hours (Mon-Fri 8-4)';
+export type PriorityType = "Low" | "Medium" | "High";
+export type TimeMetricType = "Hours" | "Minutes" | "Days";
+export type CalenerHourOptionsType = "24/7" | "Business Hours (Mon-Fri 8-4)";
 
 export type PolicyType = {
   policyName: string;

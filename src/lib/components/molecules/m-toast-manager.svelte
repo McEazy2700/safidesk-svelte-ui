@@ -5,7 +5,7 @@
 </script>
 
 <Portal target="body">
-	<div class="toast-top toast-end toast">
+	<div class="toast-top toast-end toast z-[1000000000]">
 		{#each Toast.messages as message (message.id)}
 			<AToastItem {message} />
 		{/each}

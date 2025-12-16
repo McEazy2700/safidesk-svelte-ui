@@ -2,7 +2,7 @@
 
 import type { Client, Options as Options2, TDataShape } from './client';
 import { client } from './client.gen';
-import type { AgentChatCreateData, AgentChatCreateResponses, CustomizedHelpdeskticketsAssignmentStatsListData, CustomizedHelpdeskticketsAssignmentStatsListErrors, CustomizedHelpdeskticketsAssignmentStatsListResponses, CustomizedHelpdeskticketsCreateData, CustomizedHelpdeskticketsCreateResponses, CustomizedHelpdeskticketsDeleteData, CustomizedHelpdeskticketsDeleteResponses, CustomizedHelpdeskticketsListData, CustomizedHelpdeskticketsListResponses, CustomizedHelpdeskticketsPartialUpdateData, CustomizedHelpdeskticketsPartialUpdateResponses, CustomizedHelpdeskticketsReadData, CustomizedHelpdeskticketsReadResponses, CustomizedHelpdeskticketsUpdateData, CustomizedHelpdeskticketsUpdateResponses, GroupsAddUserCreateData, GroupsAddUserCreateResponses, GroupsCreateData, GroupsCreateResponses, GroupsDeleteData, GroupsDeleteResponses, GroupsListData, GroupsListResponses, GroupsPartialUpdateData, GroupsPartialUpdateResponses, GroupsReadData, GroupsReadResponses, GroupsRemoveUserCreateData, GroupsRemoveUserCreateResponses, GroupsUpdateData, GroupsUpdateResponses, HelpdeskApiFollowupsAttachmentsCreateData, HelpdeskApiFollowupsAttachmentsCreateResponses, HelpdeskApiFollowupsAttachmentsDeleteData, HelpdeskApiFollowupsAttachmentsDeleteResponses, HelpdeskApiFollowupsAttachmentsListData, HelpdeskApiFollowupsAttachmentsListResponses, HelpdeskApiFollowupsAttachmentsPartialUpdateData, HelpdeskApiFollowupsAttachmentsPartialUpdateResponses, HelpdeskApiFollowupsAttachmentsReadData, HelpdeskApiFollowupsAttachmentsReadResponses, HelpdeskApiFollowupsAttachmentsUpdateData, HelpdeskApiFollowupsAttachmentsUpdateResponses, HelpdeskApiFollowupsCreateData, HelpdeskApiFollowupsCreateResponses, HelpdeskApiFollowupsDeleteData, HelpdeskApiFollowupsDeleteResponses, HelpdeskApiFollowupsListData, HelpdeskApiFollowupsListResponses, HelpdeskApiFollowupsPartialUpdateData, HelpdeskApiFollowupsPartialUpdateResponses, HelpdeskApiFollowupsReadData, HelpdeskApiFollowupsReadResponses, HelpdeskApiFollowupsUpdateData, HelpdeskApiFollowupsUpdateResponses, HelpdeskApiTicketsCreateData, HelpdeskApiTicketsCreateResponses, HelpdeskApiTicketsDeleteData, HelpdeskApiTicketsDeleteResponses, HelpdeskApiTicketsListData, HelpdeskApiTicketsListResponses, HelpdeskApiTicketsPartialUpdateData, HelpdeskApiTicketsPartialUpdateResponses, HelpdeskApiTicketsReadData, HelpdeskApiTicketsReadResponses, HelpdeskApiTicketsUpdateData, HelpdeskApiTicketsUpdateResponses, HelpdeskApiUsersCreateData, HelpdeskApiUsersCreateResponses, HelpdeskApiUserTicketsListData, HelpdeskApiUserTicketsListResponses, HelpdeskApiUserTicketsReadData, HelpdeskApiUserTicketsReadResponses, HelpdeskDatatablesTicketListReadData, HelpdeskDatatablesTicketListReadResponses, HelpdeskTimelineTicketListReadData, HelpdeskTimelineTicketListReadResponses, LoginCreateData, LoginCreateResponses, QueueCreateData, QueueCreateResponses, QueueDeleteData, QueueDeleteResponses, QueueGroupLinksCreateData, QueueGroupLinksCreateResponses, QueueGroupLinksDeleteData, QueueGroupLinksDeleteResponses, QueueGroupLinksListData, QueueGroupLinksListResponses, QueueGroupLinksPartialUpdateData, QueueGroupLinksPartialUpdateResponses, QueueGroupLinksReadData, QueueGroupLinksReadResponses, QueueGroupLinksUpdateData, QueueGroupLinksUpdateResponses, QueueListData, QueueListResponses, QueuePartialUpdateData, QueuePartialUpdateResponses, QueueReadData, QueueReadResponses, QueueUpdateData, QueueUpdateResponses, RefreshCreateData, RefreshCreateResponses, UserGetListData, UserGetListResponses, UsersCreateData, UsersCreateResponses, UsersDeleteData, UsersDeleteResponses, UsersListData, UsersListResponses, UsersPartialUpdateData, UsersPartialUpdateResponses, UsersReadData, UsersReadResponses, UsersUpdateData, UsersUpdateResponses, WhatsappWebhookCreateData, WhatsappWebhookCreateResponses } from './types.gen';
+import type { AgentChatCreateData, AgentChatCreateResponses, CustomizedHelpdeskautomationRulesCreateData, CustomizedHelpdeskautomationRulesCreateResponses, CustomizedHelpdeskautomationRulesDeleteData, CustomizedHelpdeskautomationRulesDeleteResponses, CustomizedHelpdeskautomationRulesListData, CustomizedHelpdeskautomationRulesListResponses, CustomizedHelpdeskautomationRulesPartialUpdateData, CustomizedHelpdeskautomationRulesPartialUpdateResponses, CustomizedHelpdeskautomationRulesReadData, CustomizedHelpdeskautomationRulesReadResponses, CustomizedHelpdeskautomationRulesUpdateData, CustomizedHelpdeskautomationRulesUpdateResponses, CustomizedHelpdeskslaPoliciesCreateData, CustomizedHelpdeskslaPoliciesCreateResponses, CustomizedHelpdeskslaPoliciesDeleteData, CustomizedHelpdeskslaPoliciesDeleteResponses, CustomizedHelpdeskslaPoliciesListData, CustomizedHelpdeskslaPoliciesListResponses, CustomizedHelpdeskslaPoliciesPartialUpdateData, CustomizedHelpdeskslaPoliciesPartialUpdateResponses, CustomizedHelpdeskslaPoliciesReadData, CustomizedHelpdeskslaPoliciesReadResponses, CustomizedHelpdeskslaPoliciesUpdateData, CustomizedHelpdeskslaPoliciesUpdateResponses, CustomizedHelpdesktechnicianProfilesCreateData, CustomizedHelpdesktechnicianProfilesCreateErrors, CustomizedHelpdesktechnicianProfilesCreateResponses, CustomizedHelpdesktechnicianProfilesDeleteData, CustomizedHelpdesktechnicianProfilesDeleteResponses, CustomizedHelpdesktechnicianProfilesListData, CustomizedHelpdesktechnicianProfilesListResponses, CustomizedHelpdesktechnicianProfilesPartialUpdateData, CustomizedHelpdesktechnicianProfilesPartialUpdateResponses, CustomizedHelpdesktechnicianProfilesReadData, CustomizedHelpdesktechnicianProfilesReadResponses, CustomizedHelpdesktechnicianProfilesUpdateData, CustomizedHelpdesktechnicianProfilesUpdateResponses, CustomizedHelpdeskticketsAssignmentStatsListData, CustomizedHelpdeskticketsAssignmentStatsListErrors, CustomizedHelpdeskticketsAssignmentStatsListResponses, CustomizedHelpdeskticketsCreateData, CustomizedHelpdeskticketsCreateResponses, CustomizedHelpdeskticketsDeleteData, CustomizedHelpdeskticketsDeleteResponses, CustomizedHelpdeskticketsListData, CustomizedHelpdeskticketsListResponses, CustomizedHelpdeskticketsPartialUpdateData, CustomizedHelpdeskticketsPartialUpdateResponses, CustomizedHelpdeskticketsReadData, CustomizedHelpdeskticketsReadResponses, CustomizedHelpdeskticketsUpdateData, CustomizedHelpdeskticketsUpdateResponses, GroupsAddUserCreateData, GroupsAddUserCreateResponses, GroupsCreateData, GroupsCreateResponses, GroupsDeleteData, GroupsDeleteResponses, GroupsListData, GroupsListResponses, GroupsPartialUpdateData, GroupsPartialUpdateResponses, GroupsReadData, GroupsReadResponses, GroupsRemoveUserCreateData, GroupsRemoveUserCreateResponses, GroupsUpdateData, GroupsUpdateResponses, HelpdeskApiFollowupsAttachmentsCreateData, HelpdeskApiFollowupsAttachmentsCreateResponses, HelpdeskApiFollowupsAttachmentsDeleteData, HelpdeskApiFollowupsAttachmentsDeleteResponses, HelpdeskApiFollowupsAttachmentsListData, HelpdeskApiFollowupsAttachmentsListResponses, HelpdeskApiFollowupsAttachmentsPartialUpdateData, HelpdeskApiFollowupsAttachmentsPartialUpdateResponses, HelpdeskApiFollowupsAttachmentsReadData, HelpdeskApiFollowupsAttachmentsReadResponses, HelpdeskApiFollowupsAttachmentsUpdateData, HelpdeskApiFollowupsAttachmentsUpdateResponses, HelpdeskApiFollowupsCreateData, HelpdeskApiFollowupsCreateResponses, HelpdeskApiFollowupsDeleteData, HelpdeskApiFollowupsDeleteResponses, HelpdeskApiFollowupsListData, HelpdeskApiFollowupsListResponses, HelpdeskApiFollowupsPartialUpdateData, HelpdeskApiFollowupsPartialUpdateResponses, HelpdeskApiFollowupsReadData, HelpdeskApiFollowupsReadResponses, HelpdeskApiFollowupsUpdateData, HelpdeskApiFollowupsUpdateResponses, HelpdeskApiTicketsCreateData, HelpdeskApiTicketsCreateResponses, HelpdeskApiTicketsDeleteData, HelpdeskApiTicketsDeleteResponses, HelpdeskApiTicketsListData, HelpdeskApiTicketsListResponses, HelpdeskApiTicketsPartialUpdateData, HelpdeskApiTicketsPartialUpdateResponses, HelpdeskApiTicketsReadData, HelpdeskApiTicketsReadResponses, HelpdeskApiTicketsUpdateData, HelpdeskApiTicketsUpdateResponses, HelpdeskApiUsersCreateData, HelpdeskApiUsersCreateResponses, HelpdeskApiUserTicketsListData, HelpdeskApiUserTicketsListResponses, HelpdeskApiUserTicketsReadData, HelpdeskApiUserTicketsReadResponses, HelpdeskDatatablesTicketListReadData, HelpdeskDatatablesTicketListReadResponses, HelpdeskTimelineTicketListReadData, HelpdeskTimelineTicketListReadResponses, LoginCreateData, LoginCreateResponses, QueueCreateData, QueueCreateResponses, QueueDeleteData, QueueDeleteResponses, QueueGroupLinksCreateData, QueueGroupLinksCreateResponses, QueueGroupLinksDeleteData, QueueGroupLinksDeleteResponses, QueueGroupLinksListData, QueueGroupLinksListResponses, QueueGroupLinksPartialUpdateData, QueueGroupLinksPartialUpdateResponses, QueueGroupLinksReadData, QueueGroupLinksReadResponses, QueueGroupLinksUpdateData, QueueGroupLinksUpdateResponses, QueueListData, QueueListResponses, QueuePartialUpdateData, QueuePartialUpdateResponses, QueueReadData, QueueReadResponses, QueueUpdateData, QueueUpdateResponses, RefreshCreateData, RefreshCreateResponses, UserGetListData, UserGetListResponses, UsersCreateData, UsersCreateResponses, UsersDeleteData, UsersDeleteResponses, UsersListData, UsersListResponses, UsersPartialUpdateData, UsersPartialUpdateResponses, UsersReadData, UsersReadResponses, UsersUpdateData, UsersUpdateResponses, WhatsappWebhookCreateData, WhatsappWebhookCreateResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = Options2<TData, ThrowOnError> & {
     /**
@@ -32,8 +32,347 @@ export const agentChatCreate = <ThrowOnError extends boolean = false>(options?: 
 };
 
 /**
- * List tickets; optional filters: status, priority, queue, user_id.
+ * List Automation Rules
+ * Retrieve a list of rules. Use ?search= to find specific rules.
  */
+export const customizedHelpdeskautomationRulesList = <ThrowOnError extends boolean = false>(options?: Options<CustomizedHelpdeskautomationRulesListData, ThrowOnError>) => {
+    return (options?.client ?? client).get<CustomizedHelpdeskautomationRulesListResponses, unknown, ThrowOnError>({
+        security: [
+            {
+                name: 'Authorization',
+                type: 'apiKey'
+            }
+        ],
+        url: '/customized_helpdeskautomation-rules/',
+        ...options
+    });
+};
+
+/**
+ * Create Automation Rule
+ * Create a new IFTTT rule. **conditions** and **actions** accept JSON arrays.
+ */
+export const customizedHelpdeskautomationRulesCreate = <ThrowOnError extends boolean = false>(options: Options<CustomizedHelpdeskautomationRulesCreateData, ThrowOnError>) => {
+    return (options.client ?? client).post<CustomizedHelpdeskautomationRulesCreateResponses, unknown, ThrowOnError>({
+        security: [
+            {
+                name: 'Authorization',
+                type: 'apiKey'
+            }
+        ],
+        url: '/customized_helpdeskautomation-rules/',
+        ...options,
+        headers: {
+            'Content-Type': 'application/json',
+            ...options.headers
+        }
+    });
+};
+
+/**
+ * API endpoint for managing IT Automation Rules.
+ * The Automation Engine runs strictly in order of 'priority'.
+ */
+export const customizedHelpdeskautomationRulesDelete = <ThrowOnError extends boolean = false>(options: Options<CustomizedHelpdeskautomationRulesDeleteData, ThrowOnError>) => {
+    return (options.client ?? client).delete<CustomizedHelpdeskautomationRulesDeleteResponses, unknown, ThrowOnError>({
+        security: [
+            {
+                name: 'Authorization',
+                type: 'apiKey'
+            }
+        ],
+        url: '/customized_helpdeskautomation-rules/{id}/',
+        ...options
+    });
+};
+
+/**
+ * API endpoint for managing IT Automation Rules.
+ * The Automation Engine runs strictly in order of 'priority'.
+ */
+export const customizedHelpdeskautomationRulesRead = <ThrowOnError extends boolean = false>(options: Options<CustomizedHelpdeskautomationRulesReadData, ThrowOnError>) => {
+    return (options.client ?? client).get<CustomizedHelpdeskautomationRulesReadResponses, unknown, ThrowOnError>({
+        security: [
+            {
+                name: 'Authorization',
+                type: 'apiKey'
+            }
+        ],
+        url: '/customized_helpdeskautomation-rules/{id}/',
+        ...options
+    });
+};
+
+/**
+ * API endpoint for managing IT Automation Rules.
+ * The Automation Engine runs strictly in order of 'priority'.
+ */
+export const customizedHelpdeskautomationRulesPartialUpdate = <ThrowOnError extends boolean = false>(options: Options<CustomizedHelpdeskautomationRulesPartialUpdateData, ThrowOnError>) => {
+    return (options.client ?? client).patch<CustomizedHelpdeskautomationRulesPartialUpdateResponses, unknown, ThrowOnError>({
+        security: [
+            {
+                name: 'Authorization',
+                type: 'apiKey'
+            }
+        ],
+        url: '/customized_helpdeskautomation-rules/{id}/',
+        ...options,
+        headers: {
+            'Content-Type': 'application/json',
+            ...options.headers
+        }
+    });
+};
+
+/**
+ * Update Rule
+ * Update a rule. Note: You must send the full JSON lists for conditions/actions if you update them.
+ */
+export const customizedHelpdeskautomationRulesUpdate = <ThrowOnError extends boolean = false>(options: Options<CustomizedHelpdeskautomationRulesUpdateData, ThrowOnError>) => {
+    return (options.client ?? client).put<CustomizedHelpdeskautomationRulesUpdateResponses, unknown, ThrowOnError>({
+        security: [
+            {
+                name: 'Authorization',
+                type: 'apiKey'
+            }
+        ],
+        url: '/customized_helpdeskautomation-rules/{id}/',
+        ...options,
+        headers: {
+            'Content-Type': 'application/json',
+            ...options.headers
+        }
+    });
+};
+
+/**
+ * CRUD Endpoint for SLA Policies.
+ * Allows adding, updating, and deleting SLA policies.
+ */
+export const customizedHelpdeskslaPoliciesList = <ThrowOnError extends boolean = false>(options?: Options<CustomizedHelpdeskslaPoliciesListData, ThrowOnError>) => {
+    return (options?.client ?? client).get<CustomizedHelpdeskslaPoliciesListResponses, unknown, ThrowOnError>({
+        security: [
+            {
+                name: 'Authorization',
+                type: 'apiKey'
+            }
+        ],
+        url: '/customized_helpdesksla-policies/',
+        ...options
+    });
+};
+
+/**
+ * CRUD Endpoint for SLA Policies.
+ * Allows adding, updating, and deleting SLA policies.
+ */
+export const customizedHelpdeskslaPoliciesCreate = <ThrowOnError extends boolean = false>(options: Options<CustomizedHelpdeskslaPoliciesCreateData, ThrowOnError>) => {
+    return (options.client ?? client).post<CustomizedHelpdeskslaPoliciesCreateResponses, unknown, ThrowOnError>({
+        security: [
+            {
+                name: 'Authorization',
+                type: 'apiKey'
+            }
+        ],
+        url: '/customized_helpdesksla-policies/',
+        ...options,
+        headers: {
+            'Content-Type': 'application/json',
+            ...options.headers
+        }
+    });
+};
+
+/**
+ * CRUD Endpoint for SLA Policies.
+ * Allows adding, updating, and deleting SLA policies.
+ */
+export const customizedHelpdeskslaPoliciesDelete = <ThrowOnError extends boolean = false>(options: Options<CustomizedHelpdeskslaPoliciesDeleteData, ThrowOnError>) => {
+    return (options.client ?? client).delete<CustomizedHelpdeskslaPoliciesDeleteResponses, unknown, ThrowOnError>({
+        security: [
+            {
+                name: 'Authorization',
+                type: 'apiKey'
+            }
+        ],
+        url: '/customized_helpdesksla-policies/{id}/',
+        ...options
+    });
+};
+
+/**
+ * CRUD Endpoint for SLA Policies.
+ * Allows adding, updating, and deleting SLA policies.
+ */
+export const customizedHelpdeskslaPoliciesRead = <ThrowOnError extends boolean = false>(options: Options<CustomizedHelpdeskslaPoliciesReadData, ThrowOnError>) => {
+    return (options.client ?? client).get<CustomizedHelpdeskslaPoliciesReadResponses, unknown, ThrowOnError>({
+        security: [
+            {
+                name: 'Authorization',
+                type: 'apiKey'
+            }
+        ],
+        url: '/customized_helpdesksla-policies/{id}/',
+        ...options
+    });
+};
+
+/**
+ * CRUD Endpoint for SLA Policies.
+ * Allows adding, updating, and deleting SLA policies.
+ */
+export const customizedHelpdeskslaPoliciesPartialUpdate = <ThrowOnError extends boolean = false>(options: Options<CustomizedHelpdeskslaPoliciesPartialUpdateData, ThrowOnError>) => {
+    return (options.client ?? client).patch<CustomizedHelpdeskslaPoliciesPartialUpdateResponses, unknown, ThrowOnError>({
+        security: [
+            {
+                name: 'Authorization',
+                type: 'apiKey'
+            }
+        ],
+        url: '/customized_helpdesksla-policies/{id}/',
+        ...options,
+        headers: {
+            'Content-Type': 'application/json',
+            ...options.headers
+        }
+    });
+};
+
+/**
+ * CRUD Endpoint for SLA Policies.
+ * Allows adding, updating, and deleting SLA policies.
+ */
+export const customizedHelpdeskslaPoliciesUpdate = <ThrowOnError extends boolean = false>(options: Options<CustomizedHelpdeskslaPoliciesUpdateData, ThrowOnError>) => {
+    return (options.client ?? client).put<CustomizedHelpdeskslaPoliciesUpdateResponses, unknown, ThrowOnError>({
+        security: [
+            {
+                name: 'Authorization',
+                type: 'apiKey'
+            }
+        ],
+        url: '/customized_helpdesksla-policies/{id}/',
+        ...options,
+        headers: {
+            'Content-Type': 'application/json',
+            ...options.headers
+        }
+    });
+};
+
+/**
+ * List all Technicians
+ * Returns list of users who have technician profiles.
+ */
+export const customizedHelpdesktechnicianProfilesList = <ThrowOnError extends boolean = false>(options?: Options<CustomizedHelpdesktechnicianProfilesListData, ThrowOnError>) => {
+    return (options?.client ?? client).get<CustomizedHelpdesktechnicianProfilesListResponses, unknown, ThrowOnError>({
+        security: [
+            {
+                name: 'Authorization',
+                type: 'apiKey'
+            }
+        ],
+        url: '/customized_helpdesktechnician-profiles/',
+        ...options
+    });
+};
+
+/**
+ * Create Technician Profile
+ * Creates a profile for a user. **User must belong to at least one Group.**
+ */
+export const customizedHelpdesktechnicianProfilesCreate = <ThrowOnError extends boolean = false>(options: Options<CustomizedHelpdesktechnicianProfilesCreateData, ThrowOnError>) => {
+    return (options.client ?? client).post<CustomizedHelpdesktechnicianProfilesCreateResponses, CustomizedHelpdesktechnicianProfilesCreateErrors, ThrowOnError>({
+        security: [
+            {
+                name: 'Authorization',
+                type: 'apiKey'
+            }
+        ],
+        url: '/customized_helpdesktechnician-profiles/',
+        ...options,
+        headers: {
+            'Content-Type': 'application/json',
+            ...options.headers
+        }
+    });
+};
+
+/**
+ * API for managing Technicians.
+ * **Rule:** Any user belonging to at least one Django Group can be made a Technician.
+ */
+export const customizedHelpdesktechnicianProfilesDelete = <ThrowOnError extends boolean = false>(options: Options<CustomizedHelpdesktechnicianProfilesDeleteData, ThrowOnError>) => {
+    return (options.client ?? client).delete<CustomizedHelpdesktechnicianProfilesDeleteResponses, unknown, ThrowOnError>({
+        security: [
+            {
+                name: 'Authorization',
+                type: 'apiKey'
+            }
+        ],
+        url: '/customized_helpdesktechnician-profiles/{id}/',
+        ...options
+    });
+};
+
+/**
+ * API for managing Technicians.
+ * **Rule:** Any user belonging to at least one Django Group can be made a Technician.
+ */
+export const customizedHelpdesktechnicianProfilesRead = <ThrowOnError extends boolean = false>(options: Options<CustomizedHelpdesktechnicianProfilesReadData, ThrowOnError>) => {
+    return (options.client ?? client).get<CustomizedHelpdesktechnicianProfilesReadResponses, unknown, ThrowOnError>({
+        security: [
+            {
+                name: 'Authorization',
+                type: 'apiKey'
+            }
+        ],
+        url: '/customized_helpdesktechnician-profiles/{id}/',
+        ...options
+    });
+};
+
+/**
+ * API for managing Technicians.
+ * **Rule:** Any user belonging to at least one Django Group can be made a Technician.
+ */
+export const customizedHelpdesktechnicianProfilesPartialUpdate = <ThrowOnError extends boolean = false>(options: Options<CustomizedHelpdesktechnicianProfilesPartialUpdateData, ThrowOnError>) => {
+    return (options.client ?? client).patch<CustomizedHelpdesktechnicianProfilesPartialUpdateResponses, unknown, ThrowOnError>({
+        security: [
+            {
+                name: 'Authorization',
+                type: 'apiKey'
+            }
+        ],
+        url: '/customized_helpdesktechnician-profiles/{id}/',
+        ...options,
+        headers: {
+            'Content-Type': 'application/json',
+            ...options.headers
+        }
+    });
+};
+
+/**
+ * API for managing Technicians.
+ * **Rule:** Any user belonging to at least one Django Group can be made a Technician.
+ */
+export const customizedHelpdesktechnicianProfilesUpdate = <ThrowOnError extends boolean = false>(options: Options<CustomizedHelpdesktechnicianProfilesUpdateData, ThrowOnError>) => {
+    return (options.client ?? client).put<CustomizedHelpdesktechnicianProfilesUpdateResponses, unknown, ThrowOnError>({
+        security: [
+            {
+                name: 'Authorization',
+                type: 'apiKey'
+            }
+        ],
+        url: '/customized_helpdesktechnician-profiles/{id}/',
+        ...options,
+        headers: {
+            'Content-Type': 'application/json',
+            ...options.headers
+        }
+    });
+};
+
 export const customizedHelpdeskticketsList = <ThrowOnError extends boolean = false>(options?: Options<CustomizedHelpdeskticketsListData, ThrowOnError>) => {
     return (options?.client ?? client).get<CustomizedHelpdeskticketsListResponses, unknown, ThrowOnError>({
         security: [

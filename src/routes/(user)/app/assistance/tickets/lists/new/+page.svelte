@@ -11,6 +11,7 @@
 	import ATicketScreen from '$lib/components/atoms/a-top-header-screen.svelte';
 	import { getFutureDate } from '$lib/utils/time';
 	import { TICKET_RESPONSE_DURATIONS } from '$lib/constants/tickets';
+	import type { TicketRead } from '$lib/services/api';
 
 	let queueId = $state<number>();
 	let dueDate = $derived(
@@ -18,7 +19,7 @@
 	);
 
 	function handleCreate(value: TicketFormArgs) {
-		const user = getClientAccessToken()?.user;
+		const user = getClientAccessToken()?.user?.user;
 		TicketMutations.create({
 			status: cast(value.status),
 			priority: cast(value.priority),
@@ -26,18 +27,15 @@
 			description: value.content,
 			queue_id: value.queue_id,
 			submitter_email: user?.email,
-			created_by: {
-				email: user?.email,
-				username: user?.username ?? ''
-			},
 			due_date: value.due_date
 		}).then(async (data) => {
+			const ticketData = data as TicketRead;
 			await TicketsStore.refresh();
 			await invalidateAll();
-			if (data) {
+			if (ticketData) {
 				goto(
 					resolve('/(user)/app/assistance/tickets/lists/[slug]', {
-						slug: slugify(data.title) + `__${data.id}`
+						slug: slugify(ticketData.title) + `__${ticketData.id}`
 					}),
 					{ replaceState: true }
 				);

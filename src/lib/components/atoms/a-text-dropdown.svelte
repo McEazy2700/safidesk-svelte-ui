@@ -8,13 +8,15 @@
 		onselect?: (value: string) => void;
 		selected?: string;
 		placeholder?: string;
+		class?: string;
 	};
 	let {
 		selected = $bindable(),
 		onselect,
 		placeholder = 'Select item',
 		items,
-		disabled
+		disabled,
+		class: klass
 	}: Props = $props();
 </script>
 
@@ -27,7 +29,10 @@
 	<div
 		tabindex="0"
 		role="button"
-		class="btn w-full flex-row items-center justify-between border-black/10 bg-white btn-outline"
+		class={twMerge(
+			'btn input w-full flex-row items-center justify-between bg-white btn-outline',
+			klass
+		)}
 	>
 		<span class={twMerge('capitalize', !selected && 'text-base-content/40')}
 			>{selected ?? placeholder}</span

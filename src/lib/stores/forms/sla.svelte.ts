@@ -1,19 +1,22 @@
-import type { PolicyType } from "$lib/types/policy";
+import type { SlaPolicy } from "$lib/services/api";
 import { getContext, setContext } from "svelte";
 
 class SlaStateManager {
-  edit = $state(false)
-  currentPolicy = $state<PolicyType>()
+  edit = $state(false);
+  current = $state({} as SlaPolicy);
 
   toggleEdit() {
-    this.edit = !this.edit
+    this.edit = !this.edit;
   }
 
-  setCurrentPolicy(policy: PolicyType) {
-    this.currentPolicy = policy
+  setCurrentPolicy(policy: SlaPolicy) {
+    this.current = policy;
+  }
+
+  clearCurrent() {
+    this.current = {} as SlaPolicy;
   }
 }
-
 
 const SLA_FORM_STATE_KEY = "$_sla_form_state";
 

@@ -4,6 +4,94 @@ export type ClientOptions = {
     baseUrl: 'https://itmsmvp-81072574537.europe-west1.run.app/' | (string & {});
 };
 
+export type AutomationRule = {
+    /**
+     * ID
+     */
+    readonly id?: number;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Description
+     */
+    description?: string;
+    /**
+     * Is active
+     */
+    is_active?: boolean;
+    /**
+     * Priority
+     * Higher number runs last (overrides previous rules)
+     */
+    priority?: number;
+    /**
+     * Created at
+     */
+    readonly created_at?: string;
+    /**
+     * Updated at
+     */
+    readonly updated_at?: string;
+};
+
+export type SlaPolicy = {
+    /**
+     * ID
+     */
+    readonly id?: number;
+    /**
+     * Priority
+     * The ticket priority this policy applies to.
+     */
+    priority: 1 | 2 | 3 | 4 | 5;
+    /**
+     * Ticket Type
+     * The ITIL ticket type this policy applies to.
+     */
+    ticket_type?: 'Incident' | 'Problem' | 'Service Request' | 'Change Request';
+    /**
+     * Target Response Time
+     * Time to first response (e.g., '01:00:00' for 1 hour).
+     */
+    response_time: string;
+    /**
+     * Target Resolution Time
+     * Time to resolution (e.g., '24:00:00' for 1 day).
+     */
+    resolution_time: string;
+    /**
+     * Escalate to Highest Technician
+     * If checked, breached tickets will be reassigned to the most senior technician in the group.
+     */
+    escalate_to_highest_tech?: boolean;
+};
+
+export type TechnicianProfile = {
+    /**
+     * ID
+     */
+    readonly id?: number;
+    /**
+     * Technician
+     */
+    user: number;
+    /**
+     * Username
+     */
+    readonly username?: string;
+    /**
+     * Groups
+     */
+    readonly groups?: string;
+    /**
+     * Seniority Level
+     * Higher number means higher seniority (e.g. 1-5)
+     */
+    seniority_level?: number;
+};
+
 export type CustomQueue = {
     /**
      * ID
@@ -118,7 +206,7 @@ export type FollowUp = {
     readonly message_id?: string | null;
 };
 
-export type CustomTicket = {
+export type TicketRead = {
     /**
      * ID
      */
@@ -172,13 +260,65 @@ export type CustomTicket = {
     readonly attachment?: string;
     readonly followup_set?: Array<FollowUp>;
     /**
+     * Ticket type
+     */
+    readonly ticket_type?: string;
+};
+
+export type TicketWrite = {
+    /**
      * Queue id
      */
     queue_id: number;
     /**
+     * Title
+     */
+    title: string;
+    /**
+     * Description
+     * The content of the customers query.
+     */
+    description?: string | null;
+    /**
+     * Resolution
+     * The resolution provided to the customer by our staff.
+     */
+    resolution?: string | null;
+    /**
+     * Submitter E-Mail
+     * The submitter will receive an email for all public follow-ups left for this task.
+     */
+    submitter_email?: string | null;
+    /**
      * Assigned to id
      */
     assigned_to_id?: number;
+    /**
+     * Status
+     */
+    status?: 1 | 2 | 3 | 4 | 5;
+    /**
+     * On Hold
+     * If a ticket is on hold, it will not automatically be escalated.
+     */
+    on_hold?: boolean;
+    /**
+     * Priority
+     * 1 = Highest Priority, 5 = Low Priority
+     */
+    priority?: 1 | 2 | 3 | 4 | 5;
+    /**
+     * Due on
+     */
+    due_date?: string | null;
+    /**
+     * Merged to
+     */
+    merged_to?: number | null;
+    /**
+     * Ticket type input
+     */
+    ticket_type_input?: 'Incident' | 'Problem' | 'Service Request' | 'Change Request';
 };
 
 export type Group = {
@@ -412,6 +552,66 @@ export type AppUser = {
     password?: string;
 };
 
+export type AutomationRuleWritable = {
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Description
+     */
+    description?: string;
+    /**
+     * Is active
+     */
+    is_active?: boolean;
+    /**
+     * Priority
+     * Higher number runs last (overrides previous rules)
+     */
+    priority?: number;
+};
+
+export type SlaPolicyWritable = {
+    /**
+     * Priority
+     * The ticket priority this policy applies to.
+     */
+    priority: 1 | 2 | 3 | 4 | 5;
+    /**
+     * Ticket Type
+     * The ITIL ticket type this policy applies to.
+     */
+    ticket_type?: 'Incident' | 'Problem' | 'Service Request' | 'Change Request';
+    /**
+     * Target Response Time
+     * Time to first response (e.g., '01:00:00' for 1 hour).
+     */
+    response_time: string;
+    /**
+     * Target Resolution Time
+     * Time to resolution (e.g., '24:00:00' for 1 day).
+     */
+    resolution_time: string;
+    /**
+     * Escalate to Highest Technician
+     * If checked, breached tickets will be reassigned to the most senior technician in the group.
+     */
+    escalate_to_highest_tech?: boolean;
+};
+
+export type TechnicianProfileWritable = {
+    /**
+     * Technician
+     */
+    user: number;
+    /**
+     * Seniority Level
+     * Higher number means higher seniority (e.g. 1-5)
+     */
+    seniority_level?: number;
+};
+
 export type CustomQueueWritable = {
     /**
      * Title
@@ -496,7 +696,7 @@ export type FollowUpWritable = {
     attachments?: Array<unknown>;
 };
 
-export type CustomTicketWritable = {
+export type TicketReadWritable = {
     queue?: CustomQueueWritable;
     /**
      * Title
@@ -540,14 +740,6 @@ export type CustomTicketWritable = {
      * Merged to
      */
     merged_to?: number | null;
-    /**
-     * Queue id
-     */
-    queue_id: number;
-    /**
-     * Assigned to id
-     */
-    assigned_to_id?: number;
 };
 
 export type GroupWritable = {
@@ -691,6 +883,402 @@ export type AgentChatCreateResponses = {
     201: unknown;
 };
 
+export type CustomizedHelpdeskautomationRulesListData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * A search term.
+         */
+        search?: string;
+        /**
+         * Which field to use when ordering the results.
+         */
+        ordering?: string;
+        /**
+         * Filter by name
+         */
+        name?: string;
+        /**
+         * Filter by active status
+         */
+        is_active?: boolean;
+    };
+    url: '/customized_helpdeskautomation-rules/';
+};
+
+export type CustomizedHelpdeskautomationRulesListResponses = {
+    200: Array<AutomationRule>;
+};
+
+export type CustomizedHelpdeskautomationRulesListResponse = CustomizedHelpdeskautomationRulesListResponses[keyof CustomizedHelpdeskautomationRulesListResponses];
+
+export type CustomizedHelpdeskautomationRulesCreateData = {
+    body: {
+        name: string;
+        description?: string;
+        is_active?: boolean;
+        /**
+         * Higher runs last
+         */
+        priority?: number;
+        /**
+         * List of conditions that must ALL match (AND logic)
+         */
+        conditions: Array<{
+            /**
+             * Ticket field to check (e.g., 'ticket_type', 'description')
+             */
+            field: string;
+            /**
+             * Comparison operator
+             */
+            operator: 'equals' | 'contains' | 'starts_with' | '>' | '<';
+            /**
+             * Value to match
+             */
+            value: string;
+        }>;
+        /**
+         * List of actions to perform if conditions match
+         */
+        actions: Array<{
+            /**
+             * Action to perform
+             */
+            action: 'set_field' | 'assign_to_queue' | 'send_email';
+            /**
+             * Field to modify (required for set_field)
+             */
+            field?: string;
+            /**
+             * New value or Queue ID
+             */
+            value: string;
+        }>;
+    };
+    path?: never;
+    query?: never;
+    url: '/customized_helpdeskautomation-rules/';
+};
+
+export type CustomizedHelpdeskautomationRulesCreateResponses = {
+    201: AutomationRule;
+};
+
+export type CustomizedHelpdeskautomationRulesCreateResponse = CustomizedHelpdeskautomationRulesCreateResponses[keyof CustomizedHelpdeskautomationRulesCreateResponses];
+
+export type CustomizedHelpdeskautomationRulesDeleteData = {
+    body?: never;
+    path: {
+        /**
+         * A unique integer value identifying this automation rule.
+         */
+        id: number;
+    };
+    query?: never;
+    url: '/customized_helpdeskautomation-rules/{id}/';
+};
+
+export type CustomizedHelpdeskautomationRulesDeleteResponses = {
+    204: unknown;
+};
+
+export type CustomizedHelpdeskautomationRulesReadData = {
+    body?: never;
+    path: {
+        /**
+         * A unique integer value identifying this automation rule.
+         */
+        id: number;
+    };
+    query?: never;
+    url: '/customized_helpdeskautomation-rules/{id}/';
+};
+
+export type CustomizedHelpdeskautomationRulesReadResponses = {
+    200: AutomationRule;
+};
+
+export type CustomizedHelpdeskautomationRulesReadResponse = CustomizedHelpdeskautomationRulesReadResponses[keyof CustomizedHelpdeskautomationRulesReadResponses];
+
+export type CustomizedHelpdeskautomationRulesPartialUpdateData = {
+    body: AutomationRuleWritable;
+    path: {
+        /**
+         * A unique integer value identifying this automation rule.
+         */
+        id: number;
+    };
+    query?: never;
+    url: '/customized_helpdeskautomation-rules/{id}/';
+};
+
+export type CustomizedHelpdeskautomationRulesPartialUpdateResponses = {
+    200: AutomationRule;
+};
+
+export type CustomizedHelpdeskautomationRulesPartialUpdateResponse = CustomizedHelpdeskautomationRulesPartialUpdateResponses[keyof CustomizedHelpdeskautomationRulesPartialUpdateResponses];
+
+export type CustomizedHelpdeskautomationRulesUpdateData = {
+    body: {
+        name: string;
+        description?: string;
+        is_active?: boolean;
+        /**
+         * Higher runs last
+         */
+        priority?: number;
+        /**
+         * List of conditions that must ALL match (AND logic)
+         */
+        conditions: Array<{
+            /**
+             * Ticket field to check (e.g., 'ticket_type', 'description')
+             */
+            field: string;
+            /**
+             * Comparison operator
+             */
+            operator: 'equals' | 'contains' | 'starts_with' | '>' | '<';
+            /**
+             * Value to match
+             */
+            value: string;
+        }>;
+        /**
+         * List of actions to perform if conditions match
+         */
+        actions: Array<{
+            /**
+             * Action to perform
+             */
+            action: 'set_field' | 'assign_to_queue' | 'send_email';
+            /**
+             * Field to modify (required for set_field)
+             */
+            field?: string;
+            /**
+             * New value or Queue ID
+             */
+            value: string;
+        }>;
+    };
+    path: {
+        /**
+         * A unique integer value identifying this automation rule.
+         */
+        id: number;
+    };
+    query?: never;
+    url: '/customized_helpdeskautomation-rules/{id}/';
+};
+
+export type CustomizedHelpdeskautomationRulesUpdateResponses = {
+    200: AutomationRule;
+};
+
+export type CustomizedHelpdeskautomationRulesUpdateResponse = CustomizedHelpdeskautomationRulesUpdateResponses[keyof CustomizedHelpdeskautomationRulesUpdateResponses];
+
+export type CustomizedHelpdeskslaPoliciesListData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/customized_helpdesksla-policies/';
+};
+
+export type CustomizedHelpdeskslaPoliciesListResponses = {
+    200: Array<SlaPolicy>;
+};
+
+export type CustomizedHelpdeskslaPoliciesListResponse = CustomizedHelpdeskslaPoliciesListResponses[keyof CustomizedHelpdeskslaPoliciesListResponses];
+
+export type CustomizedHelpdeskslaPoliciesCreateData = {
+    body: SlaPolicyWritable;
+    path?: never;
+    query?: never;
+    url: '/customized_helpdesksla-policies/';
+};
+
+export type CustomizedHelpdeskslaPoliciesCreateResponses = {
+    201: SlaPolicy;
+};
+
+export type CustomizedHelpdeskslaPoliciesCreateResponse = CustomizedHelpdeskslaPoliciesCreateResponses[keyof CustomizedHelpdeskslaPoliciesCreateResponses];
+
+export type CustomizedHelpdeskslaPoliciesDeleteData = {
+    body?: never;
+    path: {
+        /**
+         * A unique integer value identifying this SLA Policy.
+         */
+        id: number;
+    };
+    query?: never;
+    url: '/customized_helpdesksla-policies/{id}/';
+};
+
+export type CustomizedHelpdeskslaPoliciesDeleteResponses = {
+    204: unknown;
+};
+
+export type CustomizedHelpdeskslaPoliciesReadData = {
+    body?: never;
+    path: {
+        /**
+         * A unique integer value identifying this SLA Policy.
+         */
+        id: number;
+    };
+    query?: never;
+    url: '/customized_helpdesksla-policies/{id}/';
+};
+
+export type CustomizedHelpdeskslaPoliciesReadResponses = {
+    200: SlaPolicy;
+};
+
+export type CustomizedHelpdeskslaPoliciesReadResponse = CustomizedHelpdeskslaPoliciesReadResponses[keyof CustomizedHelpdeskslaPoliciesReadResponses];
+
+export type CustomizedHelpdeskslaPoliciesPartialUpdateData = {
+    body: SlaPolicyWritable;
+    path: {
+        /**
+         * A unique integer value identifying this SLA Policy.
+         */
+        id: number;
+    };
+    query?: never;
+    url: '/customized_helpdesksla-policies/{id}/';
+};
+
+export type CustomizedHelpdeskslaPoliciesPartialUpdateResponses = {
+    200: SlaPolicy;
+};
+
+export type CustomizedHelpdeskslaPoliciesPartialUpdateResponse = CustomizedHelpdeskslaPoliciesPartialUpdateResponses[keyof CustomizedHelpdeskslaPoliciesPartialUpdateResponses];
+
+export type CustomizedHelpdeskslaPoliciesUpdateData = {
+    body: SlaPolicyWritable;
+    path: {
+        /**
+         * A unique integer value identifying this SLA Policy.
+         */
+        id: number;
+    };
+    query?: never;
+    url: '/customized_helpdesksla-policies/{id}/';
+};
+
+export type CustomizedHelpdeskslaPoliciesUpdateResponses = {
+    200: SlaPolicy;
+};
+
+export type CustomizedHelpdeskslaPoliciesUpdateResponse = CustomizedHelpdeskslaPoliciesUpdateResponses[keyof CustomizedHelpdeskslaPoliciesUpdateResponses];
+
+export type CustomizedHelpdesktechnicianProfilesListData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/customized_helpdesktechnician-profiles/';
+};
+
+export type CustomizedHelpdesktechnicianProfilesListResponses = {
+    200: Array<TechnicianProfile>;
+};
+
+export type CustomizedHelpdesktechnicianProfilesListResponse = CustomizedHelpdesktechnicianProfilesListResponses[keyof CustomizedHelpdesktechnicianProfilesListResponses];
+
+export type CustomizedHelpdesktechnicianProfilesCreateData = {
+    body: TechnicianProfileWritable;
+    path?: never;
+    query?: never;
+    url: '/customized_helpdesktechnician-profiles/';
+};
+
+export type CustomizedHelpdesktechnicianProfilesCreateErrors = {
+    /**
+     * User has no groups.
+     */
+    400: unknown;
+};
+
+export type CustomizedHelpdesktechnicianProfilesCreateResponses = {
+    201: TechnicianProfile;
+};
+
+export type CustomizedHelpdesktechnicianProfilesCreateResponse = CustomizedHelpdesktechnicianProfilesCreateResponses[keyof CustomizedHelpdesktechnicianProfilesCreateResponses];
+
+export type CustomizedHelpdesktechnicianProfilesDeleteData = {
+    body?: never;
+    path: {
+        /**
+         * A unique integer value identifying this Technician Profile.
+         */
+        id: number;
+    };
+    query?: never;
+    url: '/customized_helpdesktechnician-profiles/{id}/';
+};
+
+export type CustomizedHelpdesktechnicianProfilesDeleteResponses = {
+    204: unknown;
+};
+
+export type CustomizedHelpdesktechnicianProfilesReadData = {
+    body?: never;
+    path: {
+        /**
+         * A unique integer value identifying this Technician Profile.
+         */
+        id: number;
+    };
+    query?: never;
+    url: '/customized_helpdesktechnician-profiles/{id}/';
+};
+
+export type CustomizedHelpdesktechnicianProfilesReadResponses = {
+    200: TechnicianProfile;
+};
+
+export type CustomizedHelpdesktechnicianProfilesReadResponse = CustomizedHelpdesktechnicianProfilesReadResponses[keyof CustomizedHelpdesktechnicianProfilesReadResponses];
+
+export type CustomizedHelpdesktechnicianProfilesPartialUpdateData = {
+    body: TechnicianProfileWritable;
+    path: {
+        /**
+         * A unique integer value identifying this Technician Profile.
+         */
+        id: number;
+    };
+    query?: never;
+    url: '/customized_helpdesktechnician-profiles/{id}/';
+};
+
+export type CustomizedHelpdesktechnicianProfilesPartialUpdateResponses = {
+    200: TechnicianProfile;
+};
+
+export type CustomizedHelpdesktechnicianProfilesPartialUpdateResponse = CustomizedHelpdesktechnicianProfilesPartialUpdateResponses[keyof CustomizedHelpdesktechnicianProfilesPartialUpdateResponses];
+
+export type CustomizedHelpdesktechnicianProfilesUpdateData = {
+    body: TechnicianProfileWritable;
+    path: {
+        /**
+         * A unique integer value identifying this Technician Profile.
+         */
+        id: number;
+    };
+    query?: never;
+    url: '/customized_helpdesktechnician-profiles/{id}/';
+};
+
+export type CustomizedHelpdesktechnicianProfilesUpdateResponses = {
+    200: TechnicianProfile;
+};
+
+export type CustomizedHelpdesktechnicianProfilesUpdateResponse = CustomizedHelpdesktechnicianProfilesUpdateResponses[keyof CustomizedHelpdesktechnicianProfilesUpdateResponses];
+
 export type CustomizedHelpdeskticketsListData = {
     body?: never;
     path?: never;
@@ -712,11 +1300,11 @@ export type CustomizedHelpdeskticketsListData = {
          */
         priority?: string;
         /**
-         * Filter by one or more queue IDs (comma-separated or array).
+         * Filter by queue IDs (comma or array)
          */
         queue?: Array<number>;
         /**
-         * Optionally filter tickets by user's ID. Returns tickets created by or assigned to the user.
+         * Filter tickets created by or assigned to this user ID.
          */
         user_id?: number;
     };
@@ -728,21 +1316,21 @@ export type CustomizedHelpdeskticketsListResponses = {
         count: number;
         next?: string | null;
         previous?: string | null;
-        results: Array<CustomTicket>;
+        results: Array<TicketRead>;
     };
 };
 
 export type CustomizedHelpdeskticketsListResponse = CustomizedHelpdeskticketsListResponses[keyof CustomizedHelpdeskticketsListResponses];
 
 export type CustomizedHelpdeskticketsCreateData = {
-    body: CustomTicketWritable;
+    body: TicketWrite;
     path?: never;
     query?: never;
     url: '/customized_helpdesktickets/';
 };
 
 export type CustomizedHelpdeskticketsCreateResponses = {
-    201: CustomTicket;
+    201: TicketWrite;
 };
 
 export type CustomizedHelpdeskticketsCreateResponse = CustomizedHelpdeskticketsCreateResponses[keyof CustomizedHelpdeskticketsCreateResponses];
@@ -801,13 +1389,13 @@ export type CustomizedHelpdeskticketsReadData = {
 };
 
 export type CustomizedHelpdeskticketsReadResponses = {
-    200: CustomTicket;
+    200: TicketRead;
 };
 
 export type CustomizedHelpdeskticketsReadResponse = CustomizedHelpdeskticketsReadResponses[keyof CustomizedHelpdeskticketsReadResponses];
 
 export type CustomizedHelpdeskticketsPartialUpdateData = {
-    body: CustomTicketWritable;
+    body: TicketWrite;
     path: {
         /**
          * A unique integer value identifying this Ticket.
@@ -819,13 +1407,13 @@ export type CustomizedHelpdeskticketsPartialUpdateData = {
 };
 
 export type CustomizedHelpdeskticketsPartialUpdateResponses = {
-    200: CustomTicket;
+    200: TicketWrite;
 };
 
 export type CustomizedHelpdeskticketsPartialUpdateResponse = CustomizedHelpdeskticketsPartialUpdateResponses[keyof CustomizedHelpdeskticketsPartialUpdateResponses];
 
 export type CustomizedHelpdeskticketsUpdateData = {
-    body: CustomTicketWritable;
+    body: TicketWrite;
     path: {
         /**
          * A unique integer value identifying this Ticket.
@@ -837,7 +1425,7 @@ export type CustomizedHelpdeskticketsUpdateData = {
 };
 
 export type CustomizedHelpdeskticketsUpdateResponses = {
-    200: CustomTicket;
+    200: TicketWrite;
 };
 
 export type CustomizedHelpdeskticketsUpdateResponse = CustomizedHelpdeskticketsUpdateResponses[keyof CustomizedHelpdeskticketsUpdateResponses];
