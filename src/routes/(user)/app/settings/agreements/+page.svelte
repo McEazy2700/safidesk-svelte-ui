@@ -1,6 +1,6 @@
 <script>
 	import ANewButton from '$lib/components/atoms/a-new-button.svelte';
-	import ANewPolicyForm from '$lib/components/atoms/a-new-policy-form.svelte';
+	import MNewPolicyForm from '$lib/components/molecules/m-new-policy-form.svelte';
 	import ATopHeaderScreen from '$lib/components/atoms/a-top-header-screen.svelte';
 	import { PRIORITY_NAMES } from '$lib/constants/tickets';
 	import { SlaMutations } from '$lib/services/utils/mutations/policies.svelte';
@@ -37,7 +37,7 @@
 		<div class="drawer-side">
 			<label for="my-drawer-5" aria-label="close sidebar" class="drawer-overlay"></label>
 			<div class="menu h-screen w-[50%] overflow-y-auto bg-base-200 p-4">
-				<ANewPolicyForm
+				<MNewPolicyForm
 					bind:priority={formState.current.priority}
 					bind:ticketType={formState.current.ticket_type}
 					bind:resolutionTime={formState.current.resolution_time}

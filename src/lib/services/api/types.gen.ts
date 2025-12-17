@@ -52,6 +52,11 @@ export type SlaPolicy = {
      */
     ticket_type?: 'Incident' | 'Problem' | 'Service Request' | 'Change Request';
     /**
+     * Policy Name
+     * A descriptive name for this policy.
+     */
+    name?: string;
+    /**
      * Target Response Time
      * Time to first response (e.g., '01:00:00' for 1 hour).
      */
@@ -583,6 +588,11 @@ export type SlaPolicyWritable = {
      * The ITIL ticket type this policy applies to.
      */
     ticket_type?: 'Incident' | 'Problem' | 'Service Request' | 'Change Request';
+    /**
+     * Policy Name
+     * A descriptive name for this policy.
+     */
+    name?: string;
     /**
      * Target Response Time
      * Time to first response (e.g., '01:00:00' for 1 hour).

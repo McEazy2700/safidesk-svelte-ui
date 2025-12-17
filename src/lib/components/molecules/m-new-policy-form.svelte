@@ -2,11 +2,11 @@
 	import { getSlaFormState } from '$lib/stores/forms/sla.svelte';
 	import type { TimeMetricType } from '$lib/types/policy';
 	import LightClose from '$lib/components/icons/light-close.svelte';
-	import ATextDropdown from './a-text-dropdown.svelte';
 	import { PRIORITY_NAMES, TICKET_TYPES, type TicketType } from '$lib/constants/tickets';
 	import { cast } from '$lib/utils/typing';
 	import type { SlaPolicy } from '$lib/services/api';
 	import { onMount } from 'svelte';
+	import ATextDropdown from '../atoms/a-text-dropdown.svelte';
 
 	type FormProps = {
 		title?: string;
@@ -43,28 +43,39 @@
 	};
 
 	onMount(() => {
-		if (responseTime) {
-			const responseParts = responseTime.split(':');
-			if (responseParts.length === 2) {
-				responseTimeMetric = 'Minutes';
-			} else if (responseParts.length === 3) {
-				responseTimeMetric = 'Hours';
-			} else {
-				responseTimeMetric = 'Days';
+		const parseDuration = (timeString: string) => {
+			if (timeString.includes(' ')) {
+				return {
+					metric: 'Days',
+					number: timeString.split(' ')[0]
+				};
 			}
-			responseTimeNumber = responseParts[0];
+
+			const parts = timeString.split(':');
+
+			if (parts.length >= 2 && parts[0] === '00') {
+				return {
+					metric: 'Minutes',
+					number: parts[1]
+				};
+			}
+
+			return {
+				metric: 'Hours',
+				number: parts[0]
+			};
+		};
+
+		if (responseTime) {
+			const { metric, number } = parseDuration(responseTime);
+			responseTimeMetric = cast(metric);
+			responseTimeNumber = number;
 		}
 
 		if (resolutionTime) {
-			const resolutionParts = resolutionTime.split(':');
-			if (resolutionParts.length === 2) {
-				resolutionTimeMetric = 'Minutes';
-			} else if (resolutionParts.length === 3) {
-				resolutionTimeMetric = 'Hours';
-			} else {
-				resolutionTimeMetric = 'Days';
-			}
-			resolutionTimeNumber = resolutionParts[0];
+			const { metric, number } = parseDuration(resolutionTime);
+			resolutionTimeMetric = cast(metric);
+			resolutionTimeNumber = number;
 		}
 	});
 

@@ -23,12 +23,12 @@ const SLA_FORM_STATE_KEY = "$_sla_form_state";
 export function getSlaFormState(key = SLA_FORM_STATE_KEY) {
   const manager = getContext<SlaStateManager>(key);
   if (!manager) {
-    return setAppNavState(key);
+    return setSlaState(key);
   }
   return manager;
 }
 
-export function setAppNavState(key = SLA_FORM_STATE_KEY) {
+export function setSlaState(key = SLA_FORM_STATE_KEY) {
   const stateManager = new SlaStateManager();
   return setContext(key, stateManager);
 }
