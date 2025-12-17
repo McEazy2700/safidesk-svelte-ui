@@ -20,10 +20,6 @@
 	const handleSave = (input: Rule) => {
 		AutomationRuleMutations.save(cast(input), formState.current.id);
 	};
-
-	$effect(() => {
-		console.log(formState.current);
-	});
 </script>
 
 <ATopHeaderScreen>

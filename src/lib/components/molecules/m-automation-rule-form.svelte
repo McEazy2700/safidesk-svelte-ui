@@ -35,8 +35,8 @@
 		description: 'Description',
 		starts_with: 'Starts With',
 		contains: 'Contains',
-		equals: 'is',
-		not_equals: 'is not',
+		equals: 'Is',
+		not_equals: 'Is not',
 		'>': 'greater than',
 		'<': 'less than'
 	} as const;
@@ -110,7 +110,7 @@
 	}
 
 	function findSRMapValue(key: keyof typeof SRMap) {
-		return Object.values(SRMap)[Object.keys(SRMap).findIndex((i) => i == key)];
+		return Object.values(SRMap)[Object.keys(SRMap).findIndex((i) => i === key)];
 	}
 
 	$effect(() => {
@@ -118,9 +118,9 @@
 			innerConditions = conditions?.map((c) => {
 				let value = c.value;
 				if (c.field === findSRMapKey(SRMap.status)) {
-					value = STATUS_NAMES[Number(c.value)];
+					value = capitalize(STATUS_NAMES[Number(c.value)]);
 				} else if (c.field === findSRMapKey(SRMap.priority)) {
-					value = PRIORITY_NAMES[Number(c.value)];
+					value = capitalize(PRIORITY_NAMES[Number(c.value)]);
 				}
 
 				const processed: Condition = {
@@ -138,11 +138,15 @@
 			innerActions = actions?.map((c) => {
 				let value = c.value;
 				if (c.action === findSRMapKey(SRMap.set_status)) {
-					value = STATUS_NAMES[Number(c.value)];
+					value = capitalize(STATUS_NAMES[Number(c.value)]);
 				} else if (c.action === findSRMapKey(SRMap.set_priority)) {
-					value = PRIORITY_NAMES[Number(c.value)];
+					value = capitalize(PRIORITY_NAMES[Number(c.value)]);
 				} else if (c.action === findSRMapKey(SRMap.assigned_agent)) {
 					value = UsersStore.list.find((i) => i.id === cast(c.value))?.username;
+				} else if (c.action === findSRMapKey(SRMap.assign_to_queue)) {
+					value = capitalize(QueuesStore.list.find((i) => i.id === c.value)?.title ?? '')
+						.split('_')
+						.join(' ');
 				}
 
 				const processed: Action = {
@@ -188,7 +192,7 @@
 				value = cast(
 					QueuesStore.list.find(
 						(i) => i.title.toLowerCase() === c.value?.toLowerCase().split(' ').join('_')
-					)?.id ?? ''
+					)?.title ?? ''
 				);
 			} else if (c.action === SRMap.assigned_agent) {
 				value = cast(UsersStore.list.find((i) => i.username === c.value)?.id ?? '');
@@ -260,6 +264,7 @@
 					<div class="flex flex-1 flex-row items-center gap-4">
 						<select
 							class="select flex-1"
+							value={innerConditions.at(index)?.field}
 							onchange={(c) => (innerConditions[index].field = c.currentTarget.value)}
 						>
 							<option disabled selected>Pick a Condition</option>
@@ -273,6 +278,7 @@
 						</select>
 						<select
 							class="select flex-1"
+							value={innerConditions.at(index)?.operator}
 							onchange={(c) => (innerConditions[index].operator = c.currentTarget.value)}
 						>
 							<option disabled selected>Pick an Operator</option>
@@ -285,11 +291,13 @@
 								type="text"
 								class="input flex-1"
 								placeholder="Enter value..."
+								value={innerConditions.at(index)?.value}
 								onchange={(c) => (innerConditions[index].value = c.currentTarget.value)}
 							/>
 						{:else}
 							<select
 								class="select flex-1"
+								value={innerConditions.at(index)?.value}
 								onchange={(c) => (innerConditions[index].value = c.currentTarget.value)}
 							>
 								<option disabled selected>Pick a Value</option>
@@ -330,6 +338,7 @@
 					<div class="flex flex-1 flex-row items-center gap-4">
 						<select
 							class="select flex-1"
+							value={innerActions.at(index)?.action}
 							onchange={(c) => (innerActions[index].action = c.currentTarget.value)}
 						>
 							<option disabled selected>Pick an action</option>
@@ -342,6 +351,7 @@
 						<p>to</p>
 						<select
 							class="select flex-1"
+							value={innerActions.at(index)?.value}
 							onchange={(c) => (innerActions[index].value = c.currentTarget.value)}
 						>
 							<option disabled selected>Pick a Value</option>
