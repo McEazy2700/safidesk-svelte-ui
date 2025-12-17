@@ -38,6 +38,7 @@
 			<label for="my-drawer-5" aria-label="close sidebar" class="drawer-overlay"></label>
 			<div class="menu h-screen w-[50%] overflow-y-auto bg-base-200 p-4">
 				<MNewPolicyForm
+					bind:title={formState.current.name}
 					bind:priority={formState.current.priority}
 					bind:ticketType={formState.current.ticket_type}
 					bind:resolutionTime={formState.current.resolution_time}

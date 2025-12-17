@@ -1,20 +1,24 @@
 import type { SlaPolicy } from "$lib/services/api";
 import { getContext, setContext } from "svelte";
 
+type Policy = SlaPolicy & {
+  name: string;
+};
+
 class SlaStateManager {
   edit = $state(false);
-  current = $state({} as SlaPolicy);
+  current = $state({} as Policy);
 
   toggleEdit() {
     this.edit = !this.edit;
   }
 
-  setCurrentPolicy(policy: SlaPolicy) {
+  setCurrentPolicy(policy: Policy) {
     this.current = policy;
   }
 
   clearCurrent() {
-    this.current = {} as SlaPolicy;
+    this.current = {} as Policy;
   }
 }
 
