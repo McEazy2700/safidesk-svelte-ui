@@ -18,7 +18,7 @@
 
 		<div class="mt-2 flex w-full flex-col gap-3">
 			<div class="flex w-full flex-1 flex-col text-sm">
-				<label for="subject" class="font-semibold">Software Title</label>
+				<label for="subject" class="font-semibold">Title</label>
 				<input
 					class="input w-full"
 					placeholder="e.g., Assistance with login issue"

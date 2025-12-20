@@ -26,6 +26,7 @@
 			title: value.title,
 			description: value.content,
 			queue_id: value.queue_id,
+			ticket_type_input: 'Incident',
 			submitter_email: user?.email,
 			due_date: value.due_date
 		}).then(async (data) => {

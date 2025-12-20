@@ -28,7 +28,7 @@
 			</div>
 
 			<div class="flex flex-1 flex-col text-sm">
-				<label for="devices" class="font-semibold">Software Title</label>
+				<label for="devices" class="font-semibold">Device</label>
 				<ATextDropdown
 					bind:selected={targetDevice}
 					items={['HP ProBook - Laptop-FIN-004', 'Desktop Computer', 'Apple Macbook']}
