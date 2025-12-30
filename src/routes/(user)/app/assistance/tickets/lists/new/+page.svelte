@@ -12,11 +12,16 @@
 	import { getFutureDate } from '$lib/utils/time';
 	import { TICKET_RESPONSE_DURATIONS } from '$lib/constants/tickets';
 	import type { TicketRead } from '$lib/services/api';
+	import { getUserType } from '$lib/utils/users';
 
 	let queueId = $state<number>();
 	let dueDate = $derived(
 		queueId ? getFutureDate(TICKET_RESPONSE_DURATIONS[queueId]) : getFutureDate(7)
 	);
+
+	let { data } = $props();
+
+	const userType = $derived(getUserType(data.user));
 
 	function handleCreate(value: TicketFormArgs) {
 		const user = getClientAccessToken()?.user?.user;
@@ -26,7 +31,7 @@
 			title: value.title,
 			description: value.content,
 			queue_id: value.queue_id,
-			ticket_type_input: 'Incident',
+			ticket_type_input: cast(value.ticket_type),
 			submitter_email: user?.email,
 			due_date: value.due_date
 		}).then(async (data) => {
@@ -50,6 +55,7 @@
 		<h3 class="text-xl font-semibold text-primary capitalize">New Ticket</h3>
 	{/snippet}
 	<MTicketForm
+		admin={userType === 'admin'}
 		due_date={dueDate.toISOString()}
 		bind:queue_id={queueId}
 		onsave={handleCreate}

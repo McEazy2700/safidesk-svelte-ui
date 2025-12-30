@@ -4,6 +4,7 @@
 	import AQueueDropdown from '../atoms/a-queue-dropdown.svelte';
 	import ATicketPriorityDropdown from '../atoms/a-ticket-priority-dropdown.svelte';
 	import ATicketStatusDropdown from '../atoms/a-ticket-status-dropdown.svelte';
+	import ATicketTypeDropdown from '../atoms/a-ticket-type-dropdown.svelte';
 	import ATiptap from '../atoms/a-tiptap.svelte';
 
 	export type TicketFormArgs = {
@@ -13,6 +14,7 @@
 		priority: number;
 		queue_id: number;
 		due_date?: string | null;
+		ticket_type?: string;
 	};
 
 	type Props = {
@@ -23,6 +25,8 @@
 		priority?: number;
 		queue_id?: number;
 		loading?: boolean;
+		ticketType?: string;
+		admin?: boolean;
 		due_date?: string | null;
 		onsave?: (value: TicketFormArgs) => void;
 	};
@@ -35,6 +39,8 @@
 		priority = $bindable(3),
 		queue_id = $bindable(),
 		due_date = $bindable(),
+		ticketType = $bindable('Incident'),
+		admin,
 		loading,
 		onsave
 	}: Props = $props();
@@ -52,6 +58,9 @@
 		<ATicketPriorityDropdown disabled={edit} bind:priority />
 		<ATicketStatusDropdown disabled={!edit} bind:status />
 		<ACalendarInput label="Due Date" disabled={!edit} bind:due_date />
+		{#if admin}
+			<ATicketTypeDropdown disabled={edit} bind:ticketType />
+		{/if}
 	</div>
 	<input
 		bind:value={title}
@@ -64,6 +73,14 @@
 		onupdate={({ html }) => (content = html)}
 		{loading}
 		onexport={({ html }) =>
-			onsave?.({ title, content: html, status, priority, queue_id: Number(queue_id), due_date })}
+			onsave?.({
+				title,
+				content: html,
+				status,
+				priority,
+				queue_id: Number(queue_id),
+				due_date,
+				ticket_type: ticketType
+			})}
 	/>
 </div>

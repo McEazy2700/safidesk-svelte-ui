@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { formatToMonthDay } from '$lib/utils/time';
-	import AAvatarGroup from '../atoms/a-avatar-group.svelte';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import { slugify } from '$lib/utils/urls';
@@ -11,6 +10,7 @@
 	import ATicketStatusIcon from '../atoms/a-ticket-status-icon.svelte';
 	import ATicketStatusPill from '../atoms/a-ticket-status-pill.svelte';
 	import ATicketPriorityPill from '../atoms/a-ticket-priority-pill.svelte';
+	import { capitalize } from '$lib/utils/text';
 
 	type Props = {
 		fullWidth?: boolean;
@@ -62,18 +62,19 @@
 				<ATicketPriorityIcon priority={ticket.priority ?? 3} />
 			{/if}
 			<span
-				title={ticket.queue?.title.replaceAll('_', ' ')}
+				title={capitalize(ticket.queue?.title.replaceAll('_', ' ') ?? '')}
 				class={twMerge(
 					'overflow-hidden rounded-full bg-info/15 p-1 px-2 text-xs font-semibold text-ellipsis whitespace-nowrap capitalize',
-					!fullWidth && 'max-w-28'
+					!fullWidth && 'max-w-14'
 				)}>{ticket.queue?.title.replaceAll('_', ' ')}</span
 			>
-			<AAvatarGroup
-				avatars={[
-					{ id: 'user-A', avatarUrl: 'https://i.pravatar.cc/40?img=1' },
-					{ id: 'user-B', avatarUrl: 'https://i.pravatar.cc/40?img=2' }
-				].map((a) => ({ src: a.avatarUrl, alt: a.id }))}
-			/>
+			<span
+				title={ticket.ticket_type ?? 'Incident'}
+				class={twMerge(
+					'overflow-hidden rounded-full bg-secondary/15 p-1 px-2 text-xs font-semibold text-ellipsis whitespace-nowrap capitalize',
+					!fullWidth && 'max-w-28'
+				)}>{ticket.ticket_type ?? 'Incident'}</span
+			>
 		</div>
 	</div>
 </div>
