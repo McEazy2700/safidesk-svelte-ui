@@ -11,6 +11,8 @@ import Calendar from "$lib/components/icons/calendar.svelte";
 import ChartPie from "$lib/components/icons/chart-pie.svelte";
 import PhDevices from "$lib/components/icons/ph-devices.svelte";
 import DeviceImacPlus from "$lib/components/icons/device-imac-plus.svelte";
+import TablerShieldCheck from "$lib/components/icons/tabler-shield-check.svelte";
+import TablerUser from "$lib/components/icons/tabler-user.svelte";
 import type { UserResponseData } from "$lib/types/api/auth";
 import { getUserType } from "$lib/utils/users";
 
@@ -84,6 +86,21 @@ export const APP_NAVIGATION: (NavGroup | NavItem)[] = [
 				href: "/app/assistance/statistics",
 				disabled: true,
 				icon: ChartPie,
+			},
+		],
+	},
+	{
+		type: "group",
+		icon: TablerShieldCheck,
+		label: "Administration",
+		baseRoute: "/app/administration",
+		navs: [
+			{
+				type: "item",
+				label: "Users",
+				href: "/app/administration/users",
+				disabled: false,
+				icon: TablerUser,
 			},
 		],
 	},
