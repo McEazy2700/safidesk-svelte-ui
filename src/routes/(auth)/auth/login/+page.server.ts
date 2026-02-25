@@ -24,7 +24,6 @@ export const actions: Actions = {
 		const res = await loginCreate({
 			body: form.data,
 		});
-		console.log(res.error);
 
 		if (res.error) {
 			return message<Message>(
@@ -35,11 +34,16 @@ export const actions: Actions = {
 		}
 		const data = cast<LoginResponse>(res.data);
 
+		console.log("Getting User")
 		const userRes = await userGetList({
 			headers: {
 				Authorization: `Bearer ${data.data.access}`,
 			},
 		});
+		console.log("Got User")
+
+
+		console.log(userRes.error, userRes.data);
 
 		if (userRes.error || !userRes.data) {
 			throw redirect(301, "/");
